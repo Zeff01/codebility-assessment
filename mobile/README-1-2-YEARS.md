@@ -19,7 +19,7 @@ In this assessment, you'll implement a simple UI screen based on a design mockup
 ## Timeline
 
 - **Duration**: 1-2 days
-- You may submit your assessment earlier if completed
+- You may submit your assessment earlier if completed.
 
 ## Design Mockup
 
