@@ -1,0 +1,40 @@
+# REST CLIENT!
+# HOW TO USE: JUST CLICK SEND REQUEST(I HAVE PRE-INSERTED DATA.)
+# TIP: JUST REFRESH THE APP TO RESET DATA
+
+###
+GET http://localhost:4000/api/todos/
+
+###
+GET  http://localhost:4000/api/todos/83549198-b9d3-400f-a6f6-c97349cc9160
+
+###
+DELETE  http://localhost:4000/api/todos/83549198-b9d3-400f-a6f6-c97349cc9160
+
+###
+
+POST http://localhost:4000/api/todos
+Content-Type: application/json
+
+# You can update only either or both title and completed
+{
+    "title": "Assessment",
+    "completed": false
+}
+
+###
+PUT  http://localhost:4000/api/todos/83549198-b9d3-400f-a6f6-c97349cc9160
+Content-Type: application/json
+
+{
+    "title": "Dead Lift",
+    "completed": true
+}
+
+###
+GET http://localhost:4000/health
+
+### 
+
+#HANDLING RANDOM URL
+GET http://localhost:4000/asdasdsadasddsdsds
