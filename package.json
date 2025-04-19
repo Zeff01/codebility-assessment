@@ -12,5 +12,8 @@
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
+  },
+  "dependencies": {
+    "codebility-assessment": "file:"
   }
 }
