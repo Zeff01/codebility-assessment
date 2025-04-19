@@ -2,139 +2,100 @@
 
 ## Overview
 
-Welcome to the **3–5 Years** backend assessment!  
-This challenge involves building a more robust Express.js API with TypeScript, proper architecture, database integration, authentication, and external API integration. We aim to see how you structure a mid-complexity application in **2–4 days**.
+Welcome to the **3–5 Years** backend assessment! Your task is to build a small API with authentication and an external API integration. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. **Create a new branch**: `firstname-lastname/3-5-years-backend`
-2. Build an **Express.js + TypeScript** application with:
-   - **Clean architecture** (services, controllers, repositories)
-   - **Database integration** with Prisma ORM
-   - **JWT authentication** with role-based access control
-   - **External API integration** (OpenWeatherMap or other public API)
-   - **Input validation** using Zod or similar
-   - **Comprehensive error handling**
-   - **Unit and integration tests**
-
-## Technical Requirements
-
-### Features to Implement
-
-1. **User Management**:
-
-   - Registration (`POST /api/auth/register`)
-   - Login (`POST /api/auth/login`)
-   - Get user profile (`GET /api/users/me`)
-
-2. **Products API**:
-
-   - Create product (admin only) (`POST /api/products`)
-   - List all products (`GET /api/products`)
-   - Get product by ID (`GET /api/products/:id`)
-   - Update product (admin only) (`PUT /api/products/:id`)
-   - Delete product (admin only) (`DELETE /api/products/:id`)
-
-3. **Weather Integration**:
-
-   - Get weather for a location (`GET /api/weather?city=CityName`)
-   - This endpoint should fetch data from OpenWeatherMap API
-
-4. **Technical Requirements**:
-   - Implement JWT authentication
-   - Role-based access control (user vs admin)
-   - Request validation using Zod schemas
-   - Proper error handling with custom error classes
-   - Prisma ORM for database operations
-   - Unit and integration tests
+1. Create an API with user authentication
+2. Implement protected and public routes
+3. Integrate with an external API
 
 ## Steps to Complete
 
-### 1. Create & Switch to a New Branch
+### 1. Fork the Repository
 
+1. Go to [https://github.com/Zeff01/codebility-assessment](https://github.com/Zeff01/codebility-assessment)
+2. Click the "Fork" button in the upper right corner
+
+### 2. Clone Your Fork
+
+```bash
+git clone https://github.com/YOUR-USERNAME/codebility-assessment.git
+cd codebility-assessment/backend
+```
+
+### 3. Create a Branch
+
+```bash
 git checkout -b firstname-lastname/3-5-years-backend
+```
 
 Replace `firstname-lastname` with your actual name.
 
-### 2. Implementation Requirements
+### 4. Implementation
 
-1. **Authentication**:
+1. Create an API with:
 
-   - Implement JWT-based authentication
-   - Create middleware to protect routes
-   - Implement role-based authorization (admin vs user)
+   - User authentication (login/register)
+   - Public endpoints
+   - Protected endpoints (requiring authentication)
 
-2. **Database Integration**:
+2. Implement these endpoints:
 
-   - Use Prisma ORM for database operations
-   - Implement repository pattern for data access
-   - Handle database errors gracefully
+   - `POST /api/auth/register` - User registration
+   - `POST /api/auth/login` - User login
+   - `GET /api/weather` - Get weather data (protected route)
+   - Any additional endpoints you think are necessary
 
-3. **External API Integration**:
+3. Integrate with a weather API of your choice:
 
-   - Weather API integration (OpenWeatherMap or similar)
-   - Proper error handling for API failures
-   - Response caching if time permits
+   - Fetch weather data based on city or coordinates
+   - Return it to the client through your API
 
-4. **Input Validation**:
+4. Add basic error handling and input validation
 
-   - Use Zod to validate request bodies
-   - Create middleware for validation
-   - Return descriptive validation errors
+### 5. Test Your Work
 
-5. **Error Handling**:
+1. Test your API using tools like Postman, Insomnia, or curl
+2. Make sure authentication and API integration work properly
 
-   - Create custom error classes
-   - Implement global error handling middleware
-   - Return consistent error responses
+### 6. Submit Your Work
 
-6. **Testing**:
-   - Write unit tests for services
-   - Write integration tests for API endpoints
-   - Use in-memory database for tests if possible
+1. Commit and push your changes:
 
-### 5. Testing
+   ```bash
+   git add .
+   git commit -m "Implement API with authentication and weather integration"
+   git push origin firstname-lastname/3-5-years-backend
+   ```
 
-1. Set up Jest for testing:
+2. Create a Pull Request:
+   - Go to your fork on GitHub
+   - Click "Contribute" and "Open pull request"
+   - Make sure the base repository is set to `Zeff01/codebility-assessment`
+   - Add a title and brief description of your implementation
 
-   npx ts-jest config:init
+## What We're Looking For
 
-2. Write tests for key functionality:
-   - Authentication flow
-   - Product CRUD operations
-   - External API integration
+- Proper authentication implementation
+- Clean code organization
+- Error handling
+- External API integration
+- Input validation
 
-### 6. Commit & Push
+## Technology Choices
 
-git add .
-git commit -m "Implement Express API with authentication, database, and weather integration"
-git push origin firstname-lastname/3-5-years-backend
+- Use Node.js
+- Choose any framework (Express, NestJS, Fastify, etc.)
+- Use JavaScript or TypeScript (your choice)
+- Choose any libraries for authentication, validation, etc.
+- Store data in memory or use a simple database solution
 
-### 7. Open a Pull Request (PR)
+## Time Allowance
 
-1. Go to the repository on GitHub
-2. Open a new Pull Request with your branch as the source
-3. Give it a descriptive title
-4. In the description, include:
-   - Overview of your implementation
-   - Architecture decisions
-   - How to run the application locally
-   - How to run tests
-   - Any challenges faced or tradeoffs made
+- **Expected coding time**: 1-2 hours
+- **Submission deadline**: 1-2 days
 
-## Evaluation Criteria
+Focus on clean implementation rather than feature completeness. We want to see your approach to structuring an API with authentication.
 
-Your submission will be evaluated based on:
-
-1. **Architecture**: Clean and maintainable code structure
-2. **Security**: Proper authentication and authorization
-3. **Database**: Efficient use of Prisma and proper data modeling
-4. **Error Handling**: Comprehensive error handling and validation
-5. **Testing**: Quality and coverage of tests
-6. **Documentation**: Clear code documentation and PR description
-
-## Time Estimate
-
-This assessment should take approximately 2–4 days to complete. If you're unable to complete all features, prioritize quality over quantity and document what's missing.
-
-**Good luck, and happy coding!**
+**Good luck!**

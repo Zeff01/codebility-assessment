@@ -2,114 +2,79 @@
 
 ## Overview
 
-Welcome to the **1–2 Years** frontend assessment! Your main task is to **replicate a design** on the homepage of this Next.js app. We'll provide a design mockup that you'll need to implement with attention to detail. You'll work on a separate Git branch named after yourself, commit your changes, and open a Pull Request.
+Welcome to the **1–2 Years** frontend assessment! Your task is to implement a simple landing page based on the design of [Moola.com](https://www.moola.com/). This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. **Use Next.js** (version 15 or the current stable release)
-2. Implement the design on the main page (`app/page.tsx`)
-3. Keep the look and layout **as close as possible** to the provided design mockup
-4. Ensure **responsive behavior** for desktop and mobile viewports
-5. Complete the task within **1–2 days**
-
-## Design Mockup
-
-(https://www.moola.com/)
-
-The above mockup shows the landing page you need to implement. Pay special attention to:
-
-- Typography and font sizes
-- Spacing between elements
-- Color scheme
-- Responsive behavior
-- Button styles and hover states
-
-## Technical Requirements
-
-- Use **Next.js 15** with the App Router
-- Implement with **TypeScript**
-- Style using **Tailwind CSS** (already configured in the project)
-- Ensure the page is **fully responsive**
-- Follow accessibility best practices
-- Implement basic interactions (hover states, etc.)
+1. Implement a landing page similar to [Moola.com](https://www.moola.com/)
+2. Focus on the hero section and one additional section of your choice
+3. Make it responsive for desktop and mobile
+4. Use Next.js (or React if you prefer)
 
 ## Steps to Complete
 
-### 1. Create & Switch to a New Branch
+### 1. Fork the Repository
 
-1. Clone or pull the latest version of this repository.
-2. From your local repo folder, run:
-   ```bash
-   git checkout -b firstname-lastname/frontend
-   ```
-   Replace `firstname-lastname` with your actual name.
-3. Confirm you're on the new branch:
-   ```bash
-   git branch # You should see your new branch highlighted
-   ```
+1. Go to [https://github.com/Zeff01/codebility-assessment](https://github.com/Zeff01/codebility-assessment)
+2. Click the "Fork" button in the upper right corner
 
-### 2. Implement the Design
+### 2. Clone Your Fork
 
-1. Open `app/page.tsx` in your code editor.
-2. Use Tailwind CSS to style your components.
-3. Reference the design mockup for layout, colors, typography, etc.
-4. Create additional components under the `components/` directory as needed.
-5. Ensure your implementation is responsive and works well on different screen sizes.
+```bash
+git clone https://github.com/YOUR-USERNAME/codebility-assessment.git
+cd codebility-assessment/frontend
+```
 
-### 3. Test Your Work
+### 3. Create a Branch
 
-1. Install dependencies and run the development server:
-   ```bash
-   npm install
-   npm run dev
-   ```
-2. Open http://localhost:3000 in your browser.
-3. Confirm the homepage matches (or closely follows) the design.
-4. Test on different viewport sizes to ensure responsiveness.
-5. Check for any console errors or warnings.
+```bash
+git checkout -b firstname-lastname/frontend
+```
 
-### 4. Commit & Push
+Replace `firstname-lastname` with your actual name.
 
-1. Stage and commit your changes:
+### 4. Implement the Design
+
+1. Look at [Moola.com](https://www.moola.com/) for reference
+2. Create a simplified version of the landing page
+3. Focus on these key elements:
+   - Hero section with heading, subheading and call-to-action
+   - One additional section of your choice
+   - Responsive layout for desktop and mobile
+
+### 5. Test Your Work
+
+1. Make sure your page looks good on different screen sizes
+2. Check for any obvious errors
+
+### 6. Submit Your Work
+
+1. Commit and push your changes:
+
    ```bash
    git add .
-   git commit -m "Implement design on homepage"
-   ```
-2. Push your branch to the remote repository:
-   ```bash
+   git commit -m "Implement landing page design"
    git push origin firstname-lastname/frontend
    ```
 
-### 5. Open a Pull Request (PR)
+2. Create a Pull Request:
+   - Go to your fork on GitHub
+   - Click "Contribute" and "Open pull request"
+   - Make sure the base repository is set to `Zeff01/codebility-assessment`
+   - Add a title and brief description of your implementation
 
-1. Go to the repository's page on GitHub (or your Git hosting platform).
-2. You should see an option to **"Compare & pull request"** for your new branch, or click **"New pull request."**
-3. Select your branch as the source.
-4. Give the PR a clear title (e.g., `"Feature: [Your Name] - Frontend UI Implementation"`).
-5. In the description, include:
-   - How closely you followed the design
-   - Any challenges you faced
-   - Any decisions or trade-offs you made
-   - Browser compatibility notes
-6. Submit the PR for review.
+## What We're Looking For
 
-## Evaluation Criteria
+- Clean, readable code
+- Basic responsive design
+- Attention to visual details
+- Simple component structure
 
-Your submission will be evaluated based on:
+## Time Allowance
 
-1. **Visual Accuracy**: How closely your implementation matches the design
-2. **Code Quality**: Clean, readable, and well-organized code
-3. **Responsiveness**: How well the UI adapts to different screen sizes
-4. **Attention to Detail**: Colors, spacing, typography, and visual elements
-5. **Best Practices**: Semantic HTML, accessibility, and performance considerations
+- **Expected coding time**: 1-2 hours
+- **Submission deadline**: 1-2 days
 
-## Time Estimate
+This assessment is intentionally simple and focused. We're looking for quality over quantity, so don't feel pressured to implement every section of the website.
 
-This assessment should take approximately 1–2 days to complete. The extended timeline allows you to:
-
-- Pay attention to details in the UI implementation
-- Ensure your code is clean and well-structured
-- Test thoroughly on different browsers and device sizes
-- Refine any animations or interactions
-
-**Good luck, and happy coding!**
+**Good luck!**

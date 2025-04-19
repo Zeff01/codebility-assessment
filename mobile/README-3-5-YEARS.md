@@ -2,188 +2,104 @@
 
 ## Overview
 
-Welcome to the **3-5 Years** mobile development assessment!  
-This challenge requires you to build a **functional e-commerce product screen** with API integration, state management, and proper component architecture. You'll demonstrate your skills with React Native, data fetching, and creating a polished user experience.
-
-**Branch Requirement**: Please work on a branch named `firstname-lastname/3-5-years-mobile` (replacing `firstname-lastname` with your own).
+Welcome to the **3-5 Years** mobile development assessment! Your task is to build a simple product details screen with data fetching. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. Create a **product details screen** with the following sections:
-   - Product image gallery/carousel
-   - Product information (title, price, rating)
-   - Product description
-   - Size/variant selector
-   - Add to cart functionality
-   - Related products section
-2. Integrate with the **Fake Store API** to fetch real product data
-3. Implement **state management** using your preferred approach
-4. Create **reusable components** with proper organization
-5. Add **animations and transitions** for a polished UX
-6. Include **error handling** and loading states
-7. Implement **unit tests** for key components
-8. Allow **2-4 days** for this challenge
-
-## Timeline
-
-- **Duration**: 2-4 days
-- You're encouraged to utilize the full timeline to ensure quality and completeness
-- Early submissions are welcome if you complete the assessment sooner
-
-## Technical Requirements
-
-### Environment
-
-- **React Native**: Use the existing Expo project structure
-- **API**: [Fake Store API](https://fakestoreapi.com/) for product data
-- **State Management**: Context API, Redux, or your preferred solution
-- **Navigation**: React Navigation
-- **Testing**: Jest and React Native Testing Library
-
-### Features to Implement
-
-1. **Product Details Screen**:
-
-   - Fetch and display product details from the API
-   - Create an image carousel for product images
-   - Display product information (title, description, price, rating)
-   - Implement a size/variant selector when applicable
-   - Add "Add to Cart" button with animation feedback
-
-2. **Related Products**:
-
-   - Fetch products from the same category
-   - Display in a horizontal scrollable list
-   - Navigate to the selected product when tapped
-
-3. **State Management**:
-
-   - Implement cart functionality (add items, view cart count)
-   - Persist cart data (React Context or Redux)
-   - Handle loading and error states
-
-4. **UI/UX Enhancements**:
-   - Add appealing animations (react-native-reanimated or similar)
-   - Implement proper loading states
-   - Create error handling UI
-   - Ensure responsive layout across device sizes
+1. Create a product details screen that fetches data from an API
+2. Display product information with a simple image, title, price, and description
+3. Implement a basic "Add to Cart" functionality
+4. Handle loading and error states
 
 ## Steps to Complete
 
-### 1. Create & Switch to a New Branch
+### 1. Fork the Repository
 
+1. Go to [https://github.com/Zeff01/codebility-assessment](https://github.com/Zeff01/codebility-assessment)
+2. Click the "Fork" button in the upper right corner
+
+### 2. Clone Your Fork
+
+```bash
+git clone https://github.com/YOUR-USERNAME/codebility-assessment.git
+cd codebility-assessment/mobile
+```
+
+### 3. Create a Branch
+
+```bash
 git checkout -b firstname-lastname/3-5-years-mobile
+```
 
 Replace `firstname-lastname` with your actual name.
 
-### 2. Project Structure
+### 4. Implementation
 
-Organize your code with a clean component architecture:
+1. Create a product details screen that:
 
-```
-components/
-├── product/
-│   ├── ProductGallery.tsx
-│   ├── ProductInfo.tsx
-│   ├── VariantSelector.tsx
-│   └── RelatedProducts.tsx
-├── common/
-│   ├── Button.tsx
-│   ├── Loading.tsx
-│   └── ErrorState.tsx
-hooks/
-├── useProductDetails.ts
-├── useRelatedProducts.ts
-└── useCart.ts
-contexts/
-└── CartContext.tsx
-screens/
-└── ProductScreen.tsx
-tests/
-└── components/
-    └── product/
-        └── ProductInfo.test.tsx
-```
+   - Fetches data from [Fake Store API](https://fakestoreapi.com/products/1) (or any similar API)
+   - Displays the product image, title, price, and description
+   - Shows a loading state while fetching data
+   - Handles potential errors gracefully
 
-### 3. API Integration
+2. Add a simple "Add to Cart" button that:
 
-1. Fetch product data from the Fake Store API:
+   - Shows a visual confirmation when pressed
+   - Stores the selected product in local state
+   - Updates a cart counter somewhere on the screen
 
-   ```typescript
-   // Example API endpoints
-   const getProduct = async (id: number) => {
-     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-     return response.json();
-   };
+3. Focus on these technical aspects:
+   - Clean component structure
+   - Proper data fetching
+   - Basic state management
+   - Simple UI/UX considerations
 
-   const getRelatedProducts = async (category: string) => {
-     const response = await fetch(
-       `https://fakestoreapi.com/products/category/${category}`
-     );
-     return response.json();
-   };
+### 5. Test Your Work
+
+1. Run the application using Expo:
+   ```bash
+   npm start
+   ```
+2. Test on iOS/Android simulator or your physical device
+3. Verify that data fetching, display, and cart functionality work properly
+
+### 6. Submit Your Work
+
+1. Commit and push your changes:
+
+   ```bash
+   git add .
+   git commit -m "Implement product details screen with API integration"
+   git push origin firstname-lastname/3-5-years-mobile
    ```
 
-2. Implement loading and error handling for API requests
+2. Create a Pull Request:
+   - Go to your fork on GitHub
+   - Click "Contribute" and "Open pull request"
+   - Make sure the base repository is set to `Zeff01/codebility-assessment`
+   - Include screenshots of your implementation
+   - Add a brief explanation of your approach
 
-### 4. State Management
+## What We're Looking For
 
-1. Create a cart context or Redux store
-2. Implement add to cart functionality
-3. Store cart state persistently
+- Clean component architecture
+- Proper data fetching with loading/error states
+- Basic state management
+- Attention to UI details
+- Code organization and readability
 
-### 5. UI/UX Implementation
+## Technology Choices
 
-1. Create a visually appealing product details screen
-2. Implement the image carousel with smooth transitions
-3. Add animations for user interactions
-4. Ensure responsive layout across different device sizes
+- Use the existing Expo setup
+- Choose any state management approach
+- Select any libraries for fetching data
+- Use any UI components or styling approach you prefer
 
-### 6. Testing
+## Time Allowance
 
-1. Write unit tests for key components
-2. Test the add to cart functionality
-3. Test API integration with mocked responses
+- **Expected coding time**: 1-2 hours
+- **Submission deadline**: 1-2 days
 
-### 7. Commit & Push
+Focus on quality over quantity. A clean, working implementation of these basic features is better than an ambitious but incomplete or buggy solution.
 
-git add .
-git commit -m "Implement product details screen with API integration"
-git push origin firstname-lastname/3-5-years-mobile
-
-### 8. Open a Pull Request (PR)
-
-1. Go to the repository on GitHub
-2. Create a new Pull Request with your branch
-3. Use a descriptive title
-4. In the description, include:
-   - Screenshots/GIFs of your implementation
-   - Architecture decisions and state management approach
-   - Any challenges faced and how you solved them
-   - Testing approach
-
-## Evaluation Criteria
-
-Your submission will be evaluated based on:
-
-1. **Functionality**: Working product screen with all required features
-2. **Code Quality**: Clean, readable, and well-structured code
-3. **Component Architecture**: Proper organization and reusable components
-4. **State Management**: Effective state management approach
-5. **UI/UX**: Visual appeal, animations, and responsiveness
-6. **API Integration**: Proper data fetching, loading states, and error handling
-7. **Testing**: Quality and coverage of tests
-
-## Time Estimate
-
-This assessment should take approximately 2-4 days to complete. The extended timeline allows you to:
-
-- Build a more complete and polished implementation
-- Create reusable components with proper documentation
-- Implement more comprehensive state management
-- Add thorough test coverage
-- Polish animations and user interactions
-
-If you're unable to complete all features, prioritize quality over quantity and document what's missing.
-
-**Good luck, and happy coding!**
+**Good luck!**
