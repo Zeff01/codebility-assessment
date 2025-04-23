@@ -108,7 +108,7 @@ const page = () => {
         title='Choose Your Plan'
         subtitle='Codey is free to use. You can earn 1% cash back on all your purchases. You can also choose to pay a small fee to get 2% cash back on all your purchases.'
       >
-        <div className='grid grid-cols-3 gap-5 w-full'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 w-full'>
           <Card className='w-full bg-gray-50'>
             <CardHeader className='text-lg font-semibold flex gap-1 items-center'>
               <Image src={infotag} alt='tag' width={30} height={30} />
