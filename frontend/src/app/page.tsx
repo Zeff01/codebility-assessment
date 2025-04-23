@@ -1,103 +1,189 @@
+import GiftCards from "@/components/gift-cards";
+import Hero from "@/components/hero";
+import HowToUse from "@/components/how-to-use";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import Attachement from "../../public/attachment.gif";
+import { items, itemFeedback } from "@/data/data";
+import infotag from "../../public/info-card-tag.svg";
+import { Button } from "@/components/ui/button";
+import Section from "@/components/section";
+import { Star } from "lucide-react";
 
-export default function Home() {
+const page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className='max-w-screen-xl p-5 lg:p-10 mx-auto'>
+      <Hero />
+      <HowToUse />
+      <GiftCards />
+      <Card className='bg-pink-100 px-10 mt-14 text-center'>
+        <div className='flex flex-col items-center justify-center gap-5'>
+          <h1 className='text-2xl text-violet-900 font-bold'>
+            Virtual Gifting With A Personal Touch
+          </h1>
+          <p className='text-sm w-full lg:w-[30rem]'>
+            You can't always be there in person for special celebrations, but
+            you can always send your regards and congratulations through email
+            or text. It's the thought that counts!! Through Moola, you can send
+            gifts from big and niche brands to your loved ones instantly.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className='flex flex-col lg:flex-row items-center justify-center gap-5'>
+          <div className='flex flex-col items-left text-center lg:text-left justify-center gap-5'>
+            <h1 className='text-lg md:text-xl lg:text-xl  text-violet-900 font-bold lg:w-[16rem]'>
+              Hassle-free long distance gift giving
+            </h1>
+            <p className='text-sm lg:w-[20rem] '>
+              Say goodbye to the stress of finding the perfect gift and having
+              it arrive on-time. With Moola, you can easily search, purchase and
+              send digital gift cards in less than 1 minute.
+            </p>
+          </div>
+          <div>
+            <Image src={Attachement} alt='gif' width={300} height={300} />
+          </div>
+          <div className='flex flex-col items-left text-center lg:text-left justify-center gap-5'>
+            <h1 className='text-xl text-violet-900 font-bold lg:w-[16rem] '>
+              Monitor gift delivery as if you're there
+            </h1>
+            <p className='text-sm w-full lg:w-[20rem] text-center'>
+              Stop questioning if a recipient has received your gift. Track gift
+              card delivery and open rates on the Moola App.
+            </p>
+          </div>
+        </div>
+      </Card>
+      <Section
+        title='Codey Saves Money On Gifts & Everyday Essentials'
+        subtitle="When we think about saving money, we often think about cutting back on non-essentials. However, that's usually not possible for special occasions or everyday purchases - gifts and dinners add up. So, making some small tweaks + great deals can make a big impact on your wallet. Through Moola, you can easily buy gift cards to your favourite stores at a lower price. Why not shop smarter, score deals, and savour the savings!"
+      >
+        {items.map((item, index) => (
+          <Card key={index} className='w-full bg-gray-200 px-5'>
+            <CardHeader className='text-lg font-semibold flex gap-1 items-center'>
+              <Image src={infotag} alt='tag' width={30} height={30} />{" "}
+              {item.title}
+            </CardHeader>
+            <CardContent className='text-sm h-full'>{item.desc}</CardContent>
+            <CardFooter className='h-full'>
+              <Button className='rounded-full font-light py-6 px-14 bg-violet-900 hover:bg-violet-900/80 cursor-pointer'>
+                SHOP DEALS
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </Section>
+
+      <Section title='What Do Customers Think About Codey'>
+        {itemFeedback.map((item, index) => (
+          <Card key={index} className='w-full bg-gray-200 px-5'>
+            <CardContent className=' h-full flex flex-col items-center gap-5 text-center'>
+              <p>{item.desc}</p>
+              <div className='flex items-center gap-1 my-2'>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star
+                    key={star}
+                    size={30}
+                    className={
+                      star <= item.stars
+                        ? "text-gray-500"
+                        : "fill-yellow-400 text-yellow-400"
+                    }
+                  />
+                ))}
+              </div>
+              <Image src={item.src} alt='Image' width={120} height={120} />
+            </CardContent>
+          </Card>
+        ))}
+      </Section>
+
+      <Section
+        title='Choose Your Plan'
+        subtitle='Codey is free to use. You can earn 1% cash back on all your purchases. You can also choose to pay a small fee to get 2% cash back on all your purchases.'
+      >
+        <div className='grid grid-cols-3 gap-5 w-full'>
+          <Card className='w-full bg-gray-50'>
+            <CardHeader className='text-lg font-semibold flex gap-1 items-center'>
+              <Image src={infotag} alt='tag' width={30} height={30} />
+              <h1 className='text-2xl font-semibold'>Free Plan</h1>
+            </CardHeader>
+            <CardContent className=' h-full'>
+              <div className='flex justify-between items-center border-b py-3'>
+                <h1 className='text-lg'>Cashback Rate</h1>
+                <span className='text-lg'>1%</span>
+              </div>
+              <div className='flex justify-between items-center border-b py-3'>
+                <h1 className='text-lg'>Withdrawal Speed</h1>
+                <span className='text-lg'>3 days</span>
+              </div>
+            </CardContent>
+            <CardFooter className='h-full flex justify-center'>
+              <Button className='w-full rounded-full font-light py-6 px-14 bg-violet-900 hover:bg-violet-900/80 cursor-pointer'>
+                BUY NOW
+              </Button>
+            </CardFooter>
+          </Card>
+
+          <Card className='w-full bg-gray-50'>
+            <CardHeader className='text-lg font-semibold flex gap-1 items-center justify-between '>
+              <div className='flex gap-1'>
+                <Image src={infotag} alt='tag' width={30} height={30} />
+                <h1 className='text-2xl font-semibold'>Pro Plan</h1>
+              </div>
+              <p className='text-3xl text-violet-900'>$3/mo</p>
+            </CardHeader>
+            <CardContent className=' h-full'>
+              <div className='flex justify-between items-center border-b py-3'>
+                <h1 className='text-lg'>Cashback Rate</h1>
+                <span className='text-lg'>3%</span>
+              </div>
+              <div className='flex justify-between items-center border-b py-3'>
+                <h1 className='text-lg'>Withdrawal Speed</h1>
+                <span className='text-lg'>24 days</span>
+              </div>
+            </CardContent>
+            <CardFooter className='h-full flex justify-center'>
+              <Button className='w-full rounded-full font-light py-6 px-14 bg-violet-900 hover:bg-violet-900/80 cursor-pointer'>
+                BUY NOW
+              </Button>
+            </CardFooter>
+          </Card>
+
+          <Card className='w-full bg-gray-50'>
+            <CardHeader className='text-lg font-semibold flex gap-1 items-center justify-between '>
+              <div className='flex gap-1'>
+                <Image src={infotag} alt='tag' width={30} height={30} />
+                <h1 className='text-2xl font-semibold'>Premium Plan</h1>
+              </div>
+              <p className='text-3xl text-violet-900'>$8/mo</p>
+            </CardHeader>
+            <CardContent className=' h-full'>
+              <div className='flex justify-between items-center border-b py-3'>
+                <h1 className='text-lg'>Cashback Rate</h1>
+                <span className='text-lg'>5%</span>
+              </div>
+              <div className='flex justify-between items-center border-b py-3'>
+                <h1 className='text-lg'>Withdrawal Speed</h1>
+                <span className='text-lg'>Instant</span>
+              </div>
+            </CardContent>
+            <CardFooter className='h-full flex justify-center'>
+              <Button className='w-full rounded-full font-light py-6 px-14 bg-violet-900 hover:bg-violet-900/80 cursor-pointer'>
+                BUY NOW
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </Section>
     </div>
   );
-}
+};
+
+export default page;
