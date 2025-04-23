@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  gap: 100px;
+  margin-inline: 1rem;
+}
+
+.imgContainer {
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 200px);
+}
+
+.img{
+  object-fit: cover;
+}
+
+.textContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.title{
+  font-size: 5dvw;
+  text-align: start;
+}
+
+.detail{
+  display: flex;
+  gap: 20px;
+}
+
+.detailText{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailTitle{
+  color: gray;
+  font-weight: bold;
+}
+
+.detailValue{
+  font-weight: 500;
+}
+
+.content{
+  font-size: 3dvw;
+  text-align: justify;
+}
+
+@media (max-width:768px){
+  .imgContainer{
+    display: none;
+  }
+  .textContainer{
+    width: 50%;
+  }
+  .title{
+    font-size: 6dvw;
+    text-align: justify;
+  }
+  .content{
+    font-size: 4dvw;
+    text-align: justify;
+  }
+}
