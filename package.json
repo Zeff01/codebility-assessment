@@ -11,6 +11,9 @@
     "start:frontend": "npm run dev --workspace frontend",
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
-    "install:all": "npm install --workspaces"
+    "install:all": "npm install --workspaces",
+    "prisma:migrate-dev": "dotenv -e .env.development -- npx prisma migrate dev",
+    "prisma:db-push": "dotenv -e .env.development -- npx prisma db push",
+    "prisma:generate": "npx prisma generate"
   }
 }
