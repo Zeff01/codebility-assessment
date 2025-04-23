@@ -1,12 +1,56 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { posts } from "../../data/posts";
 
 export default function Post({ params }) {
   const router = useRouter();
   const { id } = params;
-  const post = posts.find((p) => p.id === parseInt(id));
+
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`/api/posts/${id}`);
+
+        if (!response.ok) {
+          throw new Error("Post not found");
+        }
+
+        const data = await response.json();
+        setPost(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="grid place-items-center p-6">
+        <div className="max-w-3xl">
+          <span className="text-2xl">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="grid place-items-center">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl font-bold">Error: {error}</h1>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (

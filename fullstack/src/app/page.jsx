@@ -1,7 +1,63 @@
+"use client";
+
 import Link from "next/link";
-import { posts } from "./data/posts";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("/api/posts");
+        if (!response.ok) {
+          throw new Error("Failed to fetch posts");
+        }
+        const data = await response.json();
+        setPosts(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="grid place-items-center">
+        <div className="max-w-3xl">
+          <header className="py-2 mb-2 text-center">
+            <h1 className="text-4xl font-bold">Uzzi&apos;s Blog</h1>
+          </header>
+          <main className="text-center">
+            <span className="text-2xl">Loading...</span>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="grid place-items-center">
+        <div className="max-w-3xl">
+          <header className="py-2 mb-2 text-center">
+            <h1 className="text-4xl font-bold">Uzzi&apos;s Blog</h1>
+          </header>
+          <main className="text-center">
+            <h3 className="text-xl font-bold">An Error Occurred</h3>
+            <p>Error: {error}</p>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="grid place-items-center">
       <div className="max-w-3xl">
