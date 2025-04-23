@@ -5,12 +5,14 @@
   "workspaces": [
     "frontend",
     "backend",
-    "mobile"
+    "mobile",
+    "fullstack/fullstack"
   ],
   "scripts": {
     "start:frontend": "npm run dev --workspace frontend",
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
+    "start:fullstack": "npm run start --workspace fullstack/fullstack",
     "install:all": "npm install --workspaces"
   }
 }
