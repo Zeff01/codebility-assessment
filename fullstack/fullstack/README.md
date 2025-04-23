@@ -24,5 +24,5 @@ $ curl http://localhost:3000/api/posts/1
 {"data":{"id":1,"title":"Getting Started with Next.js","excerpt":"Learn the basics of Next.js and how to create your first app","content":"Next.js is a React framework that enables server-side rendering and generating static websites for React-based web applications. It offers built-in routing, file-system based pages, and automatic code splitting for performance. To get started, install Next.js via `npx create-next-app` and begin building your pages inside the `pages` directory. You can use `getServerSideProps`, `getStaticProps`, and API routes to control data fetching.","date":"2025-04-15"}}
 ```
 
-![HOME]('./assets/home.png')
-![POST]('./assets/post.png')
+![HOME](assets/home.png)
+![POST](assets/post.png)
