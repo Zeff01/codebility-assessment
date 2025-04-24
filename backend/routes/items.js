@@ -18,14 +18,6 @@ function writeFileSyncWrapper(file, data) {
   });
 }
 
-// const data = [
-// {id: 1, title: 'Wash dishes', completed: false, createdOn: new Date() },
-// {id: 2, title: 'Clean the room', completed: false, createdOn: new Date() },
-// {id: 3, title: 'Brush my teeth', completed: false, createdOn: new Date() },
-// {id: 4, title: 'Finish my homework', completed: false, createdOn: new Date() },
-// {id: 5, title: 'Go to church', completed: false, createdOn: new Date() },
-// ];
-
 const taskSchema = {
   type: "object",
   properties: {
@@ -38,8 +30,6 @@ const taskSchema = {
 
 router.get("/", (req, res) => {
   const { completed, sort } = req.query;
-  console.log("completed", completed);
-  console.log("sort", sort);
   try {
     let isCompleted =
       completed === undefined || completed.toLowerCase() === "false"
@@ -49,13 +39,11 @@ router.get("/", (req, res) => {
     filteredTasks = filteredTasks.tasks.filter(
       (task) => task.completed === isCompleted
     );
-
     if (sort !== undefined) {
       filteredTasks.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     }
-
     res.status(200).json(filteredTasks);
   } catch (error) {
     console.log("Error in getTODOSfunction", error);
@@ -67,16 +55,13 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
 
   const newTask = req.body;
-
   let tasksModified = JSON.parse(JSON.stringify(tasksData));
   let itemIds = tasksModified.tasks.map((item) => item.id);
-    console.log("itemids", typeof itemIds[0]);
   let newId = itemIds.length > 0 ? Math.max.apply(Math, itemIds) + 1 : 1;
   const validBody = ajv.validate(taskSchema, newTask);
   if (validBody) {
     newTask.id = newId;
     newTask.createdAt = new Date();
-    console.log('id', newTask.id);
     tasksModified.tasks.push(newTask);
     writeFileSyncWrapper(TASKS_JSON, JSON.stringify(tasksModified));
     res.status(201).json(newTask);
@@ -88,9 +73,9 @@ router.post("/", (req, res) => {
 // GET retrieve a single task by ID
 router.get('/:id', (req, res) => {
     const taskId = req.params.id;
-    console.log('id', taskId);
+   
     let tasksModified = JSON.parse(JSON.stringify(tasksData));
- console.log('taskdata', tasksModified);
+
     const task = tasksModified.tasks.find((task) => task.id === parseInt(req.params.id));
     //console.log('task', task.id);
     if(task) {
