@@ -1,6 +1,7 @@
 const express = require("express");
 
 const taskRoutes = require("./routes/task.routes");
+const errorHandler = require("./middlewares/errorHandler");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -8,12 +9,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use("/api/todos", taskRoutes);
 
-app.use((err, req, res, next) => {
-  res.status(err.statusCode || 500).json({
-    success: false,
-    error: err.message || "Server Error",
-  });
-});
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
