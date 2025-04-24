@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const fs = require("fs");
@@ -11,14 +11,11 @@ const dataFile = fs.readFileSync(TASKS_JSON, "utf-8");
 const tasksData = JSON.parse(dataFile);
 
 function writeFileSyncWrapper(file, data) {
-    fs.writeFileSync(file, data, {
-      encoding: "utf8",
-      flag: "w",
-    });
-  }
-
-
-
+  fs.writeFileSync(file, data, {
+    encoding: "utf8",
+    flag: "w",
+  });
+}
 
 // const data = [
 // {id: 1, title: 'Wash dishes', completed: false, createdOn: new Date() },
@@ -29,26 +26,42 @@ function writeFileSyncWrapper(file, data) {
 // ];
 
 const taskSchema = {
-    type: "object",
-    properties: {
-      id: { type: "string", minLength: 1 },
-      title: { type: "string", minLength: 1 },
-      description: { type: "string", minLength: 1 },
-      completed: { type: "boolean" },
-      priority: { type: "string", enum: ["low", "medium", "high"] },
-    },
-    required: ["title", "description", "completed", "priority"],
-    additionalProperties: false,
-  };
+  type: "object",
+  properties: {
+    id: { type: "string", minLength: 1 },
+    title: { type: "string", minLength: 1 },
 
-router.get('/',(req, res) => {
-    try {
-        res.status(200).json(tasksData);
-    } catch (error) {
-        console.log("Error in getProducts function", error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+    completed: { type: "boolean" },
+  },
+  required: ["title", "completed"],
+  additionalProperties: false,
+};
+
+router.get("/", (req, res) => {
+  const { completed, sort } = req.query;
+  console.log('completed', completed);
+  console.log("sort", sort);
+  try {
+    let isCompleted =
+      completed === undefined || completed.toLowerCase() === "false"
+        ? false
+        : true;
+    let filteredTasks = tasksData;
+    filteredTasks = filteredTasks.tasks.filter(
+      (task) => task.completed === isCompleted
+    );
+
+    if (sort !== undefined) {
+      filteredTasks.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
     }
-    
+
+    res.status(200).json(filteredTasks);
+  } catch (error) {
+    console.log("Error in getTODOSfunction", error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
 });
 
 module.exports = router;
