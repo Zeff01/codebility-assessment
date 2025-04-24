@@ -103,7 +103,7 @@ router.get('/:id', (req, res) => {
 // DELETE delete a task by ID
 router.delete('/:id', (req, res) => {
     const taskId = req.params.id;
-    const taskIndex = tasksData.tasks.findIndex((task) => task.id === taskId);
+    const taskIndex = tasksData.tasks.findIndex((task) => task.id === parseInt(taskId));
     let tasksModified = JSON.parse(JSON.stringify(tasksData));
     if (taskIndex !== -1) {
         tasksModified.tasks.splice(taskIndex, 1);
