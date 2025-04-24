@@ -88,7 +88,11 @@ router.post("/", (req, res) => {
 // GET retrieve a single task by ID
 router.get('/:id', (req, res) => {
     const taskId = req.params.id;
-    const task = tasksData.tasks.find((task) => task.id === taskId);
+    console.log('id', taskId);
+    let tasksModified = JSON.parse(JSON.stringify(tasksData));
+ console.log('taskdata', tasksModified);
+    const task = tasksModified.tasks.find((task) => task.id === parseInt(req.params.id));
+    //console.log('task', task.id);
     if(task) {
         res.status(200).json(task);
     } else {
