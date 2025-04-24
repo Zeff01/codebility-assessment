@@ -1,10 +1,11 @@
+const Ajv = require("ajv");
 const express = require("express");
 const router = express.Router();
 
 const fs = require("fs");
 const path = require("path");
 
-//const ajv = new Ajv();
+const ajv = new Ajv();
 
 const TASKS_JSON = path.join(__dirname, "../tasks.json");
 const dataFile = fs.readFileSync(TASKS_JSON, "utf-8");
@@ -33,13 +34,11 @@ const taskSchema = {
 
     completed: { type: "boolean" },
   },
-  required: ["title", "completed"],
-  additionalProperties: false,
 };
 
 router.get("/", (req, res) => {
   const { completed, sort } = req.query;
-  console.log('completed', completed);
+  console.log("completed", completed);
   console.log("sort", sort);
   try {
     let isCompleted =
@@ -61,6 +60,28 @@ router.get("/", (req, res) => {
   } catch (error) {
     console.log("Error in getTODOSfunction", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
+// POST create a new task
+router.post("/", (req, res) => {
+
+  const newTask = req.body;
+
+  let tasksModified = JSON.parse(JSON.stringify(tasksData));
+  let itemIds = tasksModified.tasks.map((item) => item.id);
+    console.log("itemids", typeof itemIds[0]);
+  let newId = itemIds.length > 0 ? Math.max.apply(Math, itemIds) + 1 : 1;
+  const validBody = ajv.validate(taskSchema, newTask);
+  if (validBody) {
+    newTask.id = newId;
+    newTask.createdAt = new Date();
+    console.log('id', newTask.id);
+    tasksModified.tasks.push(newTask);
+    writeFileSyncWrapper(TASKS_JSON, JSON.stringify(tasksModified));
+    res.status(201).json(newTask);
+  } else {
+    res.status(400).json({ message: "Invalid task data" });
   }
 });
 
