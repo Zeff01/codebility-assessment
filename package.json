@@ -12,5 +12,9 @@
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.10",
+    "uuidv4": "^6.2.13"
   }
 }
