@@ -85,4 +85,15 @@ router.post("/", (req, res) => {
   }
 });
 
+// GET retrieve a single task by ID
+router.get('/:id', (req, res) => {
+    const taskId = req.params.id;
+    const task = tasksData.tasks.find((task) => task.id === taskId);
+    if(task) {
+        res.status(200).json(task);
+    } else {
+        res.status(404).json({message: "Task not found"});
+    }
+});
+
 module.exports = router;
