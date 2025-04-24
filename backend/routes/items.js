@@ -31,20 +31,8 @@ const taskSchema = {
 router.get("/", (req, res) => {
   const { completed, sort } = req.query;
   try {
-    let isCompleted =
-      completed === undefined || completed.toLowerCase() === "false"
-        ? false
-        : true;
-    let filteredTasks = tasksData;
-    filteredTasks = filteredTasks.tasks.filter(
-      (task) => task.completed === isCompleted
-    );
-    if (sort !== undefined) {
-      filteredTasks.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      );
-    }
-    res.status(200).json(filteredTasks);
+    const data = readDataFromFile();
+    res.status(200).json(data);
   } catch (error) {
     console.log("Error in getTODOSfunction", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
@@ -109,7 +97,7 @@ router.put('/:id', (req,res) => {
             (task) => task.id === parseInt(taskId)
         );
         if (taskIndex !== -1) {
-            updatedTask.id = taskId;
+            updatedTask.id = parseInt(taskId);
             updatedTask.createdAt = tasksModified.tasks[taskIndex].createdAt;
             tasksModified.tasks[taskIndex] = updatedTask;
             writeFileSyncWrapper(TASKS_JSON, JSON.stringify(tasksModified));
@@ -122,5 +110,15 @@ router.put('/:id', (req,res) => {
     }
 
 });
+
+// Utility functions to read/write data from/to file
+function readDataFromFile() {
+    try {
+      const data = fs.readFileSync(TASKS_JSON, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      return [];
+    }
+  }
 
 module.exports = router;
