@@ -102,7 +102,15 @@ router.get('/:id', (req, res) => {
 
 // DELETE delete a task by ID
 router.delete('/:id', (req, res) => {
-
+    const taskId = req.params.id;
+    const taskIndex = tasksData.tasks.findIndex((task) => task.id === taskId);
+    let tasksModified = JSON.parse(JSON.stringify(tasksData));
+    if (taskIndex !== -1) {
+        tasksModified.tasks.splice(taskIndex, 1);
+        writeFileSyncWrapper(TASKS_JSON, JSON.stringify(tasksModified));
+        res.status(200).json({message: "Task deleted"});
+    } else 
+    res.status(404).json({message: "Task not found"});
 });
 
 // PUT update an existing task by ID
