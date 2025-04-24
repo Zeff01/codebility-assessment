@@ -11,8 +11,12 @@ const data = [
 
 router.get('/',(req, res) => {
     try {
-        
+        res.status(200).json(data);
     } catch (error) {
-        
+        console.log("Error in getProducts function", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
     }
+    
 });
+
+module.exports = router;

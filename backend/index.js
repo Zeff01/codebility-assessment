@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+const cors = require('cors');
+
 const itemsRouter = require('./routes/items');
 
 app.use(cors());
@@ -19,3 +21,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Backend is running on http://localhost:${PORT}`);
 });
+
+module.exports=app;
