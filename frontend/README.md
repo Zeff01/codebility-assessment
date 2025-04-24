@@ -10,11 +10,11 @@ Responsive layout for desktop and mobile. Tailwind CSS. Frontend Framework: Reac
 
 ## Screenshots
 
-### <HeroSection />
+### HeroSection 
 
 ![Laptop](screenshots/s1.png)
 
-### <FeaturesSection />
+### FeaturesSection 
 
 ![Tab](screenshots/s2.png)
 
