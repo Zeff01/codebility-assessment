@@ -1,12 +1,12 @@
-# Responsive Hero Section in React
+# Simplified landing page
 
-This project demonstrates how to build a responsive hero section using React.js. The hero section adapts to different screen resolutions by displaying different images.
+Responsive layout for desktop and mobile. Tailwind CSS. Frontend Framework: ReactJS 
 
 ## Features
 
-- Responsive design
-- Different images for various screen resolutions
-- Modern UI with a hero section
+- Mimics Moola's minimalist modern hero
+- A simple 2–3 feature list with icons
+- Responsive Design Approach
 
 ## Screenshots
 
@@ -18,6 +18,3 @@ This project demonstrates how to build a responsive hero section using React.js.
 
 ![Tab](screenshots/s2.png)
 
-### Phone
-
-![phone](screenshots/phone.png)
