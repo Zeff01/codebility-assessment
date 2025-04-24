@@ -22,7 +22,7 @@ const features = [
 const FeatureSection = () => {
     return (
         <section className="py-20 px-6 bg-white">
-            <div className="py-20 px-6 bg-white">
+            <div className="max-w-5xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">
                         Why Choose Us?
                 </h2>
@@ -31,6 +31,7 @@ const FeatureSection = () => {
                         <div key={index} className="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition">
                             <div className="text-5xl mb-4">{feature.icon}</div>
                             <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                            <p className="text-gray-600">{feature.description}</p>
                         </div>
                     ))}
                 </div>
