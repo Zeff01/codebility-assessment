@@ -100,4 +100,11 @@ router.get('/:id', (req, res) => {
     }
 });
 
+// DELETE delete a task by ID
+router.delete('/:id', (req, res) => {
+
+});
+
+// PUT update an existing task by ID
+
 module.exports = router;
