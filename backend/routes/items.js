@@ -114,5 +114,28 @@ router.delete('/:id', (req, res) => {
 });
 
 // PUT update an existing task by ID
+router.put('/:id', (req,res) => {
+    const taskId = req.params.id;
+    const updatedTask = req.body;
+    let tasksModified = JSON.parse(JSON.stringify(tasksData));
+    const valid = ajv.validate(taskSchema, updatedTask);
+    if(valid) {
+        const taskIndex = tasksModified.tasks.findIndex(
+            (task) => task.id === parseInt(taskId)
+        );
+        if (taskIndex !== -1) {
+            updatedTask.id = taskId;
+            updatedTask.createdAt = tasksModified.tasks[taskIndex].createdAt;
+            tasksModified.tasks[taskIndex] = updatedTask;
+            writeFileSyncWrapper(TASKS_JSON, JSON.stringify(tasksModified));
+            res.status(200).json(updatedTask);
+        } else {
+            res.status(404).json({message: 'Task not found'});
+        }
+    } else {
+        res.status(404).json({message: 'Invalid task data'});
+    }
+
+});
 
 module.exports = router;
