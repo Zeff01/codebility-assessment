@@ -1,12 +1,13 @@
 import './App.css'
+import LandingPage from './pages/LandingPage'
 
 function App() {
 
-  return (
-    <>
-      <p className="text-accentColor">Hello World!</p>
-    </>
-  )
+    return (
+        <>
+            <LandingPage />
+        </>
+    )
 }
 
 export default App
