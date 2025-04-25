@@ -1,0 +1,294 @@
+PS D:\Phillip Casingal\codebility-assessment\fullstack> npx create-next-app@latest .
+Need to install the following packages:
+create-next-app@15.3.1
+Ok to proceed? (y) y
+
+The directory fullstack contains files that could conflict:
+
+  README-1-2-YEARS.md
+  README-3-5-YEARS.md
+  README-5-YEARS-Plus.md
+
+
+Either try using a new directory name, or remove the files listed above.
+
+
+Either try using a new directory name, or remove the files listed above.
+
+npm notice
+
+Either try using a new directory name, or remove the files listed above.
+
+
+
+
+Either try using a new directory name, or remove the files listed above.
+
+Either try using a new directory name, or remove the files listed above.
+
+
+Either try using a new directory name, or remove the files listed above.
+
+
+Either try using a new directory name, or remove the files listed above.
+
+npm notice
+npm notice New minor version of npm available! 11.2.0 -> 11.3.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+npm notice To update run: npm install -g npm@11.3.0
+npm notice
+PS D:\Phillip Casingal\codebility-assessment\fullstack> git checkout -b phillip-casingal/fullstack-1-2
+Switched to a new branch 'phillip-casingal/fullstack-1-2'
+PS D:\Phillip Casingal\codebility-assessment\fullstack> mkdir -p fullstack
+
+
+    Directory: D:\Phillip Casingal\codebility-assessment\fullstack
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         4/25/2025   3:44 PM                fullstack
+
+
+PS D:\Phillip Casingal\codebility-assessment\fullstack> cd fullstack
+PS D:\Phillip Casingal\codebility-assessment\fullstack\fullstack> npx create-next-app@latest .
+× Would you like to use TypeScript? ... No / Yes
+Exiting.
+PS D:\Phillip Casingal\codebility-assessment\fullstack\fullstack> npx create-next-app@latest .
+√ Would you like to use TypeScript? ... No / Yes
+√ Would you like to use ESLint? ... No / Yes
+√ Would you like to use Tailwind CSS? ... No / Yes
+√ Would you like your code inside a `src/` directory? ... No / Yes
+√ Would you like to use App Router? (recommended) ... No / Yes
+√ Would you like to use Turbopack for `next dev`? ... No / Yes
+√ Would you like to customize the import alias (`@/*` by default)? ... No / Yes
+Creating a new Next.js app in D:\Phillip Casingal\codebility-assessment\fullstack\fullstack.
+Creating a new Next.js app in D:\Phillip Casingal\codebility-assessment\fullstack\fullstack.
+
+Using npm.
+
+Using npm.
+
+
+Initializing project with template: app-tw
+
+
+Installing dependencies:
+- react
+- react-dom
+
+Installing dependencies:
+- react
+- react-dom
+Installing dependencies:
+- react
+- react-dom
+- react
+- react-dom
+- next
+
+- next
+
+Installing devDependencies:
+- typescript
+- @types/node
+- @types/react
+- @types/react-dom
+- @tailwindcss/postcss
+- @tailwindcss/postcss
+- tailwindcss
+- tailwindcss
+
+
+
+
+
+
+
+
+
+
+
+
+
+added 48 packages, and audited 49 packages in 34s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+Success! Created fullstack at D:\Phillip Casingal\codebility-assessment\fullstack\fullstack
+
+PS D:\Phillip Casingal\codebility-assessment\fullstack\fullstack> npm install
+npm warn cleanup Failed to remove some directories [
+npm warn cleanup   [
+npm warn cleanup     'D:\\Phillip Casingal\\codebility-assessment\\fullstack\\fullstack\\node_modules\\@tailwindcss\\.oxide-win32-x64-msvc-lOqN6PeL',
+npm warn cleanup     [Error: EPERM: operation not permitted, unlink 'D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\@tailwindcss\.oxide-win32-x64-msvc-lOqN6PeL\tailwindcss-oxide.win32-x64-msvc.node'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'unlink',
+npm warn cleanup       path: 'D:\\Phillip Casingal\\codebility-assessment\\fullstack\\fullstack\\node_modules\\@tailwindcss\\.oxide-win32-x64-msvc-lOqN6PeL\\tailwindcss-oxide.win32-x64-msvc.node'
+npm warn cleanup     }
+npm warn cleanup ]
+
+added 115 packages, removed 18 packages, changed 11 packages, and audited 146 packages in 38s
+
+35 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS D:\Phillip Casingal\codebility-assessment\fullstack\fullstack> npm run dev
+
+> nextjs-blog@0.1.0 dev
+> next dev
+
+            throw new Error(`Configuring Next.js via '${(0, _path.basename)(nonJsPath)}' is not supported. Please replace the file with 'next.config.js' or 'next.config.mjs'.`);
+                  ^
+
+Error: Configuring Next.js via 'next.config.ts' is not supported. Please replace the file with 'next.config.js' or 'next.config.mjs'.
+    at loadConfig (D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\config.js:800:19)
+    at async Module.nextDev (D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\cli\next-dev.js:175:14)
+
+Node.js v22.14.0
+PS D:\Phillip Casingal\codebility-assessment\fullstack\fullstack> npm run dev
+
+> nextjs-blog@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.28
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 3.3s
+ ○ Compiling / ...
+ ⨯ ./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\plugins.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack-config.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-server.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\start-server.js
+    at Array.map (<anonymous>)
+Import trace for requested module:
+./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+./src/styles/globals.css
+ ⨯ ./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\plugins.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack-config.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-server.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\start-server.js
+    at Array.map (<anonymous>)
+Import trace for requested module:
+./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+./src/styles/globals.css
+ GET / 500 in 6631ms
+ ✓ Compiled /favicon.ico in 173ms (343 modules)
+ GET /favicon.ico 500 in 186ms
+ GET / 500 in 15ms
+ GET /favicon.ico 500 in 5ms
+ GET / 500 in 11ms
+ GET /favicon.ico 500 in 4ms
+ GET / 500 in 9ms
+ GET /favicon.ico 500 in 4ms
+ ⨯ ./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\plugins.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack-config.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-server.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\start-server.js
+    at Array.map (<anonymous>)
+Import trace for requested module:
+./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+./src/styles/globals.css
+ ⨯ ./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\plugins.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack-config.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-server.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\start-server.js
+    at Array.map (<anonymous>)
+Import trace for requested module:
+./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+./src/styles/globals.css
+ ⨯ ./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\plugins.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\blocks\css\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack\config\index.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\build\webpack-config.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\router-server.js
+- D:\Phillip Casingal\codebility-assessment\fullstack\fullstack\node_modules\next\dist\server\lib\start-server.js
+    at Array.map (<anonymous>)
+Import trace for requested module:
+./src/styles/globals.css.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/globals.css
+./src/styles/globals.css
+PS D:\Phillip Casingal\codebility-assessment\fullstack\fullstack>
+                                                                  npm run dev
+
+> nextjs-blog@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.28
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 3.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 2.9s (527 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 3227ms
+ GET /_next/static/webpack/ac6dd5aaa4d0c8b6.webpack.hot-update.json 404 in 3283ms
+ ✓ Compiled in 401ms (254 modules)
+ GET / 200 in 55ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 32ms
+ GET /_next/static/webpack/ac6dd5aaa4d0c8b6.webpack.hot-update.json 404 in 38ms
+ GET / 200 in 67ms
+ ✓ Compiled /favicon.ico in 139ms (305 modules)
+ GET /favicon.ico 200 in 220ms
+ ✓ Compiled /posts/[id] in 333ms (552 modules)
+ ✓ Compiled /posts/[id] in 212ms (337 modules)
+ GET /posts/1 200 in 12ms
+ GET / 200 in 115ms
+ ✓ Compiled /api/posts in 81ms (339 modules)
+ GET /api/posts 200 in 6ms
+ GET / 200 in 92ms
+ GET /posts/3 200 in 7ms
+ GET / 200 in 48ms
+ GET /posts/1 200 in 5ms
+ GET / 200 in 76ms
+ GET /posts/1 200 in 6ms
+ GET / 200 in 48ms
+ GET /posts/2 200 in 7ms
+ GET / 200 in 47ms
+ GET /posts/3 200 in 6ms
+ GET / 200 in 54ms
+ GET /posts/4 200 in 5ms
+ GET / 200 in 58ms
