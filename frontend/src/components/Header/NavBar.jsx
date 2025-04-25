@@ -1,0 +1,23 @@
+import React from 'react'
+
+const NavBar = () => {
+    return (
+        <div className="w-full h-16 bg-white flex justify-between items-center">
+            <h1 className="text-primaryTextColor text-3xl font-bold"><a href="/">Brew Bliss</a></h1>
+            <ul className="flex gap-16 items-center justify-center">
+                <li className="font-semibold"><a href="#">Home</a></li>
+                <li className="font-semibold"><a href="#">Our Products</a></li>
+                <li className="font-semibold"><a href="#">Blog</a></li>
+                <li className="font-semibold"><a href="#">About</a></li>
+                <li className="font-semibold"><a href="#">Contact</a></li>
+            </ul>
+            <button className="cursor-pointer w-10 h-10 p-2">
+                <svg className="w-full h-full" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.4 26.4C27.2752 26.4 28.1146 26.7477 28.7335 27.3665C29.3523 27.9854 29.7 28.8248 29.7 29.7C29.7 30.5752 29.3523 31.4146 28.7335 32.0335C28.1146 32.6523 27.2752 33 26.4 33C25.5248 33 24.6854 32.6523 24.0665 32.0335C23.4477 31.4146 23.1 30.5752 23.1 29.7C23.1 27.8685 24.5685 26.4 26.4 26.4ZM0 0H5.3955L6.9465 3.3H31.35C31.7876 3.3 32.2073 3.47384 32.5167 3.78327C32.8262 4.09271 33 4.51239 33 4.95C33 5.2305 32.9175 5.511 32.802 5.775L26.895 16.4505C26.334 17.457 25.245 18.15 24.0075 18.15H11.715L10.23 20.8395L10.1805 21.0375C10.1805 21.1469 10.224 21.2518 10.3013 21.3292C10.3787 21.4065 10.4836 21.45 10.593 21.45H29.7V24.75H9.9C9.02479 24.75 8.18542 24.4023 7.56655 23.7835C6.94768 23.1646 6.6 22.3252 6.6 21.45C6.6 20.8725 6.7485 20.328 6.996 19.866L9.24 15.8235L3.3 3.3H0V0ZM9.9 26.4C10.7752 26.4 11.6146 26.7477 12.2335 27.3665C12.8523 27.9854 13.2 28.8248 13.2 29.7C13.2 30.5752 12.8523 31.4146 12.2335 32.0335C11.6146 32.6523 10.7752 33 9.9 33C9.02479 33 8.18542 32.6523 7.56655 32.0335C6.94768 31.4146 6.6 30.5752 6.6 29.7C6.6 27.8685 8.0685 26.4 9.9 26.4ZM24.75 14.85L29.337 6.6H8.481L12.375 14.85H24.75Z" fill="#01072A"/>
+                </svg>
+            </button>
+        </div>
+    )
+}
+
+export default NavBar
