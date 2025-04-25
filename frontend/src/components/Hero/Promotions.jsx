@@ -9,12 +9,13 @@ const images = [
 
 const Promotions = () => {
     return (
-        <div className="w-full h-64 border border-orange-400 flex justify-center items-center gap-4 py-8 overflow-hidden">
-            <PromotionCard backgroundImages={images[0]}/>
-            <PromotionCard backgroundImages={images[1]}/>
-            <PromotionCard backgroundImages={images[2]}/>
+        <div className="w-full h-auto flex flex-col md:flex-col lg:flex-row justify-center items-center gap-4 py-8 overflow-hidden">
+            <PromotionCard backgroundImages={images[0]} />
+            <PromotionCard backgroundImages={images[1]} />
+            <PromotionCard backgroundImages={images[2]} />
         </div>
-    )
-}
+    );
+};
+
 
 export default Promotions

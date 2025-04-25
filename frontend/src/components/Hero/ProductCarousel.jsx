@@ -22,29 +22,33 @@ const ProductCarousel = () => {
     };
   
     return (
-        <div className="relative w-1/2 h-full overflow-hidden">
-            <div className="w-full h-full">
-            {images.map((img, index) => (
-                <img
-                key={index}
-                src={img}
-                alt={`Slide ${index}`}
-                className={`absolute border w-full h-full object-contain transition-opacity duration-1000 ${current === index ? 'opacity-100' : 'opacity-0'}`}
-                />
-            ))}
+        <div className="relative w-full lg:w-1/2 flex items-center justify-center h-[400px] lg:h-[36rem]">
+            <div className="relative w-full h-full">
+                {images.map((img, index) => (
+                    <img
+                        key={index}
+                        src={img}
+                        alt={`Slide ${index}`}
+                        className={`absolute w-full h-full object-contain transition-opacity duration-1000 ${
+                            current === index ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    />
+                ))}
             </div>
     
-            <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex flex-col gap-2">
-            {images.map((_, index) => (
-                <button
-                key={index}
-                onClick={() => handleDotClick(index)}
-                className={`w-3 h-3 rounded-full ${current === index ? 'bg-blue-900' : 'bg-gray-300'}`}
-                />
-            ))}
+            <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-10">
+                {images.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handleDotClick(index)}
+                        className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                            current === index ? 'bg-accentColor' : 'bg-gray-300'
+                        }`}
+                    />
+                ))}
             </div>
         </div>
-    )  
-}
+    );    
+};
 
-export default ProductCarousel
+export default ProductCarousel;

@@ -8,7 +8,7 @@ import Footer from '../components/Footer/Footer'
 const LandingPage = () => {
     return (
         <>
-        <div className="w-7xl min-h-screen border border-red-500 mx-auto">
+        <div className="max-w-7xl min-h-screen xl:mx-auto lg:mx-0">
             <Header/>
             <Hero/>
             <FeaturedProducts/>
