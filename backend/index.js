@@ -32,7 +32,10 @@ function getFormattedDate() {
 
 // List all todos (GET)
 app.get('/api/todos', (req, res) => {
-  res.status(200).json(items);
+  res.status(200).json({
+    message: 'Items successfully fetched.',
+    data: items // Return the deleted item (first element of the array)
+  });
 });
 
 // Get a single todo (GET)
@@ -42,7 +45,10 @@ app.get('/api/todos/:id', (req, res) => {
     const item = items.find(i => i.id === parseInt(id));
     if (!item) return res.status(404).send('Item not found');
   
-    res.status(200).json(item);
+    res.status(200).json({
+      message: 'Item successfully fetched.',
+      data: item // Return the deleted item (first element of the array)
+    });
 });
 
 //  Create a new todo (POST)
@@ -57,7 +63,11 @@ app.post('/api/todos', (req, res) => {
   };
 
   items.push(newItem);
-  res.status(200).json(newItem);
+
+  res.status(200).json({
+    message: 'Item successfully created.',
+    data: newItem // Return the deleted item (first element of the array)
+  });
 });
 
 
@@ -72,17 +82,25 @@ app.put('/api/todos/:id', (req, res) => {
   item.title = title;
   item.completed = completed;
   
-  res.status(200).json(item);
+  res.status(200).json({
+    message: 'Item successfully updated.',
+    data: item // Return the deleted item (first element of the array)
+  });
 });
 
 // Delete a todo (DELETE)
 app.delete('/api/todos/:id', (req, res) => {
   const { id } = req.params;
   const itemIndex = items.findIndex(i => i.id === parseInt(id));
+
   if (itemIndex === -1) return res.status(404).send('Item not found');
 
   const deletedItem = items.splice(itemIndex, 1);
-  res.status(200).json(deletedItem);
+
+  res.status(200).json({
+    message: 'Item successfully deleted.',
+    data: deletedItem // Return the deleted item (first element of the array)
+  });
 });
 
 
