@@ -10,9 +10,7 @@ const Hero = () => {
                 <HeroText/>
                 <ProductCarousel/>
             </div>
-            <div className="w-full h-64 border-orange-500 border flex justify-center items-center">
-                <Promotions/>
-            </div>
+            <Promotions/>
         </div>
     )
 }
