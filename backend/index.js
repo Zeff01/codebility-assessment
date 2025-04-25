@@ -47,12 +47,11 @@ app.get('/api/todos/:id', (req, res) => {
 
 //  Create a new todo (POST)
 app.post('/api/todos', (req, res) => {
-  const { title, description, completed } = req.body;
+  const { title, completed } = req.body;
 
   const newItem = {
       id: items.length + 1, // Simple ID generation
       title: title,
-      description: description,
       completed: completed,
       createdAt: getFormattedDate()
   };
@@ -64,14 +63,13 @@ app.post('/api/todos', (req, res) => {
 
 //  Update a todo (PUT)
 app.put('/api/todos/:id', (req, res) => {
-  const { title, description, completed } = req.body;
+  const { title, completed } = req.body;
   const { id } = req.params;
 
   const item = items.find(i => i.id === parseInt(id));
   if (!item) return res.status(404).send('Item not found');
 
   item.title = title;
-  item.description = description;
   item.completed = completed;
   
   res.status(200).json(item);
