@@ -3,4 +3,387 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif !important;
+  font-size: small;
+}
+
+:root {
+  --primary-color: rgb(149, 149, 149);
+  --secondary-color: #8600f2;
+  --tertiary-color: #4c0080;
+  --font-weight: 600;
+  --pfont-size: 1.1rem;
+  --sfont-size: 1.5rem;
+  --xsfont-size: 0.9rem;
+}
+
+/* NavBar */
+.navbar a {
+  font-weight: var(--font-weight) !important;
+  font-size: var(--pfont-size) !important;
+}
+
+.nav-link {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: black !important;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.dl-button {
+  background: linear-gradient(90deg, #b100f4, #8600f2);
+  border: none !important;
+  padding: 10px !important;
+  width: 150px !important;
+  font-size: var(--xsfont-size) !important;
+}
+
+.navbar-toggler {
+  border: none !important;
+  background: transparent !important;
+  color: var(--secondary-color) !important;
+}
+
+.navbar-toggler:active {
+  border: none !important;
+}
+
+@media (max-width: 991px) {
+  .small-on-mobile .nav-link {
+    font-size: 12px !important;
+  }
+  .navbar-nav {
+    margin-top: 15px !important;
+  }
+}
+
+/* Hero Section */
+.hero-section {
+  background: var(--secondary-color);
+}
+
+.btn-search {
+  background: var(--tertiary-color) !important;
+  color: white !important;
+  border: none !important;
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  width: 80px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.textbox-search {
+  font-size: var(--pfont-size) !important;
+  border-right: none !important;
+  border-top-left-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+}
+
+.search-icon {
+  font-size: var(--sfont-size);
+}
+
+.input-group {
+  max-width: 95% !important;
+  margin: 0 auto !important;
+}
+
+/* Info Section */
+.text {
+  color: var(--tertiary-color);
+}
+
+/* Virtual Gifting */
+.virtual-gifting-wrapper {
+  background: #fae6fa;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading-primary {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  margin-bottom: 0.75rem;
+}
+
+.feature-title {
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  margin-bottom: 0.75rem;
+}
+
+.feature-text {
+  color: #333;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  line-height: 1.5;
+}
+
+.phone-mockup {
+  max-width: 90%;
+  height: auto;
+  max-height: 220px;
+  border-radius: 20px;
+}
+
+@media (max-width: 992px) {
+  .heading-primary {
+    font-size: 1.6rem;
+  }
+  .feature-box {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Moola Features */
+.feature-card {
+  background: #f2f2f2 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 10px;
+  transition: transform 0.3s !important;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.tag-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-tag {
+  background: #a81ac3;
+  color: white;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+}
+
+.price-tag:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  transform: rotate(45deg);
+  top: 9px;
+  right: -3px;
+}
+
+.feature-heading {
+  color: #5b0e85;
+  font-weight: 600;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.feature-text {
+  color: #333;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.moola-button {
+  background: #5b0e85 !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 10px 20px !important;
+  font-weight: 500 !important;
+  transition: background-color 0.3s !important;
+}
+
+.moola-button:hover {
+  background: #4a0c6b !important;
+}
+
+/* Moola Testimonials */
+.testimonial-heading {
+  color: #5b0e85;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  padding: 20px !important;
+  transition: transform 0.3s ease !important;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px) !important;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.star-rating {
+  font-size: 1.5rem;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.store-logo {
+  margin-top: 10px;
+}
+
+.apple-logo, .google-logo, .play-store-logo {
+  max-height: 30px;
+  object-fit: contain;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .testimonial-heading {
+    font-size: 1.75rem;
+  }
+}
+
+/* Moola Footer */
+.moola-footer {
+  font-family: Arial, sans-serif;
+}
+
+.payment-methods-bar {
+  background: #5b0e85;
+  padding: 15px 0;
+  color: white;
+}
+
+.payment-text {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.payment-logo {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.powered-by {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: 500;
+}
+
+.lock-icon {
+  margin-right: 8px;
+}
+
+.moneris-logo {
+  height: 22px;
+  margin-left: 10px;
+}
+
+.footer-content {
+  background: #4a0c6b;
+  padding: 40px 0 20px;
+  color: white;
+}
+
+.footer-logo {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+  color: white;
+}
+
+.social-icons {
+  margin: 30px 0;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin: 0 5px;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.disclaimer-text {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.copyright-text {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .payment-methods, .powered-by {
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .powered-by {
+    justify-content: center;
+  }
 }
