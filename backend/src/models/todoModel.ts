@@ -24,23 +24,28 @@ class TodoModel {
         return newTodo
     }
 
-    update(id: number, title: string): ITodo {
+    update(id: number, title: string): ITodo | undefined {
         const todo = this.findById(id)
-        if (!todo) {
-            throw new Error("Todo not found")
-        }
+
+        if (!todo) return undefined
 
         todo.title = title
         return todo
     }
 
-    delete(id: number): ITodo {
+    delete(id: number): ITodo | undefined {
         const todo = this.findById(id)
-        if (!todo) {
-            throw new Error("Todo not found")
-        }
 
         this.todos = this.todos.filter(todo => todo.id !== id)
+        return todo
+    }
+
+    toggleComplete(id: number): ITodo | undefined {
+        const todo = this.findById(id)
+
+        if (!todo) return undefined
+
+        todo.isCompleted = !todo.isCompleted
         return todo
     }
 }

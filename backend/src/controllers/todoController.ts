@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import todoModel from '../models/todoModel';
+import { createTodoSchema, updateTodoSchema } from '../utils/validations';
+import { create } from 'domain';
 
 export const getTodos = (req: Request, res: Response): void => {
     const todos = todoModel.findAll();
@@ -12,14 +14,15 @@ export const getTodoById = (req: Request, res: Response): void => {
     const todo = todoModel.findById(Number(id));
 
     if (!todo) {
-        res.status(404).json({ message: "Todo not found" });
+        res.status(404)
+        throw new Error("Todo not found")
     }
 
     res.status(200).json(todo);
 }
 
 export const createTodo = (req: Request, res: Response): void => {
-    const { title } = req.body;
+    const { title } = createTodoSchema.parse(req.body);
     const newTodo = todoModel.create(title);
 
     res.status(201).json({
@@ -30,12 +33,18 @@ export const createTodo = (req: Request, res: Response): void => {
 
 export const updateTodo = (req: Request, res: Response): void => {
     const { id } = req.params;
-    const { title } = req.body;
+    const { title } = updateTodoSchema.parse(req.body);
+
     const updatedTodo = todoModel.update(Number(id), title);
+
+    if (!updatedTodo) {
+        res.status(404)
+        throw new Error("Todo not found")
+    }
 
     res.status(200).json({
         message: "Todo updated successfully",
-        updateTodo: updatedTodo
+        updatedTodo: updatedTodo
     });
 }
 
@@ -44,11 +53,29 @@ export const deleteTodo = (req: Request, res: Response): void => {
     const deletedTodo = todoModel.delete(Number(id));
 
     if (!deletedTodo) {
-        res.status(404).json({ message: "Todo not found" });
+        res.status(404)
+        throw new Error("Todo not found")
     }
 
     res.status(200).json({
         message: "Todo deleted successfully",
         deletedTodo: deletedTodo
     });
+}
+
+export const toggleTodo = (req: Request, res: Response): void => {
+    const { id } = req.params;
+    const todo = todoModel.findById(Number(id));
+
+    if (!todo) {
+        res.status(404)
+        throw new Error("Todo not found")
+    }
+
+    const toggledTodo = todoModel.toggleComplete(Number(id));
+
+    res.status(200).json({
+        message: toggledTodo?.isCompleted ? "To-do completed" : "To-do pending",
+        todo: toggledTodo
+    })
 }
