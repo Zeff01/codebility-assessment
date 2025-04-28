@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "backgroundImage": "/img/card1.png",
+    "logo": "/img/pt.png",
+    "brand": "PetSmart",
+    "reward": "6%"
+  },
+  {
+    "id": 2,
+    "backgroundImage": "/img/card2.png",
+    "logo": "/img/dd.png",
+    "brand": "DoorDash",
+    "reward": "2%"
+  },
+  {
+    "id": 3,
+    "backgroundImage": "/img/card3.png",
+    "logo": "/img/wm.png",
+    "brand": "Walmart",
+    "reward": "1%"
+  },
+  {
+    "id": 4,
+    "backgroundImage": "/img/card4.png",
+    "logo": "/img/em.png",
+    "brand": "Esso Mobil",
+    "reward": "1%"
+  },
+  {
+    "id": 5,
+    "backgroundImage": "/img/card5.png",
+    "logo": "/img/am.png",
+    "brand": "Amazon",
+    "reward": "2%"
+  },
+  {
+    "id": 6,
+    "backgroundImage": "/img/card6.png",
+    "logo": "/img/wf.png",
+    "brand": "Wayfair",
+    "reward": "1%"
+  }
+]

@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: linear-gradient(135deg, #d1b2ff, #750dea);
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-attachment: fixed;
+
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.regular-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+.bold-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 700; /* Bold */
+}

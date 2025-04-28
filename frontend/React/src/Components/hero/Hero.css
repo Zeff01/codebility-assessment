@@ -1,0 +1,318 @@
+.containerTitle {
+  min-height: 80vh;
+}
+
+.btnTitle button {
+  margin-right: 30px;
+}
+
+h1 {
+  font-size: 64px !important;
+}
+
+h2 {
+  font-size: 46px !important;
+}
+
+.btnTitle button {
+  border-radius: 40px;
+  margin-top: 20px;
+  padding: 20px 30px;
+  font-size: 20px !important;
+  background-color: #c302fc;
+  border-color: transparent;
+  border: none;
+}
+
+.handlogoContainer {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  max-width: 800px;
+  height: auto;
+}
+
+.handlogoContainer img {
+  width: 100%;
+  height: auto;
+}
+
+/* Animation */
+button:hover {
+  border: none;
+  background-color: transparent !important;
+}
+
+.btn-animated {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background: #c302fc;
+  color: white;
+  border: none;
+  overflow: hidden;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.btn-animated::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ea00ff, #8f00ff, #ea00ff, #8f00ff);
+  background-size: 400%;
+  border-radius: 14px;
+  z-index: -1;
+  transition: 1s;
+  animation: borderAnimation 15s linear infinite;
+  opacity: 0;
+}
+
+.btn-animated::before {
+  opacity: 1;
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.indicator.active {
+  width: 50px;
+  height: 10px;
+  background-color: #555;
+  border-radius: 999px;
+}
+
+.fill {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #fff;
+  transition: width 0.05s linear ease-in-out;
+}
+
+.indicatorContainer {
+  /* padding: 100%; */
+  position: absolute;
+}
+
+/* Coins animation */
+@keyframes floatCoins {
+  0% {
+    transform: translate(-60%, -40%) translateY(0);
+  }
+  50% {
+    transform: translate(-60%, -40%) translateY(20px);
+  }
+  100% {
+    transform: translate(-60%, -40%) translateY(0);
+  }
+}
+.coins {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -40%);
+  width: 80% !important;
+  transition: transform 0.3s ease-in;
+}
+
+.coins.animate {
+  animation: floatCoins 2s ease-in-out infinite;
+}
+
+/* Sunflowers animation */
+@keyframes floatSunflowers {
+  0% {
+    transform: translate(-60%, -40%) translateY(0);
+  }
+  50% {
+    transform: translate(-60%, -40%) translateY(20px);
+  }
+  100% {
+    transform: translate(-60%, -40%) translateY(0);
+  }
+}
+
+.sunflowers {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -40%);
+  width: 100% !important;
+  transition: transform 0.3s ease-in;
+}
+
+.sunflowers.animate {
+  animation: floatSunflowers 2s ease-in-out infinite;
+}
+
+/* Laptop View */
+@media (max-width: 1530px) {
+  /* .containerTitle {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 60px;
+  } */
+
+  .handlogoContainer {
+    /* position: relative;
+    top: unset;
+    right: unset;
+    transform: none;
+    max-width: 500px;
+    margin-top: 30px; */
+
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    max-width: 600px;
+    height: auto;
+  }
+
+  .handlogoContainer img {
+    width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 48px !important;
+  }
+
+  h2 {
+    font-size: 36px !important;
+  }
+}
+
+/* Tablet View */
+@media (max-width: 1220px) {
+  /* .containerTitle {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 60px;
+  } */
+
+  .handlogoContainer {
+    /* position: relative;
+    top: unset;
+    right: unset;
+    transform: none;
+    max-width: 500px;
+    margin-top: 30px; */
+
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    max-width: 500px;
+    height: auto;
+  }
+
+  .handlogoContainer img {
+    width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 38px !important;
+  }
+
+  h2 {
+    font-size: 26px !important;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 1000px) {
+  .containerTitle {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding-top: 40px;
+  }
+
+  .giftLogo {
+    margin-top: 20% !important;
+  }
+
+  .btnTitle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .btnTitle button {
+    font-size: 16px !important;
+    padding: 14px 20px;
+    margin-right: 0;
+  }
+
+  .handlogoContainer {
+    position: relative;
+    top: unset;
+    right: unset;
+    transform: none;
+    max-width: 350px;
+    margin-top: 20px;
+  }
+
+  .handlogoContainer img {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 28px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  .indicatorContainer {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .coins,
+  .sunflowers {
+    width: 70% !important;
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+  }
+
+  .fill {
+    position: absolute !important;
+    /* z-index: 1; */
+  }
+}

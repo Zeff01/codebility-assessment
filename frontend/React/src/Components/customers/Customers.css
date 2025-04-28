@@ -1,0 +1,43 @@
+.customersCard {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 380px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 40px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.customersTitle {
+  font-size: 48px !important;
+  /* width: 80%; */
+  margin: 0 auto;
+  color: white;
+}
+
+.customersCard div {
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .customersTitle {
+    font-size: 26px !important;
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+  }
+}
+
+@media (max-width: 1200px) {
+  .customersTitle {
+    font-size: 26px !important;
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+  }
+}

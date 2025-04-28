@@ -1,0 +1,122 @@
+.cardDescription {
+  text-align: justify;
+}
+
+.cardTitle {
+  text-align: center;
+  font-size: 26px !important;
+}
+
+.featureCard {
+  background-color: #f1c3ff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 400px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 40px;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.waveBackground {
+  background-image: url("/public/img/wave.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.gifContainer {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.attachmentGif {
+  width: 800px !important;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.giftIcon {
+  padding-top: 200px;
+}
+.deliverIcon {
+  padding-top: 200px;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Tablet view */
+@media (max-width: 992px) {
+  .featureCard {
+    padding: 3rem 1.5rem;
+    min-height: 350px;
+  }
+
+  .attachmentGif {
+    width: 500px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .featureCard {
+    padding: 2rem 1rem;
+    min-height: 300px;
+  }
+
+  .attachmentGif {
+    width: 300px;
+  }
+
+  .waveBackground {
+    padding: 3rem 1rem;
+    background-attachment: scroll;
+  }
+
+  .cardTitle {
+    font-size: 20px !important;
+  }
+
+  .cardDescription {
+    font-size: 15px !important;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 576px) {
+  .attachmentGif {
+    width: 250px;
+  }
+
+  .cardTitle {
+    font-size: 1.25rem;
+  }
+
+  .cardDescription {
+    font-size: 0.95rem;
+  }
+}
