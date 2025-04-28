@@ -12,5 +12,11 @@
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2"
   }
 }
