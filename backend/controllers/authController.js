@@ -7,4 +7,12 @@ const bcrypt = require('bcryptjs');
 dotenv.config();
 const users = [];
 
-router.post('')
+router.post('/register', (req, res) => {
+
+});
+
+router.post('/login', (req, res) => {
+
+});
+
+module.exports = router;
