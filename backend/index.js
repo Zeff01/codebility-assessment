@@ -1,11 +1,5 @@
-const express = require("express");
-const app = express();
+const app = require("./src/app"); // Import app.js
 const PORT = process.env.PORT || 4000;
-
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
 
 // Start server
 app.listen(PORT, () => {
