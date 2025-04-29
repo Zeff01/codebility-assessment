@@ -2,25 +2,102 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --background-secondary: #750dea;
+  --background-tertiary: #cc5a71;
+  --foreground: #353233;
+  --foreground-dark: #1a1919;
+  --foreground-body: #5e595b;
+  --header-width: 100rem;
+  --content-width: 80rem;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-dark: var(--foreground-dark);
+  --color-body: var(--foreground-body);
+  --font-sans: var(--font-inter);
+  --font-body: var(--font-source-sans-3);
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 40rem;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-desktop: 80rem;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ededed;
+    --foreground: #353233;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  h1 {
+    @apply font-semibold text-6xl tablet:text-7xl leading-none tracking-[-5%];
+  }
+
+  h2 {
+    @apply font-semibold text-5xl tablet:text-6xl leading-none tracking-[-4%];
+  }
+
+  h3 {
+    @apply font-semibold text-4xl tablet:text-5xl leading-[1.15] tracking-[-2.25%];
+  }
+
+  h4 {
+    @apply font-semibold text-3xl tablet:text-4xl leading-tight tracking-[-1.75%];
+  }
+
+  h5 {
+    @apply font-semibold text-xl leading-tight tracking-[-1.5%];
+  }
+
+  h6 {
+    @apply font-semibold text-base leading-snug tracking-[-.5%];
+  }
+
+  p {
+    @apply font-sans text-body text-base tablet:text-lg leading-relaxed;
+  }
+
+  main {
+    @apply px-5;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+  .h1 {
+    @apply font-semibold text-6xl tablet:text-7xl leading-none tracking-[-5%];
+  }
+
+  .h2 {
+    @apply font-semibold text-5xl tablet:text-6xl leading-none tracking-[-4%];
+  }
+
+  .h3 {
+    @apply font-semibold text-4xl tablet:text-5xl leading-[1.15] tracking-[-2.25%];
+  }
+
+  .h4 {
+    @apply font-semibold text-3xl tablet:text-4xl leading-tight tracking-[-1.75%];
+  }
+
+  .h5 {
+    @apply font-semibold text-xl leading-tight tracking-[-1.5%];
+  }
+
+  .h6 {
+    @apply font-semibold text-base leading-snug tracking-[-.5%];
+  }
 }
