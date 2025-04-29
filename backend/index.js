@@ -2,13 +2,15 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const dotenv = require('dotenv');
-const bcryptv = require('bcryptjs');
+const authRoutes = require('./controllers/authController');
+const notesRoutes = require('./controllers/notesController');
 
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+app.use('/api/auth',authRoutes);
+app.use('/api/notes', notesRoutes)
 
 const cors = require('cors');
 
