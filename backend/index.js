@@ -8,18 +8,20 @@ const notesRoutes = require('./controllers/notesController');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-
-app.use('/api/auth',authRoutes);
-app.use('/api/notes', notesRoutes)
-
 const cors = require('cors');
-
-
 app.use(cors());
+
 
 app.use(express.json());
 
 app.use(bodyParser.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/notes', notesRoutes);
+
+
+
+
 
 
 
