@@ -1,0 +1,6 @@
+.sticky-test
+{
+  border: 1px solid aqua;
+  min-height: 300vw;
+  position: static;
+}

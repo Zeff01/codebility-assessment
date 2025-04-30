@@ -1,0 +1,122 @@
+#eyecandy-container
+{
+    width: 100vw;
+
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+    padding: 2vw 0 2vw 0;
+}
+
+.eyecandy-banner
+{
+    max-width: 40vw;
+    height: 20vw;
+    padding: 1vw 2vw 1vw 2vw;
+    border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* .banner-bottom
+{
+    border: 1px solid yellow;
+} */
+
+.eyecandy-banner h1
+{
+    font-size: 3vw;
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: .05em;
+    color: hsl(0, 0%, 100%);
+}
+
+.eyecandy-banner p
+{
+    line-height: 1.25em;
+}
+
+#eyecandy-btn-container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+
+    text-align: center;
+
+}
+
+.eyecandy-dlbtn
+{
+    padding: .2vw 2vw .2vw 2vw;
+    
+    background-color: hsl(0, 61%, 52%);
+    border: 1px solid gray;
+    border-radius: 8px;
+    
+    font-size: 2vw;
+    color: white;
+    font-family: "Cal Sans", sans-serif;
+    text-decoration: none;
+    
+}
+
+#banner1
+{
+    background-color: hsl(17, 79%, 55%);
+}
+
+#banner2
+{
+    background-color: hsl(28, 84%, 55%);
+}
+
+
+/* RESPONSIVE ELEMENTS */
+/* LARGE DESKTOP */
+/* @media (min-width: 1200px) 
+{ 
+
+} */
+ 
+/* PORTRAIT TABLET TO LANDSCAPE||DESKTOP*/
+/* @media (min-width: 768px) and (max-width: 979px) 
+{  
+    
+} */
+ 
+/* LANDSCAPE PHONE TO PORTRAIT TABLET*/
+@media (max-width: 767px) 
+{  
+    #eyecandy-container
+    {
+        flex-direction: row;
+    }
+} 
+ 
+/* LANDSCAPE PHONES AND DOWN*/
+@media (max-width: 480px) {  
+    #eyecandy-container
+    {
+        height: 80vw;
+        flex-direction: column;
+    }
+
+    .eyecandy-banner
+    {
+        max-width: 40vw;
+        height: 40vw;
+        padding: 1vw 2vw 1vw 2vw;
+        border-radius: 10px;
+        
+        display: flex;
+        flex-direction: column;
+    }
+}

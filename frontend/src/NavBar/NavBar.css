@@ -1,0 +1,103 @@
+.navbar-container
+{
+    /* border: 1px solid red; */
+
+    width: 100vw;
+    min-height: 5vw;
+
+    position: sticky;
+    top:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: hsl(0, 0%, 100%);
+}
+
+.navbar-logo
+{
+    /* border: 1px solid red; */
+    
+    min-width: 15vw;
+    min-height: 100%;
+    padding: .5vw 1vw .5vw 1vw;
+
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5vw;
+    color: hsl(0, 61%, 52%);
+}
+
+.navbar-navi
+{
+    /* border: 1px solid red; */
+    
+    min-height: 100%;
+    padding: 0 2vw 0 2vw;
+    
+}
+
+.navi-btn
+{
+    /* border: 1px solid red; */
+    padding: 0 2vw 0 2vw;
+    overflow: hidden;
+
+    font-size: 1.5vw;
+    text-decoration: none;
+}
+
+.navbar-dlbtn
+{
+    background-color: hsl(16, 100%, 50%);
+    border-radius: 8px;
+}
+
+#navbar-dlbtn
+{
+    padding: .2vw 2vw .2vw 2vw;
+    
+    background-color: hsl(0, 61%, 52%);
+    border: 1px solid gray;
+    border-radius: 8px;
+    
+    font-size: 2vw;
+    color: white;
+    font-family: "Cal Sans", sans-serif;
+    text-decoration: none;
+    
+}
+
+/* RESPONSIVE ELEMENTS */
+/* LARGE DESKTOP */
+/* @media (min-width: 1200px) 
+{ 
+
+} */
+ 
+/* PORTRAIT TABLET TO LANDSCAPE||DESKTOP*/
+/* @media (min-width: 768px) and (max-width: 979px) 
+{  
+    
+} */
+ 
+/* LANDSCAPE PHONE TO PORTRAIT TABLET*/
+/* @media (max-width: 767px) 
+{  
+    
+} */
+ 
+/* LANDSCAPE PHONES AND DOWN*/
+@media (max-width: 480px) {  
+    .navbar-navi
+    {
+        display: none;
+    }
+
+    .navbar-dlbtn
+    {
+        display: none;
+    }
+}

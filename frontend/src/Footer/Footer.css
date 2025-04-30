@@ -1,0 +1,28 @@
+.footer-container
+{
+    border: 1px solid hsl(16, 100%, 50%);
+    
+    margin-top: 5vh;
+    width: 100vw;
+    min-height: 40vh;
+
+    background-color: hsl(0, 61%, 52%);
+}
+
+.footer-accepted-payments
+{
+    border: 1px solid yellow;
+    
+    height: 5vh;
+    padding: 2vw 2vw 1.5vw 2vw;
+
+    background-color: hsl(0, 61%, 52%);
+}
+
+.footer-copyright p
+{
+    height: 5vh;
+
+    text-align: center;
+    color: hsl(0, 0%, 45%);
+}
