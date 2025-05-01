@@ -1,0 +1,38 @@
+# Moola - Interactive Gift Card Marketplace
+
+## Overview
+Moola is a modern, responsive web application that offers a seamless digital gift card shopping experience with cashback rewards. The platform enables users to browse, purchase, and send gift cards from popular brands while earning rewards with every transaction.
+
+## Technical Implementation
+Moola is built using:
+- **Frontend Framework**: Next.js 15 with App Router
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS 4 with custom animations
+- **UI Components**: Combination of custom components and integrations with Radix UI
+- **Animations**: Framer Motion for interactive hover effects and transitions
+- **Carousel**: Swiper.js for responsive, touch-enabled carousels
+- **Icons**: Mix of React Icons and Tabler Icons
+- **Typography**: Geist font family (Sans and Mono variants)
+
+## Architecture
+The application follows a modern component-based architecture:
+- **App Directory**: Implements Next.js App Router for routing
+- **Components Directory**:
+  - Organized into logical sections (sections, ui, blocks)
+  - Reusable UI components like cards, buttons, and carousels
+  - Custom interactive elements such as hover effects and animations
+- **Data Management**: Static data stored in TypeScript files within the lib directory
+- **Styling**: Mix of Tailwind utility classes and custom CSS for complex animations
+
+## Key Features
+- Interactive gift card browsing with hover effects and animations
+- Responsive design optimized for all screen sizes
+- Cashback rewards system (up to 7% on select brands)
+- Virtual gifting capabilities
+- Brand showcase with modern UI treatments
+- Mobile app integration with download options
+- Referral program for additional rewards
+- Testimonials from satisfied customers
+- Interactive feature demonstrations
+
+The implementation prioritizes user experience with smooth animations, intuitive navigation, and visually appealing design elements while maintaining performance and accessibility. 

@@ -1,0 +1,353 @@
+/* Custom styling for Swiper */
+.swiper-wrapper {
+  height: 85vh;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 85vh;
+  max-height: 85vh;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -12px rgba(124, 58, 237, 0.3),
+    0 0 0 1px rgba(124, 58, 237, 0.05);
+  position: relative;
+  background-color: #6d37c9;
+  transition: all 0.5s;
+}
+
+/* Glowing border effect */
+.swiper-container::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, #9333ea, #e879f9, #9333ea);
+  border-radius: 22px;
+  z-index: -1;
+  animation: borderGlow 6s ease infinite;
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    opacity: 0.8;
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.4;
+    filter: blur(6px);
+  }
+}
+
+/* Style the image container to fill all space */
+.carousel-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  background-color: #6d37c9;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Make images fill the container better */
+.carousel-image-container img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-position: center !important;
+  transition: transform 6s ease-in-out !important;
+  transform-origin: center !important;
+}
+
+.carousel-image-container:hover img {
+  transform: scale(1.05) !important;
+}
+
+/* Overlay styling */
+.carousel-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem 3rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 5;
+}
+
+/* Slide-in animation for content */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-title,
+.carousel-description,
+.carousel-button {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.8s forwards;
+}
+
+.carousel-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  animation-delay: 0.1s;
+  max-width: 700px;
+}
+
+.carousel-description {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 32rem;
+  font-weight: 400;
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  animation-delay: 0.3s;
+  opacity: 0.9;
+}
+
+.carousel-button {
+  background: white;
+  color: #6d37c9;
+  font-weight: 600;
+  padding: 0.85rem 2.5rem;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.4s;
+  font-size: 1.1rem;
+  animation-delay: 0.5s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to right, #9333ea, #7c3aed);
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.carousel-button:hover {
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button:hover::before {
+  width: 100%;
+}
+
+.carousel-button svg {
+  transition: transform 0.3s;
+}
+
+.carousel-button:hover svg {
+  transform: translateX(4px);
+  fill: white;
+}
+
+/* Badge element */
+.promo-badge {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.8)
+  );
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #6d37c9;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  animation: badgePulse 2.5s infinite;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Decorative elements */
+.decorative-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.6;
+  z-index: 2;
+}
+
+/* Custom Swiper Pagination */
+.swiper-pagination {
+  position: absolute;
+  bottom: 2rem !important;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  z-index: 20;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Custom progress bar */
+.swiper-pagination-progressbar {
+  background: rgba(255, 255, 255, 0.2) !important;
+  height: 4px !important;
+  bottom: 0 !important;
+  top: auto !important;
+}
+
+.swiper-pagination-progressbar-fill {
+  background: linear-gradient(to right, #7c3aed, #e879f9) !important;
+}
+
+/* Navigation buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transition: all 0.3s;
+  color: #6d37c9;
+  cursor: pointer;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 24px !important;
+  font-weight: bold;
+}
+
+.swiper-container:hover .swiper-button-prev,
+.swiper-container:hover .swiper-button-next {
+  opacity: 0.9;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  background-color: white;
+}
+
+/* Animations for background elements */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 12s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+
+/* Header animations */
+.animated-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-wrapper span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.title-wrapper span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.title-wrapper span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.title-wrapper span:nth-child(4) {
+  animation-delay: 0.4s;
+}

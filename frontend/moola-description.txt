@@ -1,0 +1,4 @@
+# Moola - Gift Card Marketplace with Cashback Rewards
+
+**Description:**  
+Moola is a modern web application that allows users to purchase and send digital gift cards from popular brands while earning cashback rewards. The platform features an intuitive interface with a visually appealing design, showcasing various gift card options from major retailers like Amazon, Starbucks, and Walmart. Users can browse gift cards by brand, customize virtual gifts, and benefit from special offers and cashback rewards with every purchase. The app is built with Next.js, React, and Tailwind CSS, providing a responsive and interactive user experience across devices. 
