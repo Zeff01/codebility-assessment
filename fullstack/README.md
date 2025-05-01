@@ -18,8 +18,8 @@ A minimalist blog built using **Next.js** and **Tailwind CSS**, featuring dynami
 
 ### Display a list of blog posts with titles and excerpts
 
-![Laptop](screenshots/s1.png)
+![Laptop](screenshots/s2.png)
 
 ### Blog Post Page
 
-![Tab](screenshots/s2.png)
+![Tab](screenshots/s1.png)
