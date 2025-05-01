@@ -8,7 +8,7 @@ export const posts = [
     },
     {
         id: 2,
-        title: "Getting Started with Next.js",
+        title: "Styling in Next.js",
         excerpt: "Different ways to style your Next.js application",
         content: "There are multiple ways to style your Next.js application including CSS modules, Tailwind CSS...",
         date: "2025-04-16",
