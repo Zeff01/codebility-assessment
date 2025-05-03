@@ -25,7 +25,9 @@ const Home: React.FC = () => {
       <SearchBar value={search} onChange={setSearch} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <div key={product.id} className="h-full">
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </main>
