@@ -17,7 +17,7 @@ function TopNavBar() {
 
   return (
     <header className="flex justify-between items-center relative">
-      {/* Desktop top nav */}
+      {/* Desktop top nav*/}
       <img
         src="https://content.moola.com/wp-content/uploads/2019/10/Logo_Desktop_purple.svg"
         className="w-30 h-auto hidden lg:block"
