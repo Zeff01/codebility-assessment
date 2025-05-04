@@ -39,6 +39,11 @@ export default function Footer() {
   return (
     <footer className="bg-zinc-900 text-white py-16 px-4 lg:px-0">
       <Container>
+      <img
+        src="https://content.moola.com/wp-content/uploads/2019/10/Logo_Desktop_purple.svg"
+        className="w-30 h-auto mb-10"
+        alt="Company logo"
+      />
         <div className="flex flex-col md:flex-row justify-between mb-12">
           <div className="mb-8 md:mb-0">
             <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
