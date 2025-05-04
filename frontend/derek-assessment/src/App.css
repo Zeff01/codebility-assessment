@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Mulish", sans-serif;
+}
+
+.container {
+  margin: 1rem 1rem 0 1rem;
+}
+
+/* Mobile */
+/* Hero */
+img {
+  height: 300px;
+}
+
+header nav {
+  display: none;
+}
+
+.hero {
+ background-color: #8D77AB;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hero-text {
+  color: #F9F6E6;
+}
+
+.hero-text h1{
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.get-started-button {
+  padding: 0.4rem 1rem;
+}
+
+.saverly-button {
+ background-color: #27548A;
+  margin: 1rem 0;
+  padding: 1.4rem 1.5rem;
+  border-radius: 15px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Mobile */
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-weight: 700;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+}
+
+.get-started-button{
+  padding: 0.6rem 1.3rem;
+  background-color: #7882A4;
+  border-radius: 15px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Mobile */
+/* How It works Section */
+.how-it-works-section {
+  margin-bottom: 5rem;
+}
+
+.how-it-works-text {
+    margin: 2rem 2rem;
+    text-align: center;
+    line-height: 1.5;  
+}
+
+/* Mobile */
+/* Card */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card h3 {
+  margin: 0 0 0.8rem 0;
+}
+
+.card {
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 0;
+  line-height: 1.5;  
+  box-shadow: 10px 10px;
+  width: 95%;
+}
+
+/* Mobile */
+/* Footer */
+footer {
+  border-top: 3px solid #eaeaea;
+  padding: 2rem 0;
+}
+
+.footer-content {
+  display: flex;
+  padding: 2rem 0;
+}
+
+.footer-links {
+  margin-right: 6rem;
+}
+
+.partners-list{
+ margin-top: .8rem;
+}
+
+.partners-list p{
+  margin-bottom: .5rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: .8rem;
+}
+
+.footer-nav a {
+  margin-bottom: .5rem;
+  text-decoration: none;
+  color: black;
+}
+
+/* Desktop */
+@media (min-width: 1000px)  {
+  .container {
+    margin: auto 5rem auto 5rem;
+ 
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  header nav {
+    display: block;
+  }
+
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  /* Hero */
+  .hero {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
+  }
+
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero-text {
+    width: 85%;
+  }
+
+  img {
+    height: 400px;
+  }
+
+  .saverly-button {
+     padding: 1rem 1.5rem;
+     font-size: 1rem;
+   }
+
+  /* How It works Section */
+  .how-it-works-text {
+    margin: 2rem 2rem;
+    text-align: left;
+    line-height: 1.5;  
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: normal;
+    gap: 6rem;
+  }
+
+  .card {
+    width: 300px;
+  }
+
+
+  /* Footer */
+  .footer-content {
+    display: flex;
+    justify-content: end;
+  }
+  
+  .footer-links {
+    margin-right: 4rem;
+  }
+  
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: .8rem;
+  }
+
+  .footer-nav a {
+    margin-bottom: .5rem;
+  }
+  
+  footer h1 {
+    font-size: 5rem;
+  }
+  
+}
+
+
