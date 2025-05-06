@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 const { createUser, findUserByUsername } = require('../repositories/userRepository');
 const SECRET_KEY = process.env.JWT_SECRET;
 

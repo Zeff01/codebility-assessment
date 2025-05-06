@@ -14,9 +14,10 @@ async function createNote(req, res, next) {
 async function getNotes(req, res, next) {
     try {
         const username = req.user.username;
-        const notes = noteService.getUserNotes(username)
+        const notes = noteService.getUserNotes(username);
+        res.json(notes);
     } catch (error) {
-        
+        next(err);
     }
 }
 
