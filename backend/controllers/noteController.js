@@ -13,8 +13,11 @@ async function createNote(req, res, next) {
 
 async function getNotes(req, res, next) {
     try {
-        
+        const username = req.user.username;
+        const notes = noteService.getUserNotes(username)
     } catch (error) {
         
     }
 }
+
+module.exports = { createNote, getNotes};
