@@ -19,7 +19,8 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
 
-
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
 
 
 
