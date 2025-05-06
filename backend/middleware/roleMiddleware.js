@@ -4,5 +4,7 @@ function authorizeRoles(...allowedRoles) {
             return res.status(403).json({ message:'Access denied: insufficient permissions'});
         }
         next();
-    }
+    };
 }
+
+module.exports = authorizeRoles;
