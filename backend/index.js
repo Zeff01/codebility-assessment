@@ -3,7 +3,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const authRoutes = require('./controllers/authController');
-const notesRoutes = require('./controllers/notesController');
+const notesRoutes = require('./controllers/noteController');
 
 
 const app = express();
