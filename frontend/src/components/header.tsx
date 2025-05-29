@@ -66,7 +66,7 @@ export default function Header() {
                     </li>
 
                     <li className="hidden lg:flex text-xs">
-                        <button className="px-6 py-3 rounded-full text-white font-normal bg-gradient-to-r from-[#bf02fa] to-[#780ceb]">
+                        <button className="cursor-pointer px-6 py-3 rounded-full text-white font-normal bg-gradient-to-r from-[#bf02fa] to-[#780ceb]">
                             DOWNLOAD NOW
                         </button>
                     </li>

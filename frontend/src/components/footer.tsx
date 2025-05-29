@@ -62,12 +62,13 @@ export default function Footer() {
                         )}
                     </ul>
                 </div>
-                <div className="flex items-end gap-1 justify-center md:items-center">
+                <div className="flex items-end gap-3 justify-center md:items-center">
                     <HandCoinsIcon className="self-end" />
                     <span className="text-[0.6rem]">Payments Powered by</span>
                     <img
                         src="https://www.moola.com/assets/media/icons/moneris.svg"
                         alt="moneris"
+                        className="-mt-4"
                     />
                 </div>
             </section>

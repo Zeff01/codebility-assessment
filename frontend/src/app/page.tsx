@@ -7,8 +7,14 @@ import ShopCard, { type ShopCardProps } from "@/components/shop-card";
 import TestimonialCard, {
     type TestimonialCardProps,
 } from "@/components/testimonial";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/accordion";
 
-import { Tag as TagIcon } from "lucide-react";
+import { Tag as TagIcon, CircleHelp as CircleHelpIcon } from "lucide-react";
 
 /* SwiperJS */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -163,6 +169,25 @@ export default function Home() {
         },
     ];
 
+    const faqs = [
+        {
+            question: "What is Moola?",
+            answer: "Moola is your one-stop shop for discounted gift cards from over 250 of your favourite Canadian brands. Whether you're gifting or saving for yourself, Moola helps you spend smarter and earn rewards.",
+        },
+        {
+            question: "How does Moola Work?",
+            answer: "Simply browse our catalog of digital gift cards, choose the brand and amount, and purchase at a discount. You’ll receive your card instantly and can use it in-store or online, depending on the brand.",
+        },
+        {
+            question: "Do Moola gift cards expire?",
+            answer: "Nope — gift cards purchased through Moola never expire unless stated otherwise by the retailer.",
+        },
+        {
+            question: "Is there a mobile app?",
+            answer: "Yes! Moola is available on both iOS and Android so you can browse, buy, store, and redeem gift cards on the go.",
+        },
+    ];
+
     return (
         <main className="flex flex-col px-3 lg:px-25">
             <section className="py-10 px-6 text-center xl:py-20">
@@ -216,7 +241,7 @@ export default function Home() {
                         ))}
                 </Swiper>
 
-                <div className="w-full flex items-center gap-1">
+                <div className="w-full flex items-center gap-2">
                     {promos
                         .filter((promo) => promo.variant === "secondary")
                         .map((filtered, index) => (
@@ -311,7 +336,7 @@ export default function Home() {
                     <h1 className="font-semibold text-2xl text-[#4c0d94] lg:text-3xl">
                         Moola Saves Money On Gifts & Everyday Essentials
                     </h1>
-                    <p className="text-xs lg:text-sm grow">
+                    <p className="text-xs grow lg:text-sm lg:max-w-3xl self-center">
                         Gift cards aren&apos;t just for gifting (although we do
                         that too!), they&apos;re a great way to find deals on
                         the brands you love. Through Moola, you can easily buy
@@ -338,7 +363,7 @@ export default function Home() {
                             Marketplace where you can save up to 15% on popular
                             brands. Check out this week&apos;s feature deal.
                         </p>
-                        <button className="bg-[#4c0d94] text-white text-sm tracking-wide rounded-full py-5 md:self-start md:w-50">
+                        <button className="cursor-pointer bg-[#4c0d94] text-white text-sm tracking-wide rounded-full py-5 md:self-start md:w-50">
                             <span>SHOP DEALS</span>
                         </button>
                     </article>
@@ -355,7 +380,7 @@ export default function Home() {
                             as grocery, fuel, pharmacy, food delivery, and more.
                             It all adds up to great savings!
                         </p>
-                        <button className="bg-[#4c0d94] text-white text-sm tracking-wide rounded-full py-5 md:self-start md:w-50">
+                        <button className="cursor-pointer bg-[#4c0d94] text-white text-sm tracking-wide rounded-full py-5 md:self-start md:w-50">
                             <span>SHOP ESSENTIALS</span>
                         </button>
                     </article>
@@ -372,7 +397,7 @@ export default function Home() {
                             back and bonus gift vouchers.
                         </p>
 
-                        <button className="bg-[#4c0d94] text-white text-sm tracking-wide rounded-full py-5 md:self-start md:w-50">
+                        <button className="cursor-pointer bg-[#4c0d94] text-white text-sm tracking-wide rounded-full py-5 md:self-start md:w-50">
                             <span>SHOP ESSENTIALS</span>
                         </button>
                     </article>
@@ -393,6 +418,21 @@ export default function Home() {
                     <h1 className="font-semibold text-2xl text-[#4c0d94] tracking-wide lg:text-3xl">
                         Frequently Asked Questions (FAQ)
                     </h1>
+                    <Accordion type="multiple" className="px-8">
+                        {faqs.map((faq, index) => (
+                            <AccordionItem key={index} value={`${index}`}>
+                                <AccordionTrigger className="text-[#5713bd] cursor-pointer">
+                                    <span className="text-lg flex flex-row gap-1 items-center">
+                                        <CircleHelpIcon />
+                                        {faq.question}
+                                    </span>
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                    <span>{faq.answer}</span>
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </section>
         </main>
