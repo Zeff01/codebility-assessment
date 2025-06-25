@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9f6ee;
+  --foreground: #28282b;
+  --container: min(100% - 25px, 1400px);
+  --logo: clamp(2rem, 4vw, 3rem);
+  --form-container: min(100% - 25px, 700px);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.main-container {
+  width: var(--container);
+  margin: auto;
+}
+
+.logo {
+  font-size: var(--logo);
+}
+
+.form-container {
+  width: var(--form-container);
+}
