@@ -12,5 +12,11 @@
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
   }
 }
