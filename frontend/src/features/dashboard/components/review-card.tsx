@@ -1,6 +1,20 @@
 import Card from "@/features/dashboard/components/ui/card";
 import Image from "next/image";
-import Rating from "./ui/rating";
+import Rating from "@/features/dashboard/components/ui/rating";
+
+/**
+ * ReviewCard component
+ *
+ * A responsive reusable review card component that can be used to create a review card.
+ *
+ * @param review - review of the review card
+ * @param rating - rating of the review card
+ * @param platform - platform of the review card
+ * @returns ReviewCard component
+ *
+ * @example
+ * <ReviewCard review="This is a review" rating={5} platform="https://www.moola.com/assets/media/images/review-card.png" />
+ */
 
 export interface ReviewCardProps {
   review: string;

@@ -4,6 +4,17 @@ import Button from "@/features/dashboard/components/ui/button";
 import Menu from "@/features/dashboard/components/ui/menu";
 import Image from "next/image";
 
+/**
+ * Header component
+ *
+ * A responsive reusable header component that can be used to create a header.
+ *
+ * @returns Header component
+ *
+ * @example
+ * <Header />
+ */
+
 interface LinksType {
   label: string;
   href: string;

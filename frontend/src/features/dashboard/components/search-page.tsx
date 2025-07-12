@@ -1,6 +1,16 @@
 import { SearchIcon } from "lucide-react";
-import SearchInput from "./ui/search-input";
+import SearchInput from "@/features/dashboard/components/ui/search-input";
 
+/**
+ * SearchPage component
+ *
+ * A responsive reusable search page component that can be used to create a search page.
+ *
+ * @returns SearchPage component
+ *
+ * @example
+ * <SearchPage />
+ */
 function SearchPage() {
   return (
     <div className='w-full flex justify-center p-4'>

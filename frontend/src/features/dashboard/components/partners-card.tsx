@@ -1,6 +1,21 @@
 import Card from "@/features/dashboard/components/ui/card";
 import Image from "next/image";
 
+/**
+ * PartnersCard component
+ *
+ * A responsive reusable partners card component that can be used to create a partners card.
+ *
+ * @param image - image of the partners card
+ * @param title - title of the partners card
+ * @param cashback - cashback of the partners card
+ * @param cashbackText - cashback text of the partners card
+ * @returns PartnersCard component
+ *
+ * @example
+ * <PartnersCard image="https://www.moola.com/assets/media/images/partners/partners-card.png" title="Partners Card" cashback={true} cashbackText="10% Cashback" />
+ */
+
 export interface PartnersCardProps {
   image: string;
   title: string;

@@ -2,6 +2,20 @@ import Card from "@/features/dashboard/components/ui/card";
 import Button from "@/features/dashboard/components/ui/button";
 import Image from "next/image";
 
+/**
+ * InfoCard component
+ *
+ * A responsive reusable info card component that can be used to create a info card.
+ *
+ * @param title - title of the info card
+ * @param description - description of the info card
+ * @param buttonText - text of the button
+ * @returns InfoCard component
+ *
+ * @example
+ * <InfoCard title="Info Card" description="This is a info card" buttonText="Button" />
+ */
+
 export interface InfoCardProps {
   title: string;
   description: string;

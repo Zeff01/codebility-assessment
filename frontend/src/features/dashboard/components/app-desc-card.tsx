@@ -1,6 +1,17 @@
 import Card from "@/features/dashboard/components/ui/card";
 import Image from "next/image";
 
+/**
+ * AppDescCard component
+ *
+ * A responsive reusable app description card component that can be used to create a app description card.
+ *
+ * @returns AppDescCard component
+ *
+ * @example
+ * <AppDescCard />
+ */
+
 function AppDescCard() {
   return (
     <Card className='flex flex-col gap-4 p-12 md:px-32 bg-[#fbe6ff] rounded-3xl shadow-2xl'>

@@ -8,6 +8,17 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+/**
+ * Footer component
+ *
+ * A responsive reusable footer component that can be used to create a footer.
+ *
+ * @returns Footer component
+ *
+ * @example
+ * <Footer />
+ */
+
 function Footer() {
   return (
     <main className='flex flex-col'>

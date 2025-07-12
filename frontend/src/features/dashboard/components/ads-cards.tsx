@@ -3,6 +3,17 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
+/**
+ * AdsCards component
+ *
+ * A responsive reusable ads cards component that can be used to create a ads cards.
+ *
+ * @returns AdsCards component
+ *
+ * @example
+ * <AdsCards slides={slides} />
+ */
+
 interface Slide {
   id: number;
   bgImage: string;

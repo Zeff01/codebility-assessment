@@ -13,6 +13,20 @@ import ReviewCard, {
   ReviewCardProps,
 } from "@/features/dashboard/components/review-card";
 
+/**
+ * Dashboard component
+ *
+ * A responsive reusable dashboard component that can be used to create a dashboard.
+ *
+ * @param infoCards - info cards of the dashboard
+ * @param reviewCards - review cards of the dashboard
+ * @param partners - partners of the dashboard
+ * @returns Dashboard component
+ *
+ * @example
+ * <Dashboard />
+ */
+
 function Dashboard() {
   const infoCards: InfoCardProps[] = [
     {
