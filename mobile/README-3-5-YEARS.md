@@ -1,15 +1,15 @@
-# Mobile Assessment (3-5 Years Experience)
+# Mobile Assessment (5+ Years Experience)
 
 ## Overview
 
-Welcome to the **3-5 Years** mobile development assessment! Your task is to build a simple product details screen with data fetching. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
+Welcome to the **Senior** mobile development assessment! Your task is to create a small food app feature that demonstrates your architecture decisions and React Native knowledge. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. Create a product details screen that fetches data from an API
-2. Display product information with a simple image, title, price, and description
-3. Implement a basic "Add to Cart" functionality
-4. Handle loading and error states
+1. Create a restaurant details screen with menu items
+2. Implement a cart feature for adding items
+3. Focus on architecture and component design
+4. Use mock data (no API integration required)
 
 ## Steps to Complete
 
@@ -28,31 +28,28 @@ cd codebility-assessment/mobile
 ### 3. Create a Branch
 
 ```bash
-git checkout -b firstname-lastname/3-5-years-mobile
+git checkout -b firstname-lastname/5-years-plus-mobile
 ```
 
 Replace `firstname-lastname` with your actual name.
 
 ### 4. Implementation
 
-1. Create a product details screen that:
+1. Create a restaurant details screen that:
 
-   - Fetches data from [Fake Store API](https://fakestoreapi.com/products/1) (or any similar API)
-   - Displays the product image, title, price, and description
-   - Shows a loading state while fetching data
-   - Handles potential errors gracefully
+   - Shows restaurant information (name, cuisine type, rating)
+   - Displays a list of menu items with prices
+   - Allows adding items to a cart
+   - Updates a cart icon/count when items are added
 
-2. Add a simple "Add to Cart" button that:
+2. Focus on these architectural aspects:
 
-   - Shows a visual confirmation when pressed
-   - Stores the selected product in local state
-   - Updates a cart counter somewhere on the screen
-
-3. Focus on these technical aspects:
    - Clean component structure
-   - Proper data fetching
-   - Basic state management
-   - Simple UI/UX considerations
+   - State management approach
+   - Separation of concerns
+   - Code organization
+
+3. Include mock data directly in your code (no need for API calls)
 
 ### 5. Test Your Work
 
@@ -61,7 +58,7 @@ Replace `firstname-lastname` with your actual name.
    npm start
    ```
 2. Test on iOS/Android simulator or your physical device
-3. Verify that data fetching, display, and cart functionality work properly
+3. Verify that the restaurant details and cart functionality work properly
 
 ### 6. Submit Your Work
 
@@ -69,8 +66,8 @@ Replace `firstname-lastname` with your actual name.
 
    ```bash
    git add .
-   git commit -m "Implement product details screen with API integration"
-   git push origin firstname-lastname/3-5-years-mobile
+   git commit -m "Implement restaurant details with cart functionality"
+   git push origin firstname-lastname/5-years-plus-mobile
    ```
 
 2. Create a Pull Request:
@@ -78,28 +75,28 @@ Replace `firstname-lastname` with your actual name.
    - Click "Contribute" and "Open pull request"
    - Make sure the base repository is set to `Zeff01/codebility-assessment`
    - Include screenshots of your implementation
-   - Add a brief explanation of your approach
+   - Add a brief explanation of your architecture decisions
 
 ## What We're Looking For
 
-- Clean component architecture
-- Proper data fetching with loading/error states
-- Basic state management
-- Attention to UI details
-- Code organization and readability
+- Clean architecture and code organization
+- Proper component design and separation of concerns
+- Effective state management approach
+- Attention to UX details
+- Code quality and maintainability
 
 ## Technology Choices
 
 - Use the existing Expo setup
 - Choose any state management approach
-- Select any libraries for fetching data
-- Use any UI components or styling approach you prefer
+- Select any UI components or styling libraries
+- Use any navigation solution you prefer
 
 ## Time Allowance
 
 - **Expected coding time**: 1-2 hours
 - **Submission deadline**: 1-2 days
 
-Focus on quality over quantity. A clean, working implementation of these basic features is better than an ambitious but incomplete or buggy solution.
+Focus on demonstrating your architectural thinking rather than implementing many features. Quality over quantity is key.
 
 **Good luck!**
