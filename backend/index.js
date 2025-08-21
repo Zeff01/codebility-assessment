@@ -1,13 +1,16 @@
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 4000;
+import express from "express"
+import TodoRouter from "./routes/todoRouter.js"
+import { errorHandler } from "./middleware/errorHandlerMiddleware..js"
 
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
+const app = express()
+const PORT = 5000
 
-// Start server
+app.use(express.json())
+
+app.use("/api/todos", TodoRouter)
+
+app.use(errorHandler)
+
 app.listen(PORT, () => {
-  console.log(`Backend is running on http://localhost:${PORT}`);
-});
+  console.log("server running...")
+})
