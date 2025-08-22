@@ -28,7 +28,7 @@ cd codebility-assessment/frontend
 ### 3. Create a Branch
 
 ```bash
-git checkout -b firstname-lastname/frontend
+git checkout -b JovenRey-Flores/frontend
 ```
 
 Replace `firstname-lastname` with your actual name.
@@ -54,7 +54,7 @@ Replace `firstname-lastname` with your actual name.
    ```bash
    git add .
    git commit -m "Implement landing page design"
-   git push origin firstname-lastname/frontend
+   git push origin JovenRey-Flores/frontend
    ```
 
 2. Create a Pull Request:
