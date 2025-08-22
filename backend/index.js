@@ -1,11 +1,17 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 4000;
+const helmet = require("helmet");
+const { xss } = require("express-xss-sanitizer");
+const PORT = process.env.PORT || 8000;
+const todosRoute = require("./src/routes/Todos.routes");
 
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
+// Middleware
+app.use(express.json());
+app.use(helmet()); // sets secure headers
+app.use(xss()); // sanitizes user input
+
+// Routes
+app.use("/v1", todosRoute);
 
 // Start server
 app.listen(PORT, () => {
