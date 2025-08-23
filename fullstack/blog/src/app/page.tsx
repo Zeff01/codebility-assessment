@@ -1,16 +1,34 @@
 "use client"
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PostCard from "@/components/PostCard";
 import { Post } from "@/types/post";
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-   useEffect(() => {
-    fetch("/api/posts")
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/posts`, {
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          setError("Post not found");
+          return;
+        }
+        const data = await res.json();
+        setPosts(data);
+      } catch (err) {
+        setError("Failed to fetch posts");
+      }
+    };
+    fetchPosts();
   }, []);
+
+  if (error) {
+    return <h1 className="text-center text-red-500">{error}</h1>;
+  }
 
   return (
     <main className="min-h-screen p-8">
