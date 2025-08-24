@@ -1,74 +1,158 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+// app/(tabs)/index.tsx
+import React from 'react';
+import {
+  View, Text, StyleSheet, FlatList, SafeAreaView, useColorScheme, Image,
+} from 'react-native';
+import Colors from '../../constants/Colors';
+import IconBtn from '../../components/IconBtn';
+import StoryBubble from '../../components/StoryBubble';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+// ✅ Stories with local avatars
+const stories = [
+  { id: '1', name: 'Jenny', source: require('../../assets/avatars/jenny.jpg') },
+  { id: '2', name: 'Julia', source: require('../../assets/avatars/julia.png'), live: true },
+  { id: '3', name: 'Mark',  source: require('../../assets/avatars/mark.png') },
+  { id: '4', name: 'John',  source: require('../../assets/avatars/john.jpg') },
+  { id: '5', name: 'Shui',  source: require('../../assets/avatars/shui.png') },
+];
 
-export default function HomeScreen() {
+const posts = [
+  {
+    id: 'p1',
+    user: 'Terrance Mertz',
+    time: '8 min',
+    text:
+      'Absorbeo alias adnuo cogito tergum decipio creptio curo molestias minus. Acer aduro sol ' +
+      'sulum tergiversatio vehemens tribuo tabesco minima tot. Templum casus volo odit conservo cultellus…',
+    likes: 720,
+    comments: 60,
+    avatar: require('../../assets/avatars/jenny.jpg'), // 👈 sample avatar
+  },
+  {
+    id: 'p2',
+    user: 'Lebron James',
+    time: '30 min',
+    text:
+      'Absorbeo alias adnuo cogito tergum decipio creptio curo molestias minus. Acer aduro sol ' +
+      'sulum tergiversatio vehemens tribuo tabesco minima tot. Templum casus volo odit conservo cultellus…',
+    likes: 1000,
+    comments: 670,
+    avatar: require('../../assets/avatars/john.jpg'), // 👈 another avatar
+  },
+];
+
+export default function FeedScreen() {
+  const scheme = useColorScheme() ?? 'light';
+  const C = Colors[scheme];
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+          {/* Header */}
+          <View style={styles.header}>
+            <IconBtn name="camera-outline" />
+            <Text style={[styles.brand, { color: C.text }]}>Instagram</Text>
+            <View style={{ flexDirection: 'row', gap: 16 }}>
+              <IconBtn name="videocam-outline" />
+              <IconBtn name="paper-plane-outline" />
+            </View>
+          </View>
+
+          {/* Stories */}
+          <FlatList
+            horizontal
+            data={stories}
+            keyExtractor={(i) => i.id}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 8 }}
+            style={{ borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: '#e6e6e6' }}
+            renderItem={({ item }) => (
+              <StoryBubble
+                name={item.name}
+                live={!!item.live}
+                source={item.source}
+              />
+            )}
+          />
+
+          {/* Posts */}
+          <FlatList
+            data={posts}
+            keyExtractor={(i) => i.id}
+            contentContainerStyle={{ paddingBottom: 32 }}
+            renderItem={({ item }) => (
+               <View style={styles.post}>
+                  <View style={styles.postHeader}>
+                    {item.avatar ? (
+                     <Image source={item.avatar} style={styles.postAvatar} />
+                  ) : (
+                    <View style={styles.avatarCircle} />
+                  )}
+                  <View style={{ flex: 1 }}>
+                    <Text style={[styles.user, { color: '#111' }]}>{item.user}</Text>
+                    <Text style={[styles.time, { color: '#8e8e8e' }]}>{item.time}</Text>
+                  </View>
+                  <IconBtn name="ellipsis-horizontal" />
+                </View>
+
+                <View style={styles.photoPlaceholder} />
+
+                <View style={styles.actions}>
+                  <IconBtn name="heart-outline" />
+                  <IconBtn name="chatbubble-outline" />
+                  <IconBtn name="sync-outline" />
+                  <IconBtn name="paper-plane-outline" />
+                </View>
+
+                <Text style={[styles.meta, { color: '#8e8e8e' }]}>
+                  {item.comments} comments · {item.likes} likes
+                </Text>
+
+                <Text style={[styles.caption, { color: '#111' }]}>{item.text}</Text>
+              </View>
+            )}
+          />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  safe: { flex: 1 },
+
+  header: {
+    height: 48,
+    paddingHorizontal: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  brand: { fontSize: 22, fontWeight: '700', letterSpacing: 0.5 },
+
+  post: { paddingHorizontal: 12, paddingTop: 12 },
+  postHeader: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 },
+  avatarCircle: { width: 36, height: 36, borderRadius: 18, backgroundColor: '#e5e5e5' },
+
+  postAvatar: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    marginRight: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  user: { fontSize: 14, fontWeight: '600' },
+  time: { fontSize: 12 },
+
+  actions: { flexDirection: 'row', gap: 18, paddingVertical: 10 },
+  meta: { fontSize: 12, marginBottom: 6 },
+  caption: { fontSize: 14, lineHeight: 20, marginBottom: 8 },
+
+  photoPlaceholder: {
+    width: '100%',
+    height: 300,
+    backgroundColor: '#fff',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#efefef',
+    borderRadius: 8,
   },
 });
