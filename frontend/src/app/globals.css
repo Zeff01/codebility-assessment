@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
 
 :root {
   --background: #ffffff;
@@ -23,4 +26,20 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Override default Swiper dots */
+.swiper-pagination-bullet {
+  background-color: #ffffff !important; /* white */
+  opacity: 0.4 !important;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important; /* active dot white */
+  opacity: 1 !important;
+  transform: scale(1.2);
 }

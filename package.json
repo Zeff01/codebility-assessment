@@ -12,5 +12,16 @@
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.541.0",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/babel__traverse": "^7.28.0",
+    "@types/hammerjs": "^2.0.46",
+    "@types/prop-types": "^15.7.15",
+    "@types/react-test-renderer": "^19.1.0"
   }
 }
