@@ -27,7 +27,7 @@ cd codebility-assessment/mobile
 ### 3. Create a Branch
 
 ```bash
-git checkout -b firstname-lastname/1-2-years-mobile
+git checkout -b JovenRey-Flores/1-2-years-mobile
 ```
 
 Replace `firstname-lastname` with your actual name.
