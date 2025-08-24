@@ -1,17 +1,19 @@
+// app/(tabs)/index.tsx
 import React from 'react';
 import {
-  View, Text, StyleSheet, FlatList, SafeAreaView, useColorScheme,
+  View, Text, StyleSheet, FlatList, SafeAreaView, useColorScheme, Image,
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import IconBtn from '../../components/IconBtn';
 import StoryBubble from '../../components/StoryBubble';
 
+// ✅ Stories with local avatars
 const stories = [
-  { id: '1', name: 'Jeanne' },
-  { id: '2', name: 'Julia', live: true },
-  { id: '3', name: 'Brinda' },
-  { id: '4', name: 'John' },
-  { id: '5', name: 'Shui' },
+  { id: '1', name: 'Jenny', source: require('../../assets/avatars/jenny.jpg') },
+  { id: '2', name: 'Julia', source: require('../../assets/avatars/julia.png'), live: true },
+  { id: '3', name: 'Mark',  source: require('../../assets/avatars/mark.png') },
+  { id: '4', name: 'John',  source: require('../../assets/avatars/john.jpg') },
+  { id: '5', name: 'Shui',  source: require('../../assets/avatars/shui.png') },
 ];
 
 const posts = [
@@ -24,6 +26,18 @@ const posts = [
       'sulum tergiversatio vehemens tribuo tabesco minima tot. Templum casus volo odit conservo cultellus…',
     likes: 720,
     comments: 60,
+    avatar: require('../../assets/avatars/jenny.jpg'), // 👈 sample avatar
+  },
+  {
+    id: 'p2',
+    user: 'Lebron James',
+    time: '30 min',
+    text:
+      'Absorbeo alias adnuo cogito tergum decipio creptio curo molestias minus. Acer aduro sol ' +
+      'sulum tergiversatio vehemens tribuo tabesco minima tot. Templum casus volo odit conservo cultellus…',
+    likes: 1000,
+    comments: 670,
+    avatar: require('../../assets/avatars/john.jpg'), // 👈 another avatar
   },
 ];
 
@@ -32,11 +46,8 @@ export default function FeedScreen() {
   const C = Colors[scheme];
 
   return (
-    // ✅ Force white background end-to-end
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
-        {/* 👇 Centered mobile column */}
-        <View style={styles.centerColumn}>
           {/* Header */}
           <View style={styles.header}>
             <IconBtn name="camera-outline" />
@@ -55,7 +66,13 @@ export default function FeedScreen() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 8 }}
             style={{ borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: '#e6e6e6' }}
-            renderItem={({ item }) => <StoryBubble name={item.name} live={!!item.live} />}
+            renderItem={({ item }) => (
+              <StoryBubble
+                name={item.name}
+                live={!!item.live}
+                source={item.source}
+              />
+            )}
           />
 
           {/* Posts */}
@@ -64,9 +81,13 @@ export default function FeedScreen() {
             keyExtractor={(i) => i.id}
             contentContainerStyle={{ paddingBottom: 32 }}
             renderItem={({ item }) => (
-              <View style={styles.post}>
-                <View style={styles.postHeader}>
-                  <View style={styles.avatarCircle} />
+               <View style={styles.post}>
+                  <View style={styles.postHeader}>
+                    {item.avatar ? (
+                     <Image source={item.avatar} style={styles.postAvatar} />
+                  ) : (
+                    <View style={styles.avatarCircle} />
+                  )}
                   <View style={{ flex: 1 }}>
                     <Text style={[styles.user, { color: '#111' }]}>{item.user}</Text>
                     <Text style={[styles.time, { color: '#8e8e8e' }]}>{item.time}</Text>
@@ -91,7 +112,6 @@ export default function FeedScreen() {
               </View>
             )}
           />
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -99,13 +119,6 @@ export default function FeedScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1 },
-
-  // Keep the feed at phone width on web/desktop
-  centerColumn: {
-    width: '100%',
-    maxWidth: 390,
-    alignSelf: 'center',
-  },
 
   header: {
     height: 48,
@@ -119,6 +132,13 @@ const styles = StyleSheet.create({
   post: { paddingHorizontal: 12, paddingTop: 12 },
   postHeader: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 },
   avatarCircle: { width: 36, height: 36, borderRadius: 18, backgroundColor: '#e5e5e5' },
+
+  postAvatar: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    marginRight: 8,
+  },
 
   user: { fontSize: 14, fontWeight: '600' },
   time: { fontSize: 12 },

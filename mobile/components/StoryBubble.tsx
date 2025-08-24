@@ -1,16 +1,17 @@
-// components/StoryBubble.tsx
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-type Props = { name: string; uri?: string; live?: boolean };
+type Props = { name: string; uri?: string; source?: any; live?: boolean };
 
-export default function StoryBubble({ name, uri, live }: Props) {
+export default function StoryBubble({ name, uri, source, live }: Props) {
   return (
     <View style={styles.wrap}>
       <View style={[styles.ring, live && styles.liveRing]}>
         {uri ? (
           <Image source={{ uri }} style={styles.avatar} />
+        ) : source ? (
+          <Image source={source} style={styles.avatar} />
         ) : (
           <View style={[styles.avatar, styles.placeholder]}>
             <Ionicons name="person" size={26} color="#9e9e9e" />

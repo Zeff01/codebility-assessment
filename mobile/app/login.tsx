@@ -1,17 +1,36 @@
+// app/login.tsx
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, TextInput, Pressable, SafeAreaView, useColorScheme, KeyboardAvoidingView, Platform,
+  View, Text, StyleSheet, TextInput, Pressable, SafeAreaView,
+  useColorScheme, KeyboardAvoidingView, Platform,
 } from 'react-native';
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
+  const router = useRouter();
   const scheme = useColorScheme() ?? 'light';
   const C = Colors[scheme];
 
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [remember, setRemember] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Static credentials (change these to whatever you want)
+  const VALID_USER = 'user@example.com';
+  const VALID_PASS = 'pass123';
+
+  const onLogin = () => {
+    if (email.trim().toLowerCase() === VALID_USER && pwd === VALID_PASS) {
+      setError(null);
+      // Replace history so back button doesn’t return to login
+      router.replace('/(tabs)');
+    } else {
+      setError('Invalid email or password.');
+    }
+  };
 
   return (
     <SafeAreaView style={[styles.safe, { backgroundColor: C.bg }]}>
@@ -28,6 +47,7 @@ export default function LoginScreen() {
             keyboardType="email-address"
             value={email}
             onChangeText={setEmail}
+            returnKeyType="next"
           />
           <TextInput
             placeholder="Enter your password"
@@ -36,12 +56,16 @@ export default function LoginScreen() {
             secureTextEntry
             value={pwd}
             onChangeText={setPwd}
+            returnKeyType="done"
+            onSubmitEditing={onLogin}
           />
+
+          {error ? <Text style={{ color: '#d00', marginTop: 4 }}>{error}</Text> : null}
 
           {/* Remember + Forgot */}
           <View style={styles.row}>
             <Pressable
-              onPress={() => setRemember((r) => !r)}
+              onPress={() => setRemember(r => !r)}
               style={({ pressed }) => [{ flexDirection: 'row', alignItems: 'center', opacity: pressed ? 0.6 : 1 }]}
             >
               <Ionicons name={remember ? 'checkbox' : 'square-outline'} size={18} color={C.muted} />
@@ -55,7 +79,7 @@ export default function LoginScreen() {
 
           {/* Login button */}
           <Pressable
-            onPress={() => {}}
+            onPress={onLogin}
             style={({ pressed }) => [
               styles.primaryBtn,
               { backgroundColor: C.tint, opacity: pressed ? 0.8 : 1 },
@@ -73,7 +97,7 @@ export default function LoginScreen() {
             ]}
           >
             <Ionicons name="logo-facebook" size={18} color="#1877f2" />
-            <Text style={[styles.fbText]}>Login with facebook</Text>
+            <Text style={styles.fbText}>Login with facebook</Text>
           </Pressable>
 
           {/* Footer */}
@@ -95,7 +119,7 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1 },
-  container: { paddingHorizontal: 24, paddingTop: 60, flex: 1 },
+  container: { paddingHorizontal: 24, paddingTop: 60, flex: 1, backgroundColor: '#fff' },
   logo: { fontSize: 36, fontWeight: '800', alignSelf: 'center', marginBottom: 32, letterSpacing: 0.5 },
   input: {
     borderWidth: 1, borderRadius: 8, paddingHorizontal: 14, paddingVertical: 12,
