@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -18,6 +18,7 @@
       }
     },
     "web": {
+      "backgroundColor": "#ffffff",
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
@@ -32,7 +33,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
