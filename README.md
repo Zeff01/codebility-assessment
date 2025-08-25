@@ -2,7 +2,8 @@
 
 ## Overview
 
-This repository contains my implementation of the **Frontend Assessment (3–5 Years)** for Codebility. The task was to create a product listing page with data fetching, a detail view, filtering/search functionality, and responsive design.
+This repository contains my implementation of the **Frontend Assessment (3–5 Years)** for Codebility.
+The task was to create a product listing page with data fetching, a detail view, filtering/search functionality, and responsive design.
 
 ---
 
@@ -35,3 +36,13 @@ This repository contains my implementation of the **Frontend Assessment (3–5 Y
   - Displays an error message if the API request fails.
 
 ---
+
+# Message
+
+Hi Sir Zeff,
+
+I hope you’re doing well. I am very interested in joining your team and would love the opportunity to work with experienced developers to grow my skills.
+
+As a fresh graduate, I am eager to contribute and can follow clear instructions to complete tasks efficiently. I am particularly excited about learning from your team’s expertise and gaining hands-on experience in real projects.
+
+Thank you sir for considering my application. I would be grateful for the opportunity to discuss how I can contribute to your team.

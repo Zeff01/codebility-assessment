@@ -20,15 +20,19 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             src={product.image}
             alt={product.title}
             className="h-full w-full object-contain"
-          />
+          />{" "}
+          {/* displayed image check! */}
         </div>
 
         <div className="p-6 flex-1 flex flex-col justify-center items-center">
           <h5 className="mb-2 text-center font-bold text-xl text-blue-gray-900 antialiased">
+            {" "}
+            {/* displayed name of the product check! */}
             {product.title}
           </h5>
           <p className="text-green-500 text-center text-lg font-semibold">
-            ${product.price}
+            {" "}
+            {/* displayed price check! */}${product.price}
           </p>
         </div>
 
@@ -52,8 +56,8 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           </button>
         </div>
       </div>
-
-      {isModalOpen && <ProductDetail product={product} onClose={closeModal} />}
+      {isModalOpen && <ProductDetail product={product} onClose={closeModal} />}{" "}
+      {/* when the button "View Details" is clicked will popped the modal from Product Detail! */}
     </>
   );
 };

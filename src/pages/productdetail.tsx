@@ -9,6 +9,8 @@ interface Props {
 const ProductDetail: React.FC<Props> = ({ product, onClose }) => {
   return (
     <AnimatePresence>
+      {" "}
+      {/* Added Framer-Motion with help of AI because im not fully proficient with this */}
       {product && (
         <motion.div
           key="backdrop"
@@ -58,6 +60,8 @@ const ProductDetail: React.FC<Props> = ({ product, onClose }) => {
                 ${product.price}
               </p>
               <p className="text-[0.95em] text-white/90">
+                {" "}
+                {/* added more details to the pooduct check! */}
                 {product.description}
               </p>
             </div>

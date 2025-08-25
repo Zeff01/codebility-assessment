@@ -44,6 +44,8 @@ const Home: React.FC = () => {
   if (error)
     return (
       <div className="flex flex-col items-center justify-center h-screen">
+        {" "}
+        {/* clear error handling using lottiefile for animation */}
         <Player
           autoplay
           loop
@@ -58,7 +60,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Search */}
+      {/* simple search function check! */}
       <div className="relative w-1/2 mx-auto mb-6">
         <input
           type="text"
@@ -71,7 +73,7 @@ const Home: React.FC = () => {
         <span className="absolute bottom-0 left-0 h-full w-0 bg-purple-100/30 transition-all duration-300 peer-focus:w-full"></span>
       </div>
 
-      {/* Category Filter */}
+      {/* category filtering check! */}
       <div className="flex justify-center mb-10">
         <div className="flex gap-3 items-center justify-center flex-wrap">
           {categories.map((cat) => (
@@ -90,7 +92,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Product Grid */}
+      {/* displaying products using grid check! */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 mt-20">
         {filtered.map((product) => (
           <ProductCard key={product.id} product={product} />
