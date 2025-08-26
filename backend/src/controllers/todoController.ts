@@ -60,7 +60,7 @@ export const TodoController = {
         return;
       }
 
-      res.json(todo);
+      res.status(200).json({ message: "User updated successfully", todo });
     } catch (error) {
       res.status(500).json({ error: "Internal server error." });
     }
@@ -77,7 +77,7 @@ export const TodoController = {
         return;
       }
 
-      res.status(204).send();
+      res.status(200).json({ message: "User deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Internal server error." });
     }
