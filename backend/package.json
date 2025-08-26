@@ -2,7 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "scripts": {
-    "start": "node index.js"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -10,7 +13,7 @@
     "helmet": "^8.1.0",
     "morgan": "^1.10.1"
   },
-  "main": "index.js",
+  "main": "dist/server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
