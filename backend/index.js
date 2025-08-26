@@ -2,12 +2,15 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Basic route
+const todosRouter = require("./routes/todos");
+
+app.use(express.json());
+app.use("/api/todos", todosRouter);
+
 app.get("/", (req, res) => {
-  res.send("Hello from Express!");
+  res.send("Hello express");
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Backend is running on http://localhost:${PORT}`);
 });
