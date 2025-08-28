@@ -8,9 +8,9 @@
     "mobile"
   ],
   "scripts": {
-    "start:frontend": "npm run dev --workspace frontend",
-    "start:backend": "npm run start --workspace backend",
-    "start:mobile": "npm run start --workspace mobile",
+    "start:frontend": "node init && npm run dev --workspace frontend",
+    "start:backend": "node init && npm run start --workspace backend",
+    "start:mobile": "node init && npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
   }
 }
