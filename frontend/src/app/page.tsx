@@ -1,103 +1,64 @@
-import Image from "next/image";
-
+import NavbarComponent from "./components/navbar";
+import FooterComponent from "./components/footer";
+import CardComponent from "./components/card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const recipes = [
+    {
+      id: 1,
+      title: "Pepperoni Pizza",
+      image: "/images/pexels-brettjordan-825661.jpg",
+    },
+    {
+      id: 2,
+      title: "Pesto Pasta",
+      image: "/images/pexels-lgh_9-324057-1256875.jpg",
+    },
+    {
+      id: 3,
+      title: "Cheeseburger Slider",
+      image: "/images/pexels-valeriya-1639562.jpg",
+    },
+    {
+      id: 4,
+      title: "Sushi",
+      image: "/images/pexels-pixabay-357756.jpg",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className=" bg-[#fffbe8]">
+      <NavbarComponent />
+      <div className="py-5 px-2 lg:px-10 lg:p-2">
+        <div className="flex shadow-lg border rounded-lg border-gray-200 ">
+          <input type="text" className="w-full px-3 py-2 rounded-tl-lg rounded-bl-lg bg-white" placeholder="Seach recipes..." />
+          <button className="rounded-tr-lg rounded-br-lg px-4 bg-[#fa5901] text-white transition hover:bg-[#fa5801c2]">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <section className="py-5 px-2 lg:px-10 lg:p-2">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 items-center bg-[url('/images/pexels-robinstickel-70497.jpg')] bg-cover bg-center rounded-lg shadow-xl">
+          <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
+          <div className="relative p-12">
+            <h1 className="text-white font-extrabold text-4xl mb-4 ">Discover, Cook & Enjoy Thousands of Recipes with Dishly</h1>
+            <h2 className="text-white font-semibold text-lg mb-10">From quick weeknight dinners to gourmet feasts, Dishly lets you explore, save, and cook recipes from around the world — all in one place.</h2>
+            <button className="rounded-md px-3 py-2 font-bold border-4 transition border-white text-white hover:bg-white hover:text-[#fa5901]">Browse Recipes</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-5 px-2 lg:px-10 lg:p-2">
+        <h1 className="w-full text-center font-bold text-3xl mb-20 text-[#fa5901] ">Trending Recipes</h1>
+        <div className="grid grid-cols-1 gap-y-25 p-4 lg:grid-cols-4 lg:gap-x-10">
+          {recipes.map((recipe) => {
+            return <CardComponent key={recipe.id} imageLink={recipe.image} title={recipe.title} />;
+          })}
+        </div>
+      </section>
+      <FooterComponent />
+    </main>
   );
 }
