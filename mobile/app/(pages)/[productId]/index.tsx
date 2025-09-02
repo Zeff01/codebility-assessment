@@ -29,7 +29,7 @@ export default function ViewProductScreen() {
   const { productCount } = useCartStore();
 
   const [inStock] = useState(true);
-  if (isPending) return null;
+
   const handleAddToCart = () => {
     setModalVisible(true);
   };
