@@ -1,13 +1,23 @@
-const express = require("express");
+// Module instead of common
+import express from 'express';
+import todosRouter from './routes/todos.js';
+
 const app = express();
-const PORT = process.env.PORT || 4000;
+app.use(express.json());
 
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
+// Mount todos routes
+app.use('/api/todos', todosRouter);
+
+// Basic 404 for Unknown Routes
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Backend is running on http://localhost:${PORT}`);
+//Basic Error Handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: 'Internal Server Error' });
 });
+
+const PORT = process.env.PORT ?? 4000;
+app.listen(PORT, () => console.log(`Backend is running on http://localhost:${PORT}`));
