@@ -11,7 +11,7 @@ const Products = ({ products }: { products: ProductType[] }) => {
     <main className="flex flex-col">
       <div className="self-end flex items-center gap-2 w-full max-w-sm">
         <label htmlFor="search" className="cursor-pointer">
-          <FaSearch className="text-lg" />
+          <FaSearch className="text-lg text-zinc-800 md:text-zinc-600 hover:text-zinc-800 transition-colors" />
         </label>
         <Input
           id="search"
