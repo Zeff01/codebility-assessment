@@ -1,10 +1,10 @@
-import { ProductType } from "@/components/products";
 import { Badge } from "@/components/ui/badge";
 import { fetchProduct } from "@/services/api";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { ProductType } from "../page";
 
 const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;

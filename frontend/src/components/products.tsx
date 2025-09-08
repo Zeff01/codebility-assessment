@@ -8,8 +8,8 @@ import { FaSearch } from "react-icons/fa";
 const Products = ({ products }: { products: ProductType[] }) => {
   const [search, setSearch] = useState<string>();
   return (
-    <main>
-      <div className="flex items-center gap-2 mx-auto max-w-sm">
+    <main className="flex flex-col">
+      <div className="self-end flex items-center gap-2 w-full max-w-sm">
         <label htmlFor="search" className="cursor-pointer">
           <FaSearch className="text-lg" />
         </label>
