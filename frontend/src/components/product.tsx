@@ -1,12 +1,19 @@
+"use client";
 import React from "react";
 import { Card, CardHeader, CardTitle } from "./ui/card";
 import type { ProductType } from "./products";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
+import { useRouter } from "next/navigation";
 
 const Product = ({ product }: { product: ProductType }) => {
+  const router = useRouter();
+
   return (
-    <Card className="hover:scale-105 transition-all cursor-pointer">
+    <Card
+      className="hover:scale-105 transition-all cursor-pointer"
+      onClick={() => router.push(`/${product.id}`)}
+    >
       <CardHeader>
         <Image
           src={product.image}
