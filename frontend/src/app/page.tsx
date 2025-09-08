@@ -13,6 +13,17 @@ export type ProductType = {
 
 const Home = async () => {
   const products: ProductType[] = await fetchProducts();
+
+  if (products instanceof Error)
+    return (
+      <div className="max-w-7xl mx-auto px-5">
+        <Header />
+        <p className="text-xl font-medium text-zinc-400">
+          Products are currently unavailable
+        </p>
+      </div>
+    );
+
   return (
     <div className="max-w-7xl mx-auto px-5">
       <Header />

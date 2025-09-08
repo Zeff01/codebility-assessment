@@ -9,7 +9,25 @@ import { ProductType } from "../page";
 const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
-  const prod: ProductType = await fetchProduct(id);
+  let prod: ProductType = await fetchProduct(id);
+
+  if (prod instanceof Error)
+    return (
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="py-4">
+          <Link
+            href={"/"}
+            className="text-zinc-800 md:text-zinc-600 hover:text-zinc-800 transition-colors flex items-center gap-2"
+          >
+            <FaArrowLeft className="text-xl" />
+            <p className="text-3xl font-bold">Home</p>
+          </Link>
+        </div>
+        <p className="text-xl font-medium text-zinc-400">
+          Product is currently unavailable
+        </p>
+      </div>
+    );
 
   return (
     <main className="max-w-7xl mx-auto px-5">
