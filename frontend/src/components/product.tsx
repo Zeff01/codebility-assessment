@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { Card, CardHeader, CardTitle } from "./ui/card";
-import type { ProductType } from "./products";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { useRouter } from "next/navigation";
+import { ProductType } from "@/app/page";
 
 const Product = ({ product }: { product: ProductType }) => {
   const router = useRouter();
