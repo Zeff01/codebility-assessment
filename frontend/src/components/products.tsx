@@ -1,0 +1,40 @@
+"use client";
+import React, { useState } from "react";
+import Product from "./product";
+import { ProductType } from "@/app/page";
+import { Input } from "./ui/input";
+import { FaSearch } from "react-icons/fa";
+
+const Products = ({ products }: { products: ProductType[] }) => {
+  const [search, setSearch] = useState<string>();
+  return (
+    <main className="flex flex-col">
+      <div className="self-end flex items-center gap-2 w-full max-w-sm">
+        <label htmlFor="search" className="cursor-pointer">
+          <FaSearch className="text-lg text-zinc-800 md:text-zinc-600 hover:text-zinc-800 transition-colors" />
+        </label>
+        <Input
+          id="search"
+          placeholder="Search..."
+          onChange={(e) => setSearch(e.currentTarget.value)}
+        />
+      </div>
+      <ul className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {products.map((prod) => {
+          if (
+            search &&
+            !prod.title.toUpperCase().includes(search.toUpperCase())
+          )
+            return;
+          return (
+            <li key={prod.id}>
+              <Product product={prod} />
+            </li>
+          );
+        })}
+      </ul>
+    </main>
+  );
+};
+
+export default Products;
