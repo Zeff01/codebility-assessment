@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Light theme defaults */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+/* Dark theme overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Global styles */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
