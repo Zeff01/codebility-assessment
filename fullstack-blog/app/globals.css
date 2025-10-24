@@ -1,0 +1,105 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+/* Optional — custom global styles */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b, #000000);
+  color: #ffffff;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+a:hover {
+  color: #93c5fd;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Make glass cards feel more compact */
+.glass {
+  width: 100%;
+  max-width: 700px;
+  margin: 5 auto;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  border-radius: 1rem; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease
+}
+
+.glass:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 35px 10px rgba(59, 130, 246, 0.6);
+  }
+}
+button {
+  padding: 12px 50px;          
+  border-radius: 200px;         
+  font-weight: bold;
+  font-size: 20px;            
+  border: 2px solid #60a5fa;     
+  color: white;
+  background-color: transparent;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin:15px;
+}
+
+button:hover {
+  animation: pulseGlow 1.5s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(236,72,153,0.4),
+    rgba(139,92,246,0.4),
+    rgba(59,130,246,0.4)
+  );
+  transform: translateY(-4px) scale(1.05);
+}
