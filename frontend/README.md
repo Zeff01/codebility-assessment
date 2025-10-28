@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Project Overview
 
-## Getting Started
+**Codebility Frontend Assessment** – A responsive e-commerce product listing app built with modern Next.js practices.
 
-First, run the development server:
+### Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+* **Framework & Language**: Next.js 15, React 19, TypeScript 5
+* **Styling**: TailwindCSS 4
+* **State Management**: React Context API
+* **Utilities & Dependencies**: Axios, React Icons
+* **Linting**: ESLint with Next.js config
+
+### Folder Structure
+
+```
+/app
+  /[id]                  # Dynamic product pages
+    loading.tsx          # Corporate-style skeleton loader for product detail
+    page.tsx             # Product detail page with rating
+  not-found.tsx          # Custom 404 page
+  page.tsx               # Home page with product listing
+  layout.tsx
+/components
+  ProductCard.tsx
+  ProductCardLoader.tsx  # Corporate-style skeleton loader for product cards
+  SearchBar.tsx
+/context
+  ProductContext.tsx
+/globals.css
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Best Practices
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Dynamic Routing & ISR**: Fetch product data with `fetch(..., { next: { revalidate: 60 } })`.
+* **Corporate-Style Loading**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ * `ProductCardLoader` and `[id]/loading.tsx` use animated skeletons with shadows and smooth pulses, mimicking modern platforms like YouTube & Facebook.
+* **UX Optimizations**: Loading states localized to cards only; clear visual feedback while fetching.
+* **Error Handling**: Inline messages for API errors; custom `not-found.tsx` for invalid routes.
+* **Image Optimization**: Leveraged `next/image` for responsive and performant images.
+* **Component Reusability**: Modular, clean, and typed components for maintainability.
+* **Responsive Design**: Fully mobile, tablet, and desktop-friendly grid layouts.
+* **Accessibility**: Semantic HTML elements and focus-friendly links/buttons.
