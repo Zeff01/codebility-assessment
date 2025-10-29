@@ -1,0 +1,41 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    networks:
+      shared:
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - CORS_ORIGIN=*
+      - REDIS_URL=redis://redis
+      - JWT_SECRET=keyboardcat
+      - DATABASE_URL=postgres://postgres:password@postgres/assessment_db
+      - GOOGLE_API_KEY=
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+    restart: unless-stopped
+    networks:
+      shared:
+
+  redis:
+    image: redis:7.4.2-alpine
+    restart: unless-stopped
+    networks:
+      shared:
+
+networks:
+  shared:
+    driver: bridge
+    enable_ipv4: true
+    enable_ipv6: false
