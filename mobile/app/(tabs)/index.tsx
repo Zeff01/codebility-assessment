@@ -1,74 +1,120 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { useRouter } from 'expo-router';
+import { TopNavigation } from '@/components/feed/TopNavigation';
+import { StoriesSection } from '@/components/feed/StoriesSection';
+import { Post } from '@/components/feed/Post';
+import { BottomNavigation } from '@/components/feed/BottomNavigation';
+import { FeedColors } from '@/constants/FeedColors';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+// Mock data
+const mockStories = [
+  { id: '1', name: 'Jeanne', image: require('@/assets/profile/jeanne.jpg'), hasNewStories: true },
+  { id: '2', name: 'Julia', image: require('@/assets/profile/julia.jpg'), isLive: true, hasNewStories: true },
+  { id: '3', name: 'Brinda', image: require('@/assets/profile/brinda.jpg'), hasNewStories: true },
+  { id: '4', name: 'John', image: require('@/assets/profile/john.jpg'), hasNewStories: true },
+  { id: '5', name: 'Shui', image: require('@/assets/profile/shui.jpeg'), hasNewStories: true },
+];
+
+const mockPosts = [
+  {
+    id: '1',
+    profileImage: require('@/assets/profile/terrance.png'),
+    username: 'Terrance Mertz',
+    isVerified: true,
+    flagIcon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    timeAgo: '8 min',
+    content:
+      'Absorbeo alias adnuo cogito tergum decipio creptio curo molestias minus. Acer aduro sol sulum tergiversatio vehemens tribuo tabesco minima tot. Templum casus volo odit conservo cultellus soleo crudelis quis ex.',
+    likes: 720,
+    comments: 60,
+    isLiked: false,
+    firstCommentImage: require('@/assets/profile/jeanne.jpg'),
+    secondCommentImage: require('@/assets/profile/julia.jpg'),
+  },
+  {
+    id: '2',
+    profileImage: require('@/assets/profile/Anabel.jpg'),
+    username: 'Anabel Stracke',
+    flagIcon: '🇬🇧',
+    timeAgo: '3 hrs',
+    content: 'Voritos cruv thoologus sol proosontium',
+    likes: 450,
+    comments: 32,
+    isLiked: false,
+  },
+];
 
 export default function HomeScreen() {
+  const router = useRouter();
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
+
+  const handleLike = (postId: string) => {
+    setLikedPosts((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(postId)) {
+        newSet.delete(postId);
+      } else {
+        newSet.add(postId);
+      }
+      return newSet;
+    });
+  };
+
+  const handleBottomNavPress = (tab: 'home' | 'search' | 'add' | 'activity' | 'profile') => {
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <TopNavigation />
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        <StoriesSection stories={mockStories} />
+        {mockPosts.map((post) => (
+          <Post
+            key={post.id}
+            id={post.id}
+            profileImage={post.profileImage}
+            username={post.username}
+            isVerified={post.isVerified}
+            flagIcon={post.flagIcon}
+            timeAgo={post.timeAgo}
+            content={post.content}
+            likes={post.likes}
+            comments={post.comments}
+            isLiked={likedPosts.has(post.id)}
+            firstCommentImage={post.firstCommentImage}
+            secondCommentImage={post.secondCommentImage}
+            spacerHeight={post.id === '2' ? 20 : undefined}
+            useSamePadding={post.id === '2'}
+            onLike={() => handleLike(post.id)}
+          />
+        ))}
+      </ScrollView>
+      <BottomNavigation
+        activeTab="home"
+        onHomePress={() => handleBottomNavPress('home')}
+        onSearchPress={() => handleBottomNavPress('search')}
+        onAddPress={() => handleBottomNavPress('add')}
+        onActivityPress={() => handleBottomNavPress('activity')}
+        onProfilePress={() => handleBottomNavPress('profile')}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: FeedColors.background,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  scrollView: {
+    flex: 1,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  scrollContent: {
+    paddingBottom: 20,
   },
 });

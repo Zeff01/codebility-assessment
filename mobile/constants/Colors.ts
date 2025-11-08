@@ -24,3 +24,6 @@ export const Colors = {
     tabIconSelected: tintColorDark,
   },
 };
+
+// Re-export AuthColors for convenience
+export { AuthColors } from './AuthColors';
