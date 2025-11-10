@@ -1,13 +1,10 @@
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 4000;
+const http = require('http');
+const app = require('./app.js');
 
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
+const PORT = process.env.PORT || 4000;
+const server = http.createServer(app);
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Backend is running on http://localhost:${PORT}`);
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
