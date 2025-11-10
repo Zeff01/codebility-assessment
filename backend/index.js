@@ -1,11 +1,12 @@
 const express = require("express");
+const todoRoutes = require('./routes/todoRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
+app.use(express.json());
+
+app.use('/api/todos', todoRoutes);
 
 // Start server
 app.listen(PORT, () => {
