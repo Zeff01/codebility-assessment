@@ -3,6 +3,7 @@ import {posts, Post} from "@/data/posts"
 import styles from "./page.module.css"
 
 const HomePage = () => {
+  console.log("done")
   return (
     <main className={styles.container}>
       <div className={styles.header}>
