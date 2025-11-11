@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { posts, Post } from "@/data/posts"
 import { use } from "react"
+import styles from "./page.module.css"
 
 interface PostPageProps {
     params: Promise<{
@@ -14,15 +15,32 @@ const PostPage = ({ params }: PostPageProps) => {
     const postId = parseInt(id, 10)
 
     const post: Post | undefined = posts.find(p => p.id === postId)
-    if (!post) return <p>Post not found</p>
+    if (!post) return (
+        <main className={styles.container}>
+            <div className={styles.notFound}>
+                <h1>Post not found</h1>
+                <p>The post you're looking for doesn't exist.</p>
+                <Link href="/" className={styles.backButton}>← Back to Home</Link>
+            </div>
+        </main>
+    )
 
     return (
-        <main style={{ padding: "2rem" }}>
-            <h1>{post.title}</h1>
-            <p>{post.excerpt}</p>
-            <p>{post.content}</p>
-            <p>{post.date}</p>
-            <Link href="/">← Back to Home</Link>
+        <main className={styles.container}>
+            <article className={styles.post}>
+                <Link href="/" className={styles.backButton}>← Back to Home</Link>
+
+                <header className={styles.header}>
+                    <h1 className={styles.title}>{post.title}</h1>
+                    <p className={styles.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                </header>
+
+                <p className={styles.excerpt}>{post.excerpt}</p>
+
+                <div className={styles.content}>
+                    <p>{post.content}</p>
+                </div>
+            </article>
         </main>
     )
 }
