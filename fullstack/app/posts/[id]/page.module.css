@@ -15,17 +15,28 @@
 
 .backButton {
   display: inline-block;
-  color: #b0b0b0;
+  background-color: #ffffff;
+  color: #0f0f0f;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   text-decoration: none;
+  font-weight: 500;
   font-size: 0.95rem;
-  margin-bottom: 2rem;
-  transition: color 0.3s ease;
-  padding: 0.5rem 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 1.5rem 0px;
 }
 
 .backButton:hover {
-  color: #f0f0f0;
+  background-color: #e0e0e0;
+  transform: scale(1.02);
 }
+
+.backButton:active {
+  transform: scale(0.98);
+}
+
 
 .header {
   margin-bottom: 2rem;

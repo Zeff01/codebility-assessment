@@ -28,7 +28,7 @@ const PostPage = ({ params }: PostPageProps) => {
     return (
         <main className={styles.container}>
             <article className={styles.post}>
-                <Link href="/" className={styles.backButton}>← Back to Home</Link>
+                <Link href="/" className={styles.backButton}>Back to Home</Link>
 
                 <header className={styles.header}>
                     <h1 className={styles.title}>{post.title}</h1>
