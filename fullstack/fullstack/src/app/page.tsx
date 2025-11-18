@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div className="container">
       <header className="header">
-        <h1>My Blog</h1>
-        <p>Welcome to my simple blog built with Next.js</p>
+        <h1>Developer Insights</h1>
+        <p>Exploring the latest in web development, design patterns, and modern technologies</p>
       </header>
 
       <main className="main">
@@ -19,10 +19,15 @@ export default function Home() {
                   {post.title}
                 </Link>
               </h2>
-              <p className="post-date">{new Date(post.date).toLocaleDateString()}</p>
+              <p className="post-date">{new Date(post.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</p>
               <p className="post-excerpt">{post.excerpt}</p>
               <Link href={`/posts/${post.id}`} className="read-more">
-                Read More →
+                Read More
+                <span>→</span>
               </Link>
             </article>
           ))}
@@ -30,7 +35,7 @@ export default function Home() {
       </main>
 
       <footer className="footer">
-        <p>© 2025 My Blog. Built with Next.js</p>
+        <p>© 2025 Developer Insights. Built with Next.js and ❤️</p>
       </footer>
     </div>
   );
