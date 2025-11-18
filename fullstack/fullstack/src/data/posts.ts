@@ -25,4 +25,20 @@ export const posts: Post[] = [
       "There are multiple ways to style your Next.js application including CSS modules and Tailwind CSS...",
     date: "2025-04-16",
   },
+  {
+    id: 3,
+    title: "Routing in Next.js",
+    excerpt: "Learn how routing works in Next.js including dynamic routes",
+    content:
+      "Next.js offers both file-based routing and dynamic routing. You can create pages in the app folder, use dynamic segments, and even nested layouts...",
+    date: "2025-04-17",
+  },
+  {
+    id: 4,
+    title: "Fetching Data in Next.js",
+    excerpt: "Different methods for fetching data in Next.js apps",
+    content:
+      "Next.js supports fetching data at build time, runtime, and client-side. You can use getStaticProps, getServerSideProps, or fetch inside a component using useEffect...",
+    date: "2025-04-18",
+  },
 ];
