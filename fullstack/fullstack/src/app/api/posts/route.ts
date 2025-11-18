@@ -1,8 +1,6 @@
-// src/app/api/posts/route.ts
+import { NextResponse } from 'next/server';
+import { posts } from 'aelladev/data/posts';
 
-import { posts } from "aelladev/data/posts"; // @ = aelladev/
-import { NextResponse } from "next/server";
-
-export async function GET(request: Request) {
+export async function GET() {
   return NextResponse.json(posts);
 }
