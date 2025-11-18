@@ -1,6 +1,4 @@
-// src/data/posts.ts
-
-export interface Post {
+export interface BlogPost {
   id: number;
   title: string;
   excerpt: string;
@@ -8,37 +6,33 @@ export interface Post {
   date: string;
 }
 
-export const posts: Post[] = [
+export const posts: BlogPost[] = [
   {
     id: 1,
     title: "Getting Started with Next.js",
     excerpt: "Learn the basics of Next.js and how to create your first app",
-    content:
-      "Next.js is a React framework that enables server-side rendering and static site generation...",
+    content: "Next.js is a React framework that enables server-side rendering and generating static websites. It offers a great developer experience with many built-in features like TypeScript support, ESLint, and more. In this post, we'll explore how to set up your first Next.js application and understand its core concepts.",
     date: "2025-04-15",
   },
   {
     id: 2,
     title: "Styling in Next.js",
     excerpt: "Different ways to style your Next.js application",
-    content:
-      "There are multiple ways to style your Next.js application including CSS modules and Tailwind CSS...",
+    content: "There are multiple ways to style your Next.js application including CSS modules, Tailwind CSS, styled-components, and more. Each approach has its own benefits and use cases. CSS modules provide scoped styling by default, while Tailwind offers utility-first CSS for rapid development.",
     date: "2025-04-16",
   },
   {
     id: 3,
-    title: "Routing in Next.js",
-    excerpt: "Learn how routing works in Next.js including dynamic routes",
-    content:
-      "Next.js offers both file-based routing and dynamic routing. You can create pages in the app folder, use dynamic segments, and even nested layouts...",
+    title: "API Routes in Next.js",
+    excerpt: "Learn how to create backend APIs within your Next.js application",
+    content: "Next.js API routes allow you to build your API as part of your Next.js application. These are server-side functions that can handle requests and return responses. They're perfect for handling form submissions, fetching data from databases, or creating RESTful APIs.",
     date: "2025-04-17",
   },
   {
     id: 4,
-    title: "Fetching Data in Next.js",
-    excerpt: "Different methods for fetching data in Next.js apps",
-    content:
-      "Next.js supports fetching data at build time, runtime, and client-side. You can use getStaticProps, getServerSideProps, or fetch inside a component using useEffect...",
+    title: "Deployment Strategies",
+    excerpt: "How to deploy your Next.js application to production",
+    content: "Next.js applications can be deployed in various ways including Vercel (the creators of Next.js), Netlify, AWS, and more. The framework supports multiple deployment modes: static site generation, serverless functions, or traditional Node.js servers.",
     date: "2025-04-18",
-  },
+  }
 ];
