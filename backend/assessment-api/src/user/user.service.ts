@@ -13,7 +13,7 @@ export class UserService {
   async me(id: number) {
     const user = await this.userRepo.findOne({ where: { id } });
 
-    if (!user) throw new NotFoundException(`Student with id ${id} not found!`);
+    if (!user) throw new NotFoundException(`User with id ${id} not found!`);
 
     const { passwordHash, refreshTokenHash, ...safe } = user as any;
 
