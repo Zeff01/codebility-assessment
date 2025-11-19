@@ -35,6 +35,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     const user = await this.userRepo.findOne({ where: { email } });
+
     if (!user) throw new UnauthorizedException('Invalid credentials');
 
     const ok = await argon2.verify(user.passwordHash, password);
@@ -58,7 +59,9 @@ export class AuthService {
     if (!match) throw new UnauthorizedException('Invalid refresh token');
 
     const tokens = await this.issueTokens(user);
+
     await this.setRefreshHash(user.id, tokens.refreshToken);
+
     return this.sanitizeAuthResponse(user, tokens);
   }
 
@@ -70,6 +73,7 @@ export class AuthService {
     if (!id) throw new BadRequestException('Invalid credentials');
 
     await this.userRepo.update(id, { refreshTokenHash: null });
+
     return {
       success: true,
       message: 'Logout Succesfully',
