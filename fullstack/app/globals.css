@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Luxury theme variables */
+:root {
+  --color-bg: #0f0f1a;          /* very dark navy */
+  --color-text: #fdf6e3;        /* ivory / cream text */
+  --color-primary: #d4af37;     /* gold accent */
+  --color-secondary: #8c7b6b;   /* muted bronze */
+  --color-accent: #bfa06a;      /* soft gold highlight */
+  --color-neutral: #1c1c2e;     /* dark card/container */
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --transition-speed: 0.3s;
+}
+
+/* Light mode override (optional, more subtle contrast) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #faf6f2;        /* soft ivory */
+    --color-text: #1c1c2e;      /* deep text for readability */
+    --color-primary: #d4af37;   /* gold accent */
+    --color-secondary: #8c7b6b; /* bronze */
+    --color-accent: #bfa06a;
+    --color-neutral: #f5f5f5;
+  }
+}
+
+/* Apply global styles */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.5px;         /* subtle luxury feel */
+}
+
+/* Code and pre styling */
+code, pre {
+  font-family: var(--font-mono);
+  background-color: rgba(212, 175, 55, 0.1); /* soft gold tint */
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+/* Links and buttons using primary/secondary */
+a, button {
+  color: var(--color-primary);
+  transition: color var(--transition-speed) ease;
+  text-decoration: none;
+}
+
+a:hover, button:hover {
+  color: var(--color-accent);
+}
