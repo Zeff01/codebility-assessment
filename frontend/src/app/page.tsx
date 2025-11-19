@@ -65,8 +65,8 @@ export default function Home() {
       <header className="border-b border-slate-200 bg-white/70 backdrop-blur-sm sticky top-0 z-10">
         <div className="mx-auto max-w-6xl px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-medium text-slate-500">Assessment</p>
-            <h1 className="text-2xl font-bold">Product Explorer</h1>
+            <p className="text-sm font-medium text-slate-500">Ken Andrei Ong - Assessment</p>
+            <h1 className="text-2xl font-bold">Products</h1>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
             <input
