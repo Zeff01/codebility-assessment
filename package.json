@@ -12,5 +12,12 @@
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
