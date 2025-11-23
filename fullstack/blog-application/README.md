@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## What Was Built
+
+- Added a `app/data/posts.js` seed file containing four mock blog posts plus a shared `Post` type.
+- Replaced the default landing page with a blog index (`app/page.tsx`) that lists posts, shows excerpts, and links to detail pages.
+- Created the dynamic route `app/posts/[id]/page.tsx` so each post renders its full content with metadata and a back link.
+- Exposed REST-style API routes under `app/api/posts`: `/api/posts` returns the full collection while `/api/posts/[id]` fetches a single post and surfaces 404s when missing.
+
+When the dev server is running you can visit:
+
+- `http://localhost:3000/` → blog index
+- `http://localhost:3000/posts/1` (or any id) → individual post
+- `http://localhost:3000/api/posts` → JSON array of posts
+- `http://localhost:3000/api/posts/1` → JSON for one post
+
 ## Getting Started
 
 First, run the development server:
