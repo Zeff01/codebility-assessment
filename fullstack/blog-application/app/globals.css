@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes auroraShift {
+  0% {
+    transform: translate3d(-10%, -10%, 0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate3d(5%, -5%, 0) scale(1.15);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate3d(10%, 10%, 0) scale(1.05);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate3d(-5%, 5%, 0) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(-10%, -10%, 0) scale(1);
+    opacity: 0.4;
+  }
+}
+
+.aurora-canvas {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #fdfdfb, #f6f6f3 55%, #f2f2f0);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.aurora-canvas::before,
+.aurora-canvas::after {
+  content: "";
+  position: fixed;
+  inset: -40%;
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: auroraShift 24s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.aurora-canvas::before {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(214, 217, 222, 0.35), transparent 60%);
+}
+
+.aurora-canvas::after {
+  background: radial-gradient(circle at 70% 70%, rgba(200, 204, 212, 0.4), rgba(229, 232, 236, 0.25), transparent 70%);
+  animation-duration: 32s;
+  animation-delay: -8s;
+}
+
+.content-shell {
+  position: relative;
+  z-index: 1;
+}
