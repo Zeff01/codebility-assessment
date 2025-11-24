@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -19,6 +23,27 @@
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-260px * 4 - 24px * 4));
+    /* total width of original cards + gap */
+  }
+}
+
+.marquee {
+  display: flex;
+  gap: 24px;
+  animation: marquee 20s linear infinite;
+  animation-play-state: running;
+}
+
+.marquee.pause {
+  animation-play-state: paused;
+}
 body {
   background: var(--background);
   color: var(--foreground);
