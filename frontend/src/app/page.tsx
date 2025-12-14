@@ -1,102 +1,108 @@
-import Image from "next/image";
+const highlights = [
+  {
+    title: "Track every gift card",
+    description:
+      "Keep all of your cards, balances, and reminders in one easy dashboard.",
+  },
+  {
+    title: "Shop smarter",
+    description:
+      "Browse curated deals and stretch your budget with exclusive discounts.",
+  },
+  {
+    title: "Send perks fast",
+    description:
+      "Gift cards land instantly, so your friends and family can start saving right away.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="landing-page">
+      <header className="hero">
+        <div className="hero-inner">
+          <div className="hero-content">
+            <span className="hero-badge">Gift cards that work harder</span>
+            <h1 className="hero-title">Save more every time you shop with Moola</h1>
+            <p className="hero-subtitle">
+              Moola helps you discover discounted gift cards, track balances, and use smart reminders so every
+              dollar goes further.
+            </p>
+            <div className="hero-actions">
+              <a href="#download" className="button-primary">
+                Get the app
+              </a>
+              <a href="#how-it-works" className="button-secondary">
+                See how it works
+              </a>
+            </div>
+            <div className="hero-stats">
+              <div>
+                <span className="hero-stat-value">$500M+</span>
+                Savings unlocked
+              </div>
+              <div>
+                <span className="hero-stat-value">1M+</span>
+                Happy shoppers
+              </div>
+              <div>
+                <span className="hero-stat-value">24/7</span>
+                Balance reminders
+              </div>
+            </div>
+          </div>
+          <div className="hero-card" aria-labelledby="todays-highlights">
+            <h2 id="todays-highlights">Today&apos;s highlights</h2>
+            <ul className="hero-card-list">
+              <li className="hero-card-item">
+                <p>Starbucks - 18% back</p>
+                <p>Use before Friday and stack with your rewards card.</p>
+              </li>
+              <li className="hero-card-item">
+                <p>Spotify - 3 months free</p>
+                <p>New plans come with automatic balance tracking.</p>
+              </li>
+              <li className="hero-card-item">
+                <p>Gas &amp; Groceries bundle</p>
+                <p>Pair cards to cover essential spending and save an extra 5%.</p>
+              </li>
+            </ul>
+          </div>
         </div>
+      </header>
+
+      <main id="how-it-works">
+        <section className="features">
+          <div className="features-header">
+            <h2>Why shoppers choose Moola</h2>
+            <p>
+              These simple tools keep your savings organized from the moment you buy a card to the last dollar you
+              spend.
+            </p>
+          </div>
+          <div className="features-grid">
+            {highlights.map((item) => (
+              <article key={item.title} className="feature-card">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="page-footer" id="download">
+        <div className="footer-inner">
+          <p>Ready to start saving?</p>
+          <div className="footer-actions">
+            <a href="#" className="footer-link-primary">
+              Download for iOS
+            </a>
+            <a href="#" className="footer-link-secondary">
+              Download for Android
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );
