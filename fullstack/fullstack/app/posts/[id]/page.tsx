@@ -29,8 +29,9 @@ export default async function Post({
 			<main>
 				<header className="mb-2">
 					<h1 className="text-3xl"><b>{ post.title }</b></h1>
-					<small>Posted { post.date }</small>
 					<p className="text-sm mb-1"><i>&ldquo;{ post.excerpt }&rdquo;</i></p>
+
+					<p className="text-right text-xs"><small>Posted { post.date }</small></p>
 				</header>
 
 				<main>
