@@ -18,7 +18,7 @@ export async function GET(
 			type: "error",
 			data: "post id not found"
 		} as ResponseData, {
-			status: 200
+			status: 404
 		})
 	}
 
