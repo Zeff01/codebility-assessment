@@ -27,7 +27,7 @@ export default async function Post({
 			</nav>
 
 			<main>
-				<header className="mb-2">
+				<header className="mb-4">
 					<h1 className="text-3xl"><b>{ post.title }</b></h1>
 					<p className="text-sm mb-1"><i>&ldquo;{ post.excerpt }&rdquo;</i></p>
 
