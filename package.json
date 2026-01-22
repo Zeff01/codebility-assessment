@@ -1,16 +1,39 @@
 {
-  "name": "codebility-assessment",
-  "version": "1.0.0",
+  "name": "fullstack",
+  "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend",
-    "mobile"
-  ],
   "scripts": {
-    "start:frontend": "npm run dev --workspace frontend",
-    "start:backend": "npm run start --workspace backend",
-    "start:mobile": "npm run start --workspace mobile",
-    "install:all": "npm install --workspaces"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.0",
+    "@prisma/adapter-libsql": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "@reduxjs/toolkit": "^2.11.2",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "next": "16.1.4",
+    "next-auth": "^5.0.0-beta.30",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-redux": "^9.2.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.4",
+    "prisma": "^7.3.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
