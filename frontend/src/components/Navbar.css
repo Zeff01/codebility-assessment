@@ -1,0 +1,156 @@
+header {
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 24px;
+}
+
+nav,
+.nav-list,
+.nav-cta,
+.nav-cta-currency {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list,
+.nav-cta {
+  justify-content: center;
+}
+
+nav {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.nav-brand-logo {
+  width: 120px;
+  height: 38px;
+  padding: 5px 0;
+  margin-right: 16px;
+}
+
+.nav-list {
+  margin: 0px;
+  padding-left: 0;
+  gap: 16px;
+}
+
+.nav-item {
+  list-style: none;
+  padding-top: 17px;
+  padding-bottom: 20px;
+}
+
+.nav-link {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #595959;
+  line-height: 21px;
+  font-style: normal;
+}
+
+.nav-link:hover {
+  color: #000000;
+}
+
+.nav-cta {
+  gap: 16px;
+}
+
+.nav-cta-button {
+  height: 42.3px;
+  width: 149.94px;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 12px 25px;
+}
+
+.nav-cta-currency {
+  gap: 4px;
+}
+
+.nav-cta-flag {
+  width: 20px;
+  height: 15px;
+}
+
+.nav-cta-code {
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 17px;
+}
+
+.nav-actions {
+  display: none;
+}
+
+@media (max-width: 1140px) {
+  .nav-link {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .nav-cta-button {
+    width: auto;
+    padding: 10px 16px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 992px) {
+  nav {
+    padding: 0 8px;
+    justify-content: space-between;
+  }
+
+  .nav-logo-link {
+    order: 1;
+  }
+
+  .nav-actions {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-list {
+    order: 3;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-link {
+    padding-left: 0;
+  }
+
+  .nav-cta {
+    order: 4;
+    width: 100%;
+  }
+
+  .nav-list.open,
+  .nav-cta.open,
+  .nav-actions,
+  .nav-cta-currency {
+    display: flex;
+  }
+
+  .nav-list,
+  .nav-cta {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-cta-currency {
+    align-items: center;
+    gap: 4px;
+  }
+}

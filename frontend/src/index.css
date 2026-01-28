@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button {
+  fill: #fff;
+  color: #fff;
+  cursor: pointer;
+  border-style: solid;
+  border-color: #fff;
+  border-radius: 100px;
+  background: linear-gradient(91deg, #c701fc, #750dea);
+}

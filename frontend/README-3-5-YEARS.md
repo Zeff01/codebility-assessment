@@ -36,13 +36,11 @@ Replace `firstname-lastname` with your actual name.
 ### 4. Implementation
 
 1. Create a product listing page that:
-
    - Fetches data from any public API (suggestion: [Fake Store API](https://fakestoreapi.com/))
    - Displays products in a grid or list
    - Shows basic product information (image, name, price)
 
 2. Add a simple detail view:
-
    - When a product is clicked, show more details
    - This can be a new page or a modal
 
