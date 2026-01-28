@@ -1,0 +1,149 @@
+.hero {
+  width: 100%;
+  height: auto;
+}
+
+.swiper {
+  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+
+.hero-slide {
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  top: 37%;
+  left: 8%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 500px;
+  display: block;
+}
+
+.sub-title {
+  font-size: 36px;
+  line-height: 75px;
+  font-weight: 400;
+}
+
+.title-wrapper h1 {
+  font-size: 54px;
+  line-height: 60px;
+  font-weight: 700;
+}
+
+.title-wrapper span {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .hero-content {
+    top: 39%;
+  }
+
+  .sub-title {
+    font-size: 30px;
+    line-height: 60px;
+    font-weight: 400;
+  }
+
+  .title-wrapper h1 {
+    font-size: 54px;
+    line-height: 65px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    top: 38%;
+  }
+
+  .sub-title {
+    font-size: 24px;
+    line-height: 55px;
+    font-weight: 400;
+  }
+
+  .title-wrapper h1 {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper {
+    padding: 0 20px;
+    max-width: 800px;
+    height: auto;
+  }
+
+  .hero-content {
+    top: 38%;
+  }
+
+  .sub-title {
+    font-size: 20px;
+    line-height: 45px;
+    font-weight: 400;
+  }
+
+  .title-wrapper h1 {
+    font-size: 35px;
+    line-height: 40px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content {
+    top: 38%;
+  }
+
+  .sub-title {
+    font-size: 14px;
+    line-height: 35px;
+    font-weight: 400;
+  }
+
+  .title-wrapper h1 {
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    top: 40%;
+  }
+
+  .sub-title {
+    font-size: 10px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  .title-wrapper h1 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+}
