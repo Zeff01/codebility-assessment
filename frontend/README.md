@@ -79,12 +79,3 @@ The following resources provide additional information about the technologies us
   [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ---
-
-If you want, I can also:
-
-- Make this **ultra-minimal**
-- Add **CSS best practices**
-- Include a **Project Structure** section
-- Prep it for **open-source publishing**
-
-Just tell me 👍
