@@ -8,9 +8,8 @@
     "mobile"
   ],
   "scripts": {
+    "dev": "npm run dev --workspace frontend",
     "start:frontend": "npm run dev --workspace frontend",
-    "start:backend": "npm run start --workspace backend",
-    "start:mobile": "npm run start --workspace mobile",
     "install:all": "npm install --workspaces"
   }
 }
