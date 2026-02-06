@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+
+
+@layer components{
+  .max-container{
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+  .padding-x{
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .card{
+      @apply border border-gray-300 rounded shadow p-4 hover:shadow-lg transition-all space-y-4 text-sm;
+  }
+
+
+}
+
+@layer base{
+  body{
+    @apply bg-[#F5F5F5]
+  }
+  footer {
+    @apply bg-[#F5F5F5]
+
+  }
+}
