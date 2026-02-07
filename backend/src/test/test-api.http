@@ -1,0 +1,161 @@
+### Todo API Testing
+### Base URL
+@baseUrl = http://localhost:4000
+@contentType = application/json
+
+### ============================================
+### 1. HEALTH CHECK
+### ============================================
+
+### Health Check
+GET {{baseUrl}}/health
+
+
+### ============================================
+### 2. GET ALL TODOS
+### ============================================
+
+### Get All Todos (Initial - should be empty)
+GET {{baseUrl}}/api/todos
+
+
+### ============================================
+### 3. CREATE TODOS
+### ============================================
+
+### Create Todo 1
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Learn TypeScript"
+}
+
+### Create Todo 2
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Build a REST API"
+}
+
+### Create Todo 3
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Write Unit Tests"
+}
+
+
+### ============================================
+### 4. GET TODOS
+### ============================================
+
+### Get All Todos (After creation)
+GET {{baseUrl}}/api/todos
+
+### Save Todo ID from response and use it below
+@todoId = mlbnkqgfoeosy930ddi
+
+### Get Single Todo by ID
+GET {{baseUrl}}/api/todos/{{todoId}}
+
+
+### ============================================
+### 5. UPDATE TODOS
+### ============================================
+
+### Update Todo - Mark as Completed
+PUT {{baseUrl}}/api/todos/{{todoId}}
+Content-Type: {{contentType}}
+
+{
+  "completed": true
+}
+
+### Update Todo - Change Title
+PUT {{baseUrl}}/api/todos/{{todoId}}
+Content-Type: {{contentType}}
+
+{
+  "title": "Learn TypeScript Advanced"
+}
+
+### Update Todo - Change Both Title and Completed
+PUT {{baseUrl}}/api/todos/{{todoId}}
+Content-Type: {{contentType}}
+
+{
+  "title": "Completed Task",
+  "completed": true
+}
+
+
+### ============================================
+### 6. DELETE TODOS
+### ============================================
+
+### Delete a Todo
+DELETE {{baseUrl}}/api/todos/{{todoId}}
+
+
+### ============================================
+### 7. ERROR CASES
+### ============================================
+
+### Error: Create Todo with Empty Title
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": ""
+}
+
+### Error: Create Todo without Title
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+}
+
+### Error: Create Todo with Title Too Long (>500 chars)
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}
+
+### Error: Get Non-existent Todo
+GET {{baseUrl}}/api/todos/invalid-id
+
+### Error: Update Non-existent Todo
+PUT {{baseUrl}}/api/todos/non-existent-id
+Content-Type: {{contentType}}
+
+{
+  "completed": true
+}
+
+### Error: Delete Non-existent Todo
+DELETE {{baseUrl}}/api/todos/non-existent-id
+
+### Error: Invalid Route
+GET {{baseUrl}}/api/invalid
+
+### Error: Update Todo with Invalid Data Type (completed as string)
+PUT {{baseUrl}}/api/todos/{{todoId}}
+Content-Type: {{contentType}}
+
+{
+  "completed": "yes"
+}
+
+### Error: Update Todo with Invalid Title Type
+PUT {{baseUrl}}/api/todos/{{todoId}}
+Content-Type: {{contentType}}
+
+{
+  "title": 123
+}
