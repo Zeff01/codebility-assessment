@@ -1,10 +1,22 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "description": "Todo API Backend",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node dist/server.js",
+    "dev": "npx ts-node src/server.ts",
+    "build": "tsc",
+    "clean": "rm -rf dist"
   },
+  "keywords": ["todo", "api", "rest"],
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
   }
 }
