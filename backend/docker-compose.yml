@@ -1,0 +1,48 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: codebility-mongo
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--port", "27018"]
+    ports:
+      - "27018:27018"
+    environment:
+      MONGO_INITDB_DATABASE: weather-app
+    volumes:
+      - mongo_data:/data/db
+
+  mongo-init:
+    image: mongo:7
+    depends_on:
+      mongo:
+        condition: service_started
+    restart: "no"
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        i=0
+        while [ $$i -lt 30 ]; do
+          mongosh --host mongo --port 27018 --quiet --eval "try { rs.status().ok } catch(e) { rs.initiate({_id:'rs0', members:[{_id:0, host:'mongo:27018'}]}) }"
+          if [ $$? -eq 0 ]; then
+            exit 0
+          fi
+          i=$$((i+1))
+          sleep 2
+        done
+        exit 1
+
+  backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    container_name: codebility-backend
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      mongo-init:
+        condition: service_completed_successfully
+
+volumes:
+  mongo_data:
