@@ -29,9 +29,10 @@ async function fetchProduct(id: string): Promise<Product> {
 export default async function ProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const product = await fetchProduct(params.id);
+  const { id } = await params;
+  const product = await fetchProduct(id);
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
