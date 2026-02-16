@@ -1,103 +1,251 @@
-import { StyleSheet, Image, Platform } from 'react-native';
-
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { StyleSheet, ScrollView, View, TouchableOpacity, Image } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { useCart } from '@/contexts/CartContext';
 
-export default function TabTwoScreen() {
+export default function CartScreen() {
+  const { cartItems, cartCount, removeFromCart, clearCart } = useCart();
+
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
+    <ThemedView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <ThemedText style={styles.headerTitle}>Shopping Cart</ThemedText>
+        <ThemedText style={styles.headerSubtitle}>
+          {cartCount} {cartCount === 1 ? 'item' : 'items'}
         </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
+      </View>
+
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
+        {cartItems.length === 0 ? (
+          <View style={styles.emptyContainer}>
+            <ThemedText style={styles.emptyIcon}>🛒</ThemedText>
+            <ThemedText style={styles.emptyTitle}>Your cart is empty</ThemedText>
+            <ThemedText style={styles.emptyText}>
+              Add products from the Home tab to get started!
             </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+          </View>
+        ) : (
+          <>
+            {cartItems.map((item) => (
+              <View key={item.id} style={styles.cartItem}>
+                <Image
+                  source={{ uri: item.image }}
+                  style={styles.itemImage}
+                  resizeMode="contain"
+                />
+                <View style={styles.itemInfo}>
+                  <ThemedText style={styles.itemTitle} numberOfLines={2}>
+                    {item.title}
+                  </ThemedText>
+                  <ThemedText style={styles.itemPrice}>
+                    ${item.price.toFixed(2)} × {item.quantity}
+                  </ThemedText>
+                  <ThemedText style={styles.itemTotal}>
+                    Total: ${(item.price * item.quantity).toFixed(2)}
+                  </ThemedText>
+                </View>
+                <TouchableOpacity
+                  style={styles.removeButton}
+                  onPress={() => removeFromCart(item.id)}
+                >
+                  <ThemedText style={styles.removeButtonText}>Remove</ThemedText>
+                </TouchableOpacity>
+              </View>
+            ))}
+
+            {/* Total Section */}
+            <View style={styles.totalContainer}>
+              <View style={styles.totalRow}>
+                <ThemedText style={styles.totalLabel}>Subtotal:</ThemedText>
+                <ThemedText style={styles.totalValue}>${totalPrice.toFixed(2)}</ThemedText>
+              </View>
+              <View style={styles.totalRow}>
+                <ThemedText style={styles.totalLabel}>Shipping:</ThemedText>
+                <ThemedText style={styles.totalValue}>Free</ThemedText>
+              </View>
+              <View style={[styles.totalRow, styles.grandTotalRow]}>
+                <ThemedText style={styles.grandTotalLabel}>Total:</ThemedText>
+                <ThemedText style={styles.grandTotalValue}>
+                  ${totalPrice.toFixed(2)}
+                </ThemedText>
+              </View>
+            </View>
+
+            {/* Action Buttons */}
+            <View style={styles.actionButtons}>
+              <TouchableOpacity style={styles.checkoutButton}>
+                <ThemedText style={styles.checkoutButtonText}>
+                  Proceed to Checkout
+                </ThemedText>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.clearButton} onPress={clearCart}>
+                <ThemedText style={styles.clearButtonText}>Clear Cart</ThemedText>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+      </ScrollView>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
+  container: {
+    flex: 1,
+  },
+  header: {
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e7eb',
+  },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  headerSubtitle: {
+    fontSize: 16,
+    color: '#6b7280',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 20,
+    paddingBottom: 40,
+  },
+  emptyContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 80,
+  },
+  emptyIcon: {
+    fontSize: 80,
+    marginBottom: 20,
+  },
+  emptyTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#6b7280',
+    textAlign: 'center',
+  },
+  cartItem: {
+    flexDirection: 'row',
+    backgroundColor: '#f9fafb',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 12,
+    alignItems: 'center',
+  },
+  itemImage: {
+    width: 80,
+    height: 80,
+    marginRight: 12,
+  },
+  itemInfo: {
+    flex: 1,
+  },
+  itemTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  itemPrice: {
+    fontSize: 13,
+    color: '#6b7280',
+    marginBottom: 2,
+  },
+  itemTotal: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#3b82f6',
+  },
+  removeButton: {
+    backgroundColor: '#fee2e2',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+  },
+  removeButtonText: {
+    color: '#dc2626',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  totalContainer: {
+    backgroundColor: '#f9fafb',
+    borderRadius: 12,
+    padding: 20,
+    marginTop: 12,
+    marginBottom: 20,
+  },
+  totalRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  totalLabel: {
+    fontSize: 16,
+    color: '#6b7280',
+  },
+  totalValue: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  grandTotalRow: {
+    borderTopWidth: 2,
+    borderTopColor: '#e5e7eb',
+    paddingTop: 12,
+    marginTop: 8,
+    marginBottom: 0,
+  },
+  grandTotalLabel: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  grandTotalValue: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#3b82f6',
+  },
+  actionButtons: {
+    gap: 12,
+  },
+  checkoutButton: {
+    backgroundColor: '#3b82f6',
+    paddingVertical: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+  checkoutButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  clearButton: {
+    backgroundColor: '#f3f4f6',
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  clearButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
     bottom: -90,
     left: -35,
     position: 'absolute',
