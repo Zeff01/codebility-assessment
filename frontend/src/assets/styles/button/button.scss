@@ -1,0 +1,27 @@
+.custom-btn {
+    background: linear-gradient(90deg,
+            $sub-primary 0%,
+            $primary 100%);
+
+    border: none;
+    padding: 12px 28px;
+    color: $white;
+    border-radius: 50px;
+    font-weight: 600;
+    font-family: $body-font;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba($primary, 0.4);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}

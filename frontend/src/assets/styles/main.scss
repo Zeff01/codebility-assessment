@@ -1,0 +1,30 @@
+@import 'custom-variables';
+@import 'custom-bootstrap';
+
+body {
+  background: $body-bg;
+  font-family: $body-font;
+  font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+}
+
+.slider-title {
+    font-size: 54px;
+    line-height: 81px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px){
+    .slider-title {
+        font-size: 28px;
+        line-height: 45px;
+    }
+}
+
+
+@import 'button/button.scss';
+@import 'custom.scss';
+@import 'text/text.scss';
