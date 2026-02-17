@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "test@example.com",
+      "password": "$2b$10$G6AhHCPWo11AkMO6GGFpVenkjYcPvORoJ1K9OqM1XyV0WSjJwgSUO",
+      "name": "Test User"
+    },
+    {
+      "id": "2",
+      "email": "jane@example.com",
+      "password": "$2b$10$xEXfFxIIpUQ0/WwH38HnEO9DNuKegNm879Gb7VbCwLcbVThWYsIPa",
+      "name": "Jane Doe"
+    },
+    {
+      "id": "4799",
+      "email": "john@example.com",
+      "password": "$2b$10$96uqixvS3XYyjQghp76ZP.EVXRisHlJLhzK5v.rJ6/AJycSOXpwBm",
+      "name": "John Doe"
+    }
+  ],
+  "todos": [
+    {
+      "id": "e8c3",
+      "title": "Walk in the morning",
+      "userId": "1",
+      "completed": true,
+      "createdAt": "2026-02-16T18:15:05.656Z"
+    },
+    {
+      "id": "5a70",
+      "title": "Jogging in the afternoon",
+      "userId": "2",
+      "completed": false,
+      "createdAt": "2026-02-17T01:44:18.161Z"
+    },
+    {
+      "id": "cd03",
+      "title": "Take the dog for walk",
+      "userId": "1",
+      "completed": true,
+      "createdAt": "2026-02-17T01:45:17.477Z"
+    },
+    {
+      "id": "9031",
+      "title": "Wash dishes",
+      "userId": "1",
+      "completed": false,
+      "createdAt": "2026-02-17T01:45:56.041Z"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto eol=lf
+
+# Explicitly declare text files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+
+# Source code
+*.c text diff=c
+*.cpp text diff=c
+*.h text diff=c
+*.hpp text diff=c
+*.cs text diff=csharp
+*.java text diff=java
+*.js text diff=javascript
+*.jsx text diff=javascript
+*.ts text diff=typescript
+*.tsx text diff=typescript
+*.py text diff=python
+*.rb text diff=ruby
+*.go text diff=golang
+*.rs text diff=rust
+*.php text diff=php
+*.swift text diff=swift
+*.kt text diff=kotlin
+*.scala text diff=scala
+
+# Web technologies
+*.css text diff=css
+*.scss text diff=css
+*.sass text diff=css
+*.less text diff=css
+*.html text diff=html
+*.xml text diff=html
+*.json text diff=json
+*.yaml text diff=yaml
+*.yml text diff=yaml
+*.toml text diff=toml
+*.md text diff=markdown
+*.mdx text diff=markdown
+*.graphql text diff=graphql
+*.gql text diff=graphql
+
+# Config files
+*.eslintrc* text
+*.prettierrc* text
+.prettierrc text
+.editorconfig text
+.env* text
+*.config.* text
+.gitattributes text
+.gitignore text
+.gitmodules text
+.pnpmrc text
+.npmrc text
+.yarnrc text
+.yarnrc.yml text
+
+# Documentation
+*.txt text
+*.LICENSE text
+*.license text
+LICENSE text
+README text
+CHANGELOG text
+CONTRIBUTING text
+CODE_OF_CONDUCT text
+
+# Shell scripts
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+*.fish text eol=lf
+
+# Windows scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+
+# Images - treat as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.avif binary
+*.bmp binary
+*.tiff binary
+
+# Fonts - treat as binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+
+# Audio/Video - treat as binary
+*.mp3 binary
+*.mp4 binary
+*.wav binary
+*.webm binary
+*.ogg binary
+*.mov binary
+*.avi binary
+*.flac binary
+*.aac binary
+
+# Archives - treat as binary
+*.zip binary
+*.tar binary
+*.tar.gz binary
+*.tgz binary
+*.rar binary
+*.7z binary
+*.gz binary
+*.bz2 binary
+*.xz binary
+
+# Build artifacts - treat as binary
+*.dll binary
+*.exe binary
+*.so binary
+*.dylib binary
+*.a binary
+*.lib binary
+*.obj binary
+*.o binary
+
+# Database files
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+
+# Lock files - use merge=ours to prevent conflicts
+package-lock.json merge=ours binary
+pnpm-lock.yaml merge=ours binary
+yarn.lock merge=ours binary
+bun.lockb merge=ours binary
+
+# Git LFS - Large file storage
+# Uncomment and use for large binary assets
+# *.psd filter=lfs diff=lfs merge=lfs -text
+# *.ai filter=lfs diff=lfs merge=lfs -text
+# *.mp4 filter=lfs diff=lfs merge=lfs -text
+# *.zip filter=lfs diff=lfs merge=lfs -text
+
+# Export-ignore - files to exclude from archives (e.g., git archive)
+.gitattributes export-ignore
+.gitignore export-ignore
+.github/export-ignore
+.git/ export-ignore
+
+# Linguist - language detection
+fullstack/linguist-language-generated=true
+fullstack/linguist-language=TypeScript
+frontend/linguist-language-generated=true
+frontend/linguist-language=TypeScript
+mobile/linguist-language-generated=true
+mobile/linguist-language=TypeScript

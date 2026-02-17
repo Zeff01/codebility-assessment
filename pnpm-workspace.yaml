@@ -1,0 +1,14 @@
+packages:
+  - frontend
+  - backend
+  - mobile
+  - fullstack
+
+onlyBuiltDependencies:
+  - msw
+  - sharp
+  - unrs-resolver
+
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
