@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  /* Register your custom colors here to generate utilities */
+  --color-primary: #00b894;
+  --color-secondary: #0984e3;
+  --color-background: #f9fafb; /* This creates 'bg-background' */
+  --color-foreground: #2d3436; /* This creates 'text-foreground' */
+
+  --font-sans: "Inter", sans-serif;
+}
+
+/* You no longer need to define them in :root separately for Tailwind utilities */
+
+@layer base {
+  body {
+    /* Now 'bg-background' is a known utility! */
+    @apply bg-background text-foreground antialiased;
+  }
+}
