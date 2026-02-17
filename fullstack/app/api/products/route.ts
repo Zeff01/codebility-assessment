@@ -1,23 +1,19 @@
 import { NextResponse } from 'next/server';
-import { products } from '@/data/products';
+import { getAllProducts, getProductsByCategory } from '@/data/productStore';
 
-// GET /api/products - Get all products
+// GET /api/products - Get all products (from server memory)
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
 
-    let filteredProducts = products;
-
-    if (category) {
-      filteredProducts = products.filter(
-        (product) => product.category.toLowerCase() === category.toLowerCase()
-      );
-    }
+    const products = category
+      ? getProductsByCategory(category)
+      : getAllProducts();
 
     return NextResponse.json({
       success: true,
-      data: filteredProducts,
+      data: products,
     });
   } catch {
     return NextResponse.json(
