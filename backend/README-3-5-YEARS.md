@@ -35,20 +35,17 @@ Replace `firstname-lastname` with your actual name.
 ### 4. Implementation
 
 1. Create an API with:
-
    - User authentication (login/register)
    - Public endpoints
    - Protected endpoints (requiring authentication)
 
 2. Implement these endpoints:
-
    - `POST /api/auth/register` - User registration
    - `POST /api/auth/login` - User login
    - `GET /api/weather` - Get weather data (protected route)
    - Any additional endpoints you think are necessary
 
 3. Integrate with a weather API of your choice:
-
    - Fetch weather data based on city or coordinates
    - Return it to the client through your API
 
