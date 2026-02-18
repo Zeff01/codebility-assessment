@@ -1,6 +1,6 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
-const { validateTodo } = require("../middleware/validate");
+const { validateTodo } = require("../middleware/validationMiddleware");
 
 const router = express.Router();
 
