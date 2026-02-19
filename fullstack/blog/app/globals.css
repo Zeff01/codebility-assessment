@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --background: transparent;
+  --color-primary: #333333;
+  --color-secondary: #757575;
+
+  --font-sans: "Proxima Nova Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+@layer utilities {
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+
+ 
+}
