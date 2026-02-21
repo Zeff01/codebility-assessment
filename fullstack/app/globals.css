@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f0e8;
+  --color-cream: #ede8dc;
+  --color-ink: #0d0d0d;
+  --color-accent: #c8392b;
+  --color-muted: #8a8070;
+  --color-border: #d4cec2;
+
+  --font-playfair: var(--font-playfair);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
+}
+
+.post-body > p:first-child::first-letter {
+  font-family: var(--font-playfair);
+  font-size: 4.5rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.75;
+  padding-right: 0.08em;
+  padding-top: 0.1em;
+  color: #c8392b;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.45s ease both;
+}
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
