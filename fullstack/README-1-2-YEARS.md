@@ -78,13 +78,11 @@ export const posts = [
 #### Pages to Implement
 
 1. **Home Page** (`app/page.jsx` or `pages/index.jsx`):
-
    - Display a list of blog posts with titles and excerpts
    - Add links to individual blog post pages
    - Include basic styling
 
 2. **Blog Post Page** (`app/posts/[id]/page.jsx` or `pages/posts/[id].jsx`):
-
    - Display a single blog post with full content
    - Include a back button to return to the home page
    - Style the page appropriately
