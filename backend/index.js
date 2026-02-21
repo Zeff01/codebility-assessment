@@ -1,11 +1,6 @@
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 4000;
-
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
+require('dotenv').config();
+const app = require('./src/server');
+const PORT = process.env.PORT;
 
 // Start server
 app.listen(PORT, () => {
