@@ -4,7 +4,7 @@ export default function Footer() {
     return (
     <footer className="w-full flex flex-col text-white mt-16">
         
-      {/* Top Band: Payments (Dark Purple) */}
+   
         <div className="bg-[#5a0bb5] w-full py-4 flex justify-center">
         <div className="w-full max-w-[1100px] px-4 flex flex-col md:flex-row justify-between items-center text-[13px] font-bold">
             <div className="flex items-center gap-4">
@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         </div>
 
-      {/* Middle Band: Links & Info (Main Purple) */}
+
         <div className="bg-[#7818d8] w-full py-12 flex justify-center">
         <div className="w-full max-w-[1100px] px-4 flex flex-col items-center">
             <div className="w-full flex flex-col md:flex-row items-center justify-center mb-10 relative">
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
         </div>
 
-      {/* Bottom Band: Copyright (Light Purple) */}
+
         <div className="bg-[#984dfa] w-full py-5 text-center text-[12px] font-bold tracking-wide">
         Copyright © 2026 Moola Inc. All rights reserved.
         </div>
