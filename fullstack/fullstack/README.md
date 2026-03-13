@@ -100,4 +100,3 @@ npm run dev
 
 ### Screenshots
 
-> _(Add screenshots of the home page, a single post page, and the /api/posts JSON response before submitting the PR)_
