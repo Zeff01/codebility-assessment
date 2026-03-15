@@ -18,15 +18,17 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect, useState } from "react";
 import { Post } from "@/types/posts";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
-
   const fetchPosts = async () => {
     const response = await fetch("/api/posts");
     const result = await response.json();
     setPosts(result);
   };
+
+  const router = useRouter();
 
   useEffect(() => {
     fetchPosts();
@@ -34,7 +36,7 @@ const Home = () => {
 
   if (!posts) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black font-sans p-6">
+      <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black font-sans p-16">
         <Card className="w-full max-w-5xl p-8 flex flex-row gap-8">
           {/* Left Half */}
           <div className="flex flex-col items-start gap-6 flex-1">
@@ -82,7 +84,7 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black font-sans p-6">
+    <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black font-sans p-16">
       <Card className="w-full max-w-5xl p-8 flex flex-row gap-8">
         {/* Left Half */}
         <div className="flex flex-col items-start gap-6 flex-1">
@@ -122,7 +124,10 @@ const Home = () => {
                         </span>
                       </CardContent>
                       <CardFooter className="px-4 pb-4">
-                        <Button variant="secondary" className="w-full">
+                        <Button
+                          variant="secondary"
+                          className="w-full"
+                          onClick={() => router.push(`/posts/${post.id}`)}>
                           See post
                         </Button>
                       </CardFooter>
