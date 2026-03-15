@@ -1,65 +1,143 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useEffect, useState } from "react";
+import { Post } from "@/types/posts";
+import { Button } from "@/components/ui/button";
+
+const Home = () => {
+  const [posts, setPosts] = useState<Post[] | null>(null);
+
+  const fetchPosts = async () => {
+    const response = await fetch("/api/posts");
+    const result = await response.json();
+    setPosts(result);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  if (!posts) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black font-sans p-6">
+        <Card className="w-full max-w-5xl p-8 flex flex-row gap-8">
+          {/* Left Half */}
+          <div className="flex flex-col items-start gap-6 flex-1">
             <Image
               className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/next.svg"
+              alt="Next.js logo"
+              width={80}
+              height={24}
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="flex flex-col gap-3">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+                Codebility - Assessment
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl leading-8 text-zinc-600 dark:text-zinc-400">
+                Blog posts
+              </p>
+            </div>
+          </div>
+
+          {/* Right Half */}
+          <div className="flex items-center justify-center flex-1">
+            <Carousel className="w-full max-w-sm">
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="p-1">
+                    <Card className="w-full">
+                      <CardHeader>
+                        <Skeleton className="h-4 w-2/3" />
+                        <Skeleton className="h-4 w-1/2" />
+                      </CardHeader>
+                      <CardContent>
+                        <Skeleton className="aspect-video w-full" />
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black font-sans p-6">
+      <Card className="w-full max-w-5xl p-8 flex flex-row gap-8">
+        {/* Left Half */}
+        <div className="flex flex-col items-start gap-6 flex-1">
+          <Image
+            className="dark:invert"
+            src="/next.svg"
+            alt="Next.js logo"
+            width={80}
+            height={24}
+            priority
+          />
+          <div className="flex flex-col gap-3">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+              Codebility - Assessment
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl leading-8 text-zinc-600 dark:text-zinc-400">
+              Blog posts
+            </p>
+          </div>
         </div>
-      </main>
+
+        {/* Right Half */}
+        <div className="flex items-center justify-center flex-1">
+          <Carousel className="w-full max-w-sm">
+            <CarouselContent>
+              {posts.map((post) => (
+                <CarouselItem key={post.id}>
+                  <div className="p-1">
+                    <Card className="flex flex-col h-96 overflow-hidden">
+                      <div className="flex-1 bg-zinc-100 dark:bg-zinc-800" />
+                      <CardContent className="flex flex-col gap-1 px-4 pt-4 pb-2">
+                        <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-100 line-clamp-2">
+                          {post.title}
+                        </span>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2">
+                          {post.excerpt}
+                        </span>
+                      </CardContent>
+                      <CardFooter className="px-4 pb-4">
+                        <Button variant="secondary" className="w-full">
+                          See post
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </Card>
     </div>
   );
-}
+};
+
+export default Home;
