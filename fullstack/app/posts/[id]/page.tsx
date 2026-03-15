@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Post } from "@/types/posts";
+import { Post } from "@/types/Posts";
 import Link from "next/link";
 
 const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
