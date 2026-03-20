@@ -5,7 +5,7 @@ import QuantitySelector from '@/components/QuantitySelector';
 import StockStatus from '@/components/StockStatus';
 import { useCartStore } from '@/lib/stores/store';
 import { Product } from '@/lib/types/types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ProductContentProps {
   product: Product;
@@ -13,23 +13,31 @@ interface ProductContentProps {
 
 export default function ProductContent({ product }: ProductContentProps) {
   const [quantity, setQuantity] = useState(1);
-  const [isAdding, setIsAdding] = useState(false);
   const [showAddedNotification, setShowAddedNotification] = useState(false);
-  
-  const { addItem } = useCartStore();
+  const [lastAddedQuantity, setLastAddedQuantity] = useState(0);
+
+  const { addToCart, isSyncing } = useCartStore();
 
   const handleAddToCart = async () => {
-    setIsAdding(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 300));
-      addItem(product, quantity);
+      await addToCart(product, quantity);
+      // UI Feedback
+      setLastAddedQuantity(quantity);
       setShowAddedNotification(true);
-      setTimeout(() => setShowAddedNotification(false), 2000);
       setQuantity(1);
-    } finally {
-      setIsAdding(false);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      alert(error instanceof Error ? error.message : 'Failed to add item to cart');
     }
   };
+
+  // Auto-hide notification after 2 seconds
+  useEffect(() => {
+    if (showAddedNotification) {
+      const timer = setTimeout(() => setShowAddedNotification(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showAddedNotification]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -38,7 +46,7 @@ export default function ProductContent({ product }: ProductContentProps) {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
           {product.name}
         </h1>
-        
+
         {/* Category Badge */}
         <div className="mb-4">
           <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -52,11 +60,10 @@ export default function ProductContent({ product }: ProductContentProps) {
             {[...Array(5)].map((_, i) => (
               <span
                 key={i}
-                className={`text-lg ${
-                  i < Math.floor(product.rating)
-                    ? 'text-yellow-400'
-                    : 'text-gray-300'
-                }`}
+                className={`text-lg ${i < Math.floor(product.rating)
+                  ? 'text-yellow-400'
+                  : 'text-gray-300'
+                  }`}
               >
                 ★
               </span>
@@ -105,20 +112,20 @@ export default function ProductContent({ product }: ProductContentProps) {
         <div className="relative">
           <AddToCartButton
             onClick={handleAddToCart}
-            isLoading={isAdding}
+            isLoading={isSyncing}
             disabled={!product.inStock}
             label={product.inStock ? 'Add to Cart' : 'Out of Stock'}
           />
-          
+
           {/* Success Notification */}
           {showAddedNotification && (
             <div className="absolute top-full left-0 right-0 mt-2 bg-green-500 text-white py-2 px-4 rounded-lg text-center text-sm font-medium">
-              ✓ Added {quantity} to cart!
+              ✓ Added {lastAddedQuantity} {lastAddedQuantity === 1 ? 'item' : 'items'} to cart!
             </div>
           )}
         </div>
 
-        <button 
+        <button
           disabled={!product.inStock}
           className="w-full py-3 px-4 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition"
         >

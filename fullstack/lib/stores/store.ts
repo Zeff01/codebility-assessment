@@ -8,8 +8,13 @@ interface CartStore {
   totalItems: number;
   totalPrice: number;
 
+  // State
+  isSyncing: boolean;
+  lastError: string | null;
+
   // Actions (things we can do)
   addItem: (product: Product, quantity: number) => void;
+  addToCart: (product: Product, quantity: number) => Promise<void>;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -30,6 +35,8 @@ export const useCartStore = create<CartStore>()(
       items: [],
       totalItems: 0,
       totalPrice: 0,
+      isSyncing: false,
+      lastError: null,
 
       /**
        * Add product to cart
@@ -68,6 +75,52 @@ export const useCartStore = create<CartStore>()(
             }, 0),
           };
         });
+      },
+
+      /**
+       * Add product to cart (Sync with backend)
+       * Uses optimistic updates for better UX
+       */
+      addToCart: async (product: Product, quantity: number) => {
+        const { addItem, updateQuantity, getItem } = get();
+        
+        // 1. Optimistic update
+        addItem(product, quantity);
+        set({ isSyncing: true, lastError: null });
+
+        try {
+          const response = await fetch('/api/cart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productId: product.id, quantity }),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to sync with server');
+          }
+          
+          // API success! We're already updated locally.
+          set({ isSyncing: false });
+        } catch (error) {
+          console.error('Error in addToCart action:', error);
+          
+          // 2. Rollback on failure
+          const currentItem = getItem(product.id);
+          if (currentItem) {
+            // If the item existed and we added to it, subtract.
+            // If it's a new item, updateQuantity to 0 will remove it.
+            updateQuantity(product.id, currentItem.quantity - quantity);
+          }
+          
+          set({ 
+            isSyncing: false, 
+            lastError: error instanceof Error ? error.message : 'Unknown error' 
+          });
+          
+          // Throw so the component can handle UI errors (like alerts/toasts)
+          throw error;
+        }
       },
 
       /**

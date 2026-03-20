@@ -9,6 +9,40 @@ import Link from 'next/link';
 export default function CartPage() {
   const { items, removeItem, updateQuantity } = useCartStore();
 
+  const handleUpdateQuantity = async (productId: string, newQty: number) => {
+    try {
+      const response = await fetch('/api/cart', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, quantity: newQty }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Failed to update quantity');
+
+      updateQuantity(productId, newQty);
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+      alert(error instanceof Error ? error.message : 'Failed to update quantity');
+    }
+  };
+
+  const handleRemoveItem = async (productId: string) => {
+    try {
+      const response = await fetch(`/api/cart?productId=${productId}`, {
+        method: 'DELETE',
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Failed to remove item');
+
+      removeItem(productId);
+    } catch (error) {
+      console.error('Error removing item:', error);
+      alert(error instanceof Error ? error.message : 'Failed to remove item');
+    }
+  };
+
   return (
     <main className="min-h-screen bg-slate-50 py-12 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,7 +97,7 @@ export default function CartPage() {
                           {item.product?.name}
                         </Link>
                         <button 
-                          onClick={() => removeItem(item.productId)}
+                          onClick={() => handleRemoveItem(item.productId)}
                           className="text-gray-400 hover:text-rose-500 transition-colors p-1"
                           aria-label="Remove item"
                         >
@@ -80,7 +114,7 @@ export default function CartPage() {
                         <span className="text-sm font-black text-slate-400 uppercase tracking-widest">Qty</span>
                         <QuantitySelector
                           quantity={item.quantity}
-                          onQuantityChange={(newQty) => updateQuantity(item.productId, newQty)}
+                          onQuantityChange={(newQty) => handleUpdateQuantity(item.productId, newQty)}
                           maxQuantity={10}
                         />
                       </div>
