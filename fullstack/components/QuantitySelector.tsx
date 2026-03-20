@@ -46,7 +46,7 @@ export default function QuantitySelector({
           onQuantityChange(val);
         }}
         disabled={disabled}
-        className="w-16 text-center py-2 border-l border-r border-gray-300 focus:outline-none disabled:opacity-50"
+        className="w-16 text-center py-2 border-l border-r border-gray-300 focus:outline-none disabled:opacity-50 text-black"
         min="1"
         max={maxQuantity}
       />
