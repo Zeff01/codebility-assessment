@@ -1,6 +1,5 @@
 import { getAllProducts } from '@/lib/mock/products';
-import { Product } from '@/lib/types/types';
-import Image from 'next/image';
+import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
   title: 'Products | Shop',
@@ -11,23 +10,35 @@ export default async function ProductsPage() {
   const products = await getAllProducts();
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+    <main className="min-h-screen bg-slate-50">
+      {/* Decorative background element */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-40"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Page Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Products</h1>
-          <p className="text-gray-600 text-lg">
-            Discover our curated collection of premium electronics and accessories
+        <div className="mb-20 text-center max-w-3xl mx-auto">
+          <h2 className="text-blue-600 font-bold tracking-widest text-xs uppercase mb-4 animate-fade-in">
+            New Arrivals
+          </h2>
+          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-8 tracking-tighter">
+            Our Collection
+          </h1>
+          <div className="h-1.5 w-24 bg-blue-600 mx-auto mb-8 rounded-full"></div>
+          <p className="text-gray-600 text-xl leading-relaxed font-medium">
+            Discover our curated selection of premium electronics and accessories, 
+            where cutting-edge technology meets impeccable design.
           </p>
         </div>
 
         {/* Products Grid */}
         {products.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No products available</p>
+          <div className="text-center py-24 bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100">
+            <div className="text-6xl mb-6">📦</div>
+            <p className="text-slate-400 text-2xl font-semibold italic">No products currently available.</p>
+            <p className="text-slate-400 mt-2">Check back soon for our latest arrivals.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -35,83 +46,5 @@ export default async function ProductsPage() {
         )}
       </div>
     </main>
-  );
-}
-
-function ProductCard({ product }: { product: Product }) {
-  return (
-    <a href={`/products/${product.id}`} className="group">
-      <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-        {/* Image Container */}
-        <div className="relative aspect-square overflow-hidden bg-gray-200">
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={300}
-            height={300}
-              priority
-            loading="eager"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-
-          {!product.inStock && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <span className="bg-red-500 text-white px-4 py-2 rounded font-semibold">
-                Out of Stock
-              </span>
-            </div>
-          )}
-
-          <div className="absolute top-3 left-3 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-            {product.category}
-          </div>
-        </div>
-
-        {/* Product Info */}
-        <div className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition">
-            {product.name}
-          </h3>
-
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-            {product.description}
-          </p>
-
-          <div className="flex items-center gap-2 mb-3">
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <span
-                  key={i}
-                  className={`text-sm ${
-                    i < Math.floor(product.rating)
-                      ? 'text-yellow-400'
-                      : 'text-gray-300'
-                  }`}
-                >
-                  ★
-                </span>
-              ))}
-            </div>
-            <span className="text-xs text-gray-500">
-              {product.rating} ({product.reviews})
-            </span>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-bold text-gray-900">
-              ${product.price.toFixed(2)}
-            </span>
-            <span
-              className={`text-xs font-semibold ${
-                product.inStock ? 'text-green-600' : 'text-red-600'
-              }`}
-            >
-              {product.inStock ? '✓ In Stock' : 'Out of Stock'}
-            </span>
-          </div>
-        </div>
-      </div>
-    </a>
   );
 }
