@@ -4,7 +4,6 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import ProductContent from './ProductContent';
 import ProductImageSkeleton from '@/components/skeletons/ProductImageSkeleton';
-import { getAllProducts, getProductById } from '@/lib/mock/products';
 import { Product } from '@/lib/types/types';
 import { ProductDetailsSkeleton } from '@/components/skeletons';
 
@@ -13,11 +12,23 @@ interface ProductPageProps {
 }
 
 async function getProduct(id: string): Promise<Product> {
-  const product = await getProductById(id);
-  if (!product) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/products/${id}`, {
+    cache: 'no-store',
+  });
+  if (!res.ok) {
     notFound();
   }
-  return product;
+  const { data } = await res.json();
+  return data as Product;
+}
+
+async function getAllProducts(): Promise<Product[]> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/products`, {
+    cache: 'no-store',
+  });
+  if (!res.ok) return [];
+  const { data } = await res.json();
+  return data as Product[];
 }
 
 export async function generateMetadata({

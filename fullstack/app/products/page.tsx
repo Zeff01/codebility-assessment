@@ -1,4 +1,4 @@
-import { getAllProducts } from '@/lib/mock/products';
+import { Product } from '@/lib/types/types';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
@@ -7,7 +7,10 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
-  const products = await getAllProducts();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/products`, {
+    cache: 'no-store',
+  });
+  const { data: products }: { data: Product[] } = await res.json();
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -25,7 +28,7 @@ export default async function ProductsPage() {
           </h1>
           <div className="h-1.5 w-24 bg-blue-600 mx-auto mb-8 rounded-full"></div>
           <p className="text-gray-600 text-xl leading-relaxed font-medium">
-            Discover our curated selection of premium electronics and accessories, 
+            Discover our curated selection of premium electronics and accessories,
             where cutting-edge technology meets impeccable design.
           </p>
         </div>

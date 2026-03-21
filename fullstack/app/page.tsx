@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getAllProducts } from "@/lib/mock/products";
 import ProductCard from "@/components/ProductCard";
+import { getProducts } from "@/lib/mock/products";
 
 export const metadata = {
   title: "Shop. | Premium Electronics & Accessories",
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const allProducts = await getAllProducts();
+  const allProducts = await getProducts();
   const featuredProducts = allProducts.slice(0, 3);
 
   return (
@@ -32,7 +32,7 @@ export default async function Home() {
             Elevate Your <span className="text-blue-500">Digital</span> Experience
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Curated premium electronics and professional accessories designed 
+            Curated premium electronics and professional accessories designed
             to empower your workflow and inspire your lifestyle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,8 +64,8 @@ export default async function Home() {
                 Featured Innovation
               </h3>
             </div>
-            <Link 
-              href="/products" 
+            <Link
+              href="/products"
               className="text-gray-900 font-bold hover:text-blue-600 transition-colors flex items-center gap-2 group"
             >
               See all products

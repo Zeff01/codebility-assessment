@@ -51,23 +51,10 @@ export const products: Product[] = [
   },
 ];
 
-/**
- * Fetch a single product by ID
- * In production, this would query a database
- * For now, it searches our mock array
- */
-export async function getProductById(id: string): Promise<Product | null> {
-  // Simulate network delay (realistic server time)
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return products.find((p) => p.id === id) || null;
+export async function getProducts(): Promise<Product[]> {
+  return products;
 }
 
-/**
- * Fetch all products
- * In production, this would query a database
- */
-export async function getAllProducts(): Promise<Product[]> {
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return products;
+export async function getProductById(id: string): Promise<Product | undefined> {
+  return products.find((p) => p.id === id);
 }
