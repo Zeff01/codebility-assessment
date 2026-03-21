@@ -9,7 +9,41 @@ interface CartRequest {
 interface CartResponse {
   message: string;
   quantity?: number;
-  productId: string;
+  productId?: string;
+  items?: any[];
+}
+
+/**
+ * GET /api/cart
+ * Retrieves the user's cart.
+ */
+export async function GET(
+  request: NextRequest
+): Promise<NextResponse<ApiResponse<CartResponse>>> {
+  try {
+    // Mock delay
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    return NextResponse.json(
+      {
+        data: {
+          message: 'Fetched cart successfully',
+          items: [], // Mocking an empty cart for now
+        },
+        status: 200,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Cart API GET error:', error);
+    return NextResponse.json(
+      {
+        error: 'Failed to fetch cart',
+        status: 500,
+      },
+      { status: 500 }
+    );
+  }
 }
 
 /**
@@ -176,19 +210,32 @@ export async function DELETE(
   try {
     const { searchParams } = new URL(request.url);
     const productId = searchParams.get('productId');
+    const clear = searchParams.get('clear');
+
+    // Mock delay
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    if (clear === 'true') {
+      return NextResponse.json(
+        {
+          data: {
+            message: 'Cleared all items from cart',
+          },
+          status: 200,
+        },
+        { status: 200 }
+      );
+    }
 
     if (!productId) {
       return NextResponse.json(
         {
-          error: 'Missing required field: productId',
+          error: 'Missing required field: productId or clear=true',
           status: 400,
         },
         { status: 400 }
       );
     }
-
-    // Mock delay
-    await new Promise((resolve) => setTimeout(resolve, 200));
 
     return NextResponse.json(
       {

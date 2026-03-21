@@ -3,9 +3,10 @@
 import AddToCartButton from '@/components/buttons/AddToCart';
 import QuantitySelector from '@/components/QuantitySelector';
 import StockStatus from '@/components/StockStatus';
-import { useCartStore } from '@/lib/stores/store';
+import { useCart } from '@/hooks/useCart';
 import { Product } from '@/lib/types/types';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface ProductContentProps {
   product: Product;
@@ -13,31 +14,18 @@ interface ProductContentProps {
 
 export default function ProductContent({ product }: ProductContentProps) {
   const [quantity, setQuantity] = useState(1);
-  const [showAddedNotification, setShowAddedNotification] = useState(false);
-  const [lastAddedQuantity, setLastAddedQuantity] = useState(0);
-
-  const { addToCart, isSyncing } = useCartStore();
+  const { addToCart, isAddingToCart } = useCart();
 
   const handleAddToCart = async () => {
     try {
       await addToCart(product, quantity);
-      // UI Feedback
-      setLastAddedQuantity(quantity);
-      setShowAddedNotification(true);
+      toast.success(`Added ${quantity} ${quantity === 1 ? 'item' : 'items'} to cart!`);
       setQuantity(1);
     } catch (error) {
       console.error('Error adding to cart:', error);
-      alert(error instanceof Error ? error.message : 'Failed to add item to cart');
+      toast.error(error instanceof Error ? error.message : 'Failed to add item to cart');
     }
   };
-
-  // Auto-hide notification after 2 seconds
-  useEffect(() => {
-    if (showAddedNotification) {
-      const timer = setTimeout(() => setShowAddedNotification(false), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [showAddedNotification]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -112,17 +100,10 @@ export default function ProductContent({ product }: ProductContentProps) {
         <div className="relative">
           <AddToCartButton
             onClick={handleAddToCart}
-            isLoading={isSyncing}
+            isLoading={isAddingToCart}
             disabled={!product.inStock}
             label={product.inStock ? 'Add to Cart' : 'Out of Stock'}
           />
-
-          {/* Success Notification */}
-          {showAddedNotification && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-green-500 text-white py-2 px-4 rounded-lg text-center text-sm font-medium">
-              ✓ Added {lastAddedQuantity} {lastAddedQuantity === 1 ? 'item' : 'items'} to cart!
-            </div>
-          )}
         </div>
 
         <button

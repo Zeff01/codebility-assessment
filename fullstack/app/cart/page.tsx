@@ -1,13 +1,12 @@
 'use client';
-
-import { useCartStore } from '@/lib/stores/store';
 import CartSummary from '@/components/CartSummary';
 import QuantitySelector from '@/components/QuantitySelector';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCart } from '@/hooks/useCart';
 
 export default function CartPage() {
-  const { items, removeFromCart, updateCartQuantity } = useCartStore();
+  const { items, removeFromCart, updateCartQuantity } = useCart();
 
   const handleUpdateQuantity = async (productId: string, newQty: number) => {
     try {

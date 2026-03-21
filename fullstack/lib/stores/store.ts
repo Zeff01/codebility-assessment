@@ -8,27 +8,21 @@ interface CartStore {
   totalItems: number;
   totalPrice: number;
 
-  // State
-  isSyncing: boolean;
-  lastError: string | null;
-
-  // Actions (things we can do)
+  // Actions (local-only — server sync is handled by TanStack Query in useCart hook)
   addItem: (product: Product, quantity: number) => void;
-  addToCart: (product: Product, quantity: number) => Promise<void>;
   removeItem: (productId: string) => void;
-  removeFromCart: (productId: string) => Promise<void>;
   updateQuantity: (productId: string, quantity: number) => void;
-  updateCartQuantity: (productId: string, quantity: number) => Promise<void>;
   clearCart: () => void;
   getItem: (productId: string) => CartItem | undefined;
 }
 
 /**
  * Zustand Cart Store
- * 
- * This is our state management solution.
- * Think of it as "a place where cart data lives"
- * 
+ *
+ * Local state only — items, totals, localStorage persistence.
+ * All server sync (optimistic updates, rollback, loading states)
+ * is handled by TanStack Query mutations in `hooks/useCart.ts`.
+ *
  * `persist` middleware = auto-save to localStorage
  */
 export const useCartStore = create<CartStore>()(
@@ -37,8 +31,6 @@ export const useCartStore = create<CartStore>()(
       items: [],
       totalItems: 0,
       totalPrice: 0,
-      isSyncing: false,
-      lastError: null,
 
       /**
        * Add product to cart
@@ -80,56 +72,6 @@ export const useCartStore = create<CartStore>()(
       },
 
       /**
-       * Add product to cart (Sync with backend)
-       * Uses optimistic updates for better UX
-       */
-      addToCart: async (product: Product, quantity: number) => {
-        const { addItem, removeItem, updateQuantity, getItem } = get();
-
-        // Snapshot state BEFORE the optimistic update so rollback is accurate
-        const previousItem = getItem(product.id);
-
-        // 1. Optimistic update
-        addItem(product, quantity);
-        set({ isSyncing: true, lastError: null });
-
-        try {
-          const response = await fetch('/api/cart', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ productId: product.id, quantity }),
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to sync with server');
-          }
-
-          // API success! We're already updated locally.
-          set({ isSyncing: false, lastError: null });
-        } catch (error) {
-          console.error('Error in addToCart action:', error);
-
-          // 2. Rollback on failure using the pre-action snapshot
-          if (previousItem) {
-            // Item existed before — restore its original quantity
-            updateQuantity(product.id, previousItem.quantity);
-          } else {
-            // Item was brand-new — remove it entirely
-            removeItem(product.id);
-          }
-
-          set({
-            isSyncing: false,
-            lastError: error instanceof Error ? error.message : 'Unknown error',
-          });
-
-          // Throw so the component can handle UI errors (like alerts/toasts)
-          throw error;
-        }
-      },
-
-      /**
        * Remove product from cart
        */
       removeItem: (productId: string) => {
@@ -146,46 +88,6 @@ export const useCartStore = create<CartStore>()(
             }, 0),
           };
         });
-      },
-
-      /**
-       * Remove product from cart (Sync with backend)
-       */
-      removeFromCart: async (productId: string) => {
-        const { removeItem, getItem, addItem } = get();
-        const previousItem = getItem(productId);
-
-        if (!previousItem) return;
-
-        // 1. Optimistic update
-        removeItem(productId);
-        set({ isSyncing: true, lastError: null });
-
-        try {
-          const response = await fetch(`/api/cart?productId=${productId}`, {
-            method: 'DELETE',
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to remove item from server');
-          }
-
-          set({ isSyncing: false });
-        } catch (error) {
-          console.error('Error in removeFromCart action:', error);
-          
-          // 2. Rollback
-          if (previousItem.product) {
-            addItem(previousItem.product, previousItem.quantity);
-          }
-
-          set({ 
-            isSyncing: false, 
-            lastError: error instanceof Error ? error.message : 'Unknown error' 
-          });
-          throw error;
-        }
       },
 
       /**
@@ -214,45 +116,6 @@ export const useCartStore = create<CartStore>()(
             }, 0),
           };
         });
-      },
-
-      /**
-       * Update product quantity (Sync with backend)
-       */
-      updateCartQuantity: async (productId: string, quantity: number) => {
-        const { updateQuantity, getItem } = get();
-        const previousItem = getItem(productId);
-        const previousQuantity = previousItem?.quantity || 0;
-
-        // 1. Optimistic update
-        updateQuantity(productId, quantity);
-        set({ isSyncing: true, lastError: null });
-
-        try {
-          const response = await fetch('/api/cart', {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ productId, quantity }),
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to update quantity on server');
-          }
-
-          set({ isSyncing: false });
-        } catch (error) {
-          console.error('Error in updateCartQuantity action:', error);
-          
-          // 2. Rollback
-          updateQuantity(productId, previousQuantity);
-          
-          set({ 
-            isSyncing: false, 
-            lastError: error instanceof Error ? error.message : 'Unknown error' 
-          });
-          throw error;
-        }
       },
 
       /**

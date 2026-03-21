@@ -6,29 +6,18 @@ import ProductContent from './ProductContent';
 import ProductImageSkeleton from '@/components/skeletons/ProductImageSkeleton';
 import { Product } from '@/lib/types/types';
 import { ProductDetailsSkeleton } from '@/components/skeletons';
+import { getProductById, getProducts } from '@/lib/mock/products';
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
 }
 
 async function getProduct(id: string): Promise<Product> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/products/${id}`, {
-    cache: 'no-store',
-  });
-  if (!res.ok) {
+  const product = await getProductById(id);
+  if (!product) {
     notFound();
   }
-  const { data } = await res.json();
-  return data as Product;
-}
-
-async function getAllProducts(): Promise<Product[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/products`, {
-    cache: 'no-store',
-  });
-  if (!res.ok) return [];
-  const { data } = await res.json();
-  return data as Product[];
+  return product;
 }
 
 export async function generateMetadata({
@@ -67,7 +56,7 @@ export async function generateMetadata({
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
   const product = await getProduct(id);
-  const allProducts = await getAllProducts();
+  const allProducts = await getProducts();
 
   const relatedProducts = allProducts
     .filter(p => p.category === product.category && p.id !== product.id)

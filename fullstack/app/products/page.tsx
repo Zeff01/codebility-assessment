@@ -1,5 +1,5 @@
-import { Product } from '@/lib/types/types';
 import ProductCard from '@/components/ProductCard';
+import { getProducts } from '@/lib/mock/products';
 
 export const metadata = {
   title: 'Products | Shop',
@@ -7,11 +7,7 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/products`, {
-    cache: 'no-store',
-  });
-  const { data: products }: { data: Product[] } = await res.json();
-
+  const products = await getProducts();
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Decorative background element */}
