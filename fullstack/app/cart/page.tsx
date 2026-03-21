@@ -7,38 +7,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CartPage() {
-  const { items, removeItem, updateQuantity } = useCartStore();
+  const { items, removeFromCart, updateCartQuantity } = useCartStore();
 
   const handleUpdateQuantity = async (productId: string, newQty: number) => {
     try {
-      const response = await fetch('/api/cart', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId, quantity: newQty }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'Failed to update quantity');
-
-      updateQuantity(productId, newQty);
+      await updateCartQuantity(productId, newQty);
     } catch (error) {
-      console.error('Error updating quantity:', error);
       alert(error instanceof Error ? error.message : 'Failed to update quantity');
     }
   };
 
   const handleRemoveItem = async (productId: string) => {
     try {
-      const response = await fetch(`/api/cart?productId=${productId}`, {
-        method: 'DELETE',
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'Failed to remove item');
-
-      removeItem(productId);
+      await removeFromCart(productId);
     } catch (error) {
-      console.error('Error removing item:', error);
       alert(error instanceof Error ? error.message : 'Failed to remove item');
     }
   };
@@ -55,7 +37,7 @@ export default function CartPage() {
             <div className="text-6xl mb-6 font-serif">🛒</div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Your cart is feeling light</h2>
             <p className="text-slate-500 mb-8 max-w-md mx-auto">
-              Looks like you haven't added anything to your cart yet. 
+              Looks like you haven't added anything to your cart yet.
               Explore our premium collection and find something special.
             </p>
             <Link
@@ -70,7 +52,7 @@ export default function CartPage() {
             {/* Cart Items List */}
             <div className="lg:col-span-2 space-y-6">
               {items.map((item) => (
-                <div 
+                <div
                   key={item.productId}
                   className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col sm:flex-row gap-6 hover:shadow-md transition-shadow group"
                 >
@@ -90,13 +72,13 @@ export default function CartPage() {
                   <div className="flex-grow flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-start mb-2">
-                        <Link 
+                        <Link
                           href={`/products/${item.productId}`}
                           className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
                         >
                           {item.product?.name}
                         </Link>
-                        <button 
+                        <button
                           onClick={() => handleRemoveItem(item.productId)}
                           className="text-gray-400 hover:text-rose-500 transition-colors p-1"
                           aria-label="Remove item"
@@ -134,7 +116,7 @@ export default function CartPage() {
             <div className="lg:sticky lg:top-24">
               <CartSummary />
               <div className="mt-6 text-center">
-                <Link 
+                <Link
                   href="/products"
                   className="text-sm font-bold text-slate-400 hover:text-blue-600 transition-colors uppercase tracking-[0.2em]"
                 >

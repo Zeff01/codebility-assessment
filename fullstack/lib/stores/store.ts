@@ -16,7 +16,9 @@ interface CartStore {
   addItem: (product: Product, quantity: number) => void;
   addToCart: (product: Product, quantity: number) => Promise<void>;
   removeItem: (productId: string) => void;
+  removeFromCart: (productId: string) => Promise<void>;
   updateQuantity: (productId: string, quantity: number) => void;
+  updateCartQuantity: (productId: string, quantity: number) => Promise<void>;
   clearCart: () => void;
   getItem: (productId: string) => CartItem | undefined;
 }
@@ -143,6 +145,46 @@ export const useCartStore = create<CartStore>()(
       },
 
       /**
+       * Remove product from cart (Sync with backend)
+       */
+      removeFromCart: async (productId: string) => {
+        const { removeItem, getItem, addItem } = get();
+        const previousItem = getItem(productId);
+
+        if (!previousItem) return;
+
+        // 1. Optimistic update
+        removeItem(productId);
+        set({ isSyncing: true, lastError: null });
+
+        try {
+          const response = await fetch(`/api/cart?productId=${productId}`, {
+            method: 'DELETE',
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to remove item from server');
+          }
+
+          set({ isSyncing: false });
+        } catch (error) {
+          console.error('Error in removeFromCart action:', error);
+          
+          // 2. Rollback
+          if (previousItem.product) {
+            addItem(previousItem.product, previousItem.quantity);
+          }
+
+          set({ 
+            isSyncing: false, 
+            lastError: error instanceof Error ? error.message : 'Unknown error' 
+          });
+          throw error;
+        }
+      },
+
+      /**
        * Update product quantity
        * If quantity becomes 0, remove the item
        */
@@ -168,6 +210,45 @@ export const useCartStore = create<CartStore>()(
             }, 0),
           };
         });
+      },
+
+      /**
+       * Update product quantity (Sync with backend)
+       */
+      updateCartQuantity: async (productId: string, quantity: number) => {
+        const { updateQuantity, getItem } = get();
+        const previousItem = getItem(productId);
+        const previousQuantity = previousItem?.quantity || 0;
+
+        // 1. Optimistic update
+        updateQuantity(productId, quantity);
+        set({ isSyncing: true, lastError: null });
+
+        try {
+          const response = await fetch('/api/cart', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productId, quantity }),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to update quantity on server');
+          }
+
+          set({ isSyncing: false });
+        } catch (error) {
+          console.error('Error in updateCartQuantity action:', error);
+          
+          // 2. Rollback
+          updateQuantity(productId, previousQuantity);
+          
+          set({ 
+            isSyncing: false, 
+            lastError: error instanceof Error ? error.message : 'Unknown error' 
+          });
+          throw error;
+        }
       },
 
       /**
