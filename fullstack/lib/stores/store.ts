@@ -84,8 +84,11 @@ export const useCartStore = create<CartStore>()(
        * Uses optimistic updates for better UX
        */
       addToCart: async (product: Product, quantity: number) => {
-        const { addItem, updateQuantity, getItem } = get();
-        
+        const { addItem, removeItem, updateQuantity, getItem } = get();
+
+        // Snapshot state BEFORE the optimistic update so rollback is accurate
+        const previousItem = getItem(product.id);
+
         // 1. Optimistic update
         addItem(product, quantity);
         set({ isSyncing: true, lastError: null });
@@ -101,25 +104,26 @@ export const useCartStore = create<CartStore>()(
             const errorData = await response.json();
             throw new Error(errorData.error || 'Failed to sync with server');
           }
-          
+
           // API success! We're already updated locally.
-          set({ isSyncing: false });
+          set({ isSyncing: false, lastError: null });
         } catch (error) {
           console.error('Error in addToCart action:', error);
-          
-          // 2. Rollback on failure
-          const currentItem = getItem(product.id);
-          if (currentItem) {
-            // If the item existed and we added to it, subtract.
-            // If it's a new item, updateQuantity to 0 will remove it.
-            updateQuantity(product.id, currentItem.quantity - quantity);
+
+          // 2. Rollback on failure using the pre-action snapshot
+          if (previousItem) {
+            // Item existed before — restore its original quantity
+            updateQuantity(product.id, previousItem.quantity);
+          } else {
+            // Item was brand-new — remove it entirely
+            removeItem(product.id);
           }
-          
-          set({ 
-            isSyncing: false, 
-            lastError: error instanceof Error ? error.message : 'Unknown error' 
+
+          set({
+            isSyncing: false,
+            lastError: error instanceof Error ? error.message : 'Unknown error',
           });
-          
+
           // Throw so the component can handle UI errors (like alerts/toasts)
           throw error;
         }
