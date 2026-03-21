@@ -118,6 +118,16 @@ export async function PATCH(
       );
     }
 
+    if (typeof body.productId !== 'string') {
+      return NextResponse.json(
+        {
+          error: 'Product ID must be a string',
+          status: 400,
+        },
+        { status: 400 }
+      );
+    }
+
     // Mock delay
     await new Promise((resolve) => setTimeout(resolve, 200));
 
