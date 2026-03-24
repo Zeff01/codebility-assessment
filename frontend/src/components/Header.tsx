@@ -24,13 +24,13 @@ const Header = () => {
     <div className="px-4 max-w-7xl mx-auto">
       <div className="flex justify-between items-center py-3">
         <div className="flex items-center gap-6">
-          <TextAlignJustify className="block sm:hidden" size={30} />
+          <TextAlignJustify className="block md:hidden" size={30} />
           <div>
             <p className="text-3xl text-[#1a2b4b] font-semibold">Moola</p>
           </div>
         </div>
 
-        <ul className="hidden sm:flex gap-8 font-semibold">
+        <ul className="hidden md:flex gap-8 font-semibold">
           {navLinks.map((link) => {
             return (
               <li key={link.href}>

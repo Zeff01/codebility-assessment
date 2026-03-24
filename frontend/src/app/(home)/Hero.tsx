@@ -25,8 +25,9 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="w-full hidden md:flex max-w-[570px] bg-amber-300 overflow-hidden rounded-4xl">
+        <div className="w-full hidden md:flex max-w-[570px] bg-white overflow-hidden rounded-4xl border border-zinc-300">
           <div className="relative aspect-square md:aspect-[3/3] w-full flex justify-center items-center">
+            <div className="absolute inset-0 bg-linear-to-b hover:from-white/15 active:from-slate/10 from-zinc-300/40 to-gray-400/70 rounded-2xl z-10"></div>
             <Image
               src="/images/phone-png.jpg"
               alt="Hero Phone Mockup"
