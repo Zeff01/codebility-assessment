@@ -44,7 +44,7 @@ const Header = () => {
             );
           })}
         </ul>
-        <div className="hidden sm:flex">
+        <div className="hidden md:flex">
           <button className="bg-[#59fdbd] py-3 px-6 rounded-xl font-semibold">
             Get Started
           </button>
