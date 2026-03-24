@@ -16,7 +16,7 @@ const MAPPING = {
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
-    React.ComponentProps<typeof MaterialIcons>['name']
+    any
   >
 >;
 
@@ -39,5 +39,6 @@ export function IconSymbol({
   style?: StyleProp<ViewStyle>;
   weight?: SymbolWeight;
 }) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+  // @ts-ignore
+  return <MaterialIcons color={color} size={size} name={MAPPING[name] as any} style={style as any} />;
 }

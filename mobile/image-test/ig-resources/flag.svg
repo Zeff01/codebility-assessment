@@ -1,0 +1,12 @@
+<svg width="100" height="60" viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">
+  <rect width="50" height="30" fill="#012169"/>
+  
+  <path d="M0,0 L50,30 M50,0 L0,30" stroke="#FFFFFF" stroke-width="6"/>
+  
+  <path d="M0,0 L50,30 M50,0 L0,30" stroke="#C8102E" stroke-width="2" 
+        stroke-dasharray="25,25" stroke-dashoffset="0"/>
+  
+  <path d="M25,0 V30 M0,15 H50" stroke="#FFFFFF" stroke-width="10"/>
+  
+  <path d="M25,0 V30 M0,15 H50" stroke="#C8102E" stroke-width="6"/>
+</svg>
