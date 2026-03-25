@@ -1,3 +1,4 @@
+import { TrendingUp } from "lucide-react";
 import Image from "next/image";
 
 const Hero = () => {
@@ -25,7 +26,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="w-full hidden md:flex max-w-[570px] bg-white overflow-hidden rounded-4xl border border-zinc-300">
+        <div className="relative w-full hidden md:flex max-w-[570px] bg-white overflow-hidden rounded-4xl border border-zinc-300">
           <div className="relative aspect-square md:aspect-[3/3] w-full flex justify-center items-center">
             <div className="absolute inset-0 bg-linear-to-b hover:from-white/15 active:from-slate/10 from-zinc-300/40 to-gray-400/70 rounded-2xl z-10"></div>
             <Image
@@ -34,6 +35,17 @@ const Hero = () => {
               fill
               className="object-contain p-10"
             />
+            <div className="absolute z-50 left-10 bottom-20 border border-stone-50 rounded-2xl py-4 px-5 bg-stone-200">
+              <div className="absolute inset-0 w-full h-full bg-transparent"></div>
+              <p className="font-semibold">$42,890.00 </p>
+              <p className="text-gray-700 flex">
+                MONTHLY GROWTH{" "}
+                <span className="pb-1 ml-1 flex items-center text-[#00a776] font-semibold">
+                  <TrendingUp size={16} />
+                  <span className="ml-1">+12.4%</span>
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
