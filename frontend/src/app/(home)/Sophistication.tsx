@@ -35,8 +35,8 @@ const Sophistication = () => {
           <div className="flex order-2 lg:order-1 justify-center flex-col gap-15">
             {tags.map((tag) => {
               return (
-                <div className="flex gap-6" key={tag.title}>
-                  <h1 className="text-[clamp(1.875rem,4vw,4.5rem)] font-bold text-gray-100">
+                <div className="flex items-center gap-6" key={tag.title}>
+                  <h1 className="text-[clamp(2.1rem,5vw,4.5rem)] font-bold text-gray-100">
                     {tag.count}
                   </h1>
                   <div className="flex flex-col gap-2">

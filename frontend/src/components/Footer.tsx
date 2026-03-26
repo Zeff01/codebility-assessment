@@ -8,18 +8,38 @@ const Footer = () => {
         <div className="px-4 max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between items-center py-[clamp(2rem,5vw,3.75rem)]">
             <p className="text-2xl text-[#1a2b4b] font-semibold">Moola</p>
-            <ul className="flex  flex-wrap lg:flex-row gap-4 text-xs my-10">
+            <ul className="flex flex-wrap lg:flex-row gap-6 text-[10px] sm:text-xs my-10 font-medium tracking-wider text-slate-500">
               <li>
-                <Link href="">PRIVACY POLICY</Link>
+                <Link
+                  href=""
+                  className="hover:text-[#031635] transition-colors duration-200 border-b border-transparent hover:border-[#031635] pb-0.5"
+                >
+                  PRIVACY POLICY
+                </Link>
               </li>
               <li>
-                <Link href="">TERMS OF SERVICE</Link>
+                <Link
+                  href=""
+                  className="hover:text-[#031635] transition-colors duration-200 border-b border-transparent hover:border-[#031635] pb-0.5"
+                >
+                  TERMS OF SERVICE
+                </Link>
               </li>
               <li>
-                <Link href="">COOKIE SETTINGS</Link>
+                <Link
+                  href=""
+                  className="hover:text-[#031635] transition-colors duration-200 border-b border-transparent hover:border-[#031635] pb-0.5"
+                >
+                  COOKIE SETTINGS
+                </Link>
               </li>
               <li>
-                <Link href="">CONTACT</Link>
+                <Link
+                  href=""
+                  className="hover:text-[#031635] transition-colors duration-200 border-b border-transparent hover:border-[#031635] pb-0.5"
+                >
+                  CONTACT
+                </Link>
               </li>
             </ul>
             <p className="text-xs text-gray-400 text-center">

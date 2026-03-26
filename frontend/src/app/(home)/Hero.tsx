@@ -19,10 +19,11 @@ const Hero = () => {
               experience. Precision security, and elegance every transaction.
             </p>
             <div className="mt-5 flex flex-col md:flex-row gap-4 text-[clamp(0.75rem,2vw,1rem)]">
-              <button className="bg-[#031635] text-white py-3 px-[clamp(1rem,2vw,1.75rem)] rounded-xl">
+              <button className="bg-[#031635] text-white py-3 px-[clamp(1rem,2vw,1.75rem)] rounded-xl transition-all duration-300 ease-in-out hover:bg-[#0a2a5e] hover:shadow-lg active:scale-95">
                 Open Your Account
               </button>
-              <button className="bg-slate-100 text-[#031635] py-3 px-[clamp(1rem,2vw,1.75rem)] rounded-xl">
+
+              <button className="bg-slate-100 text-[#031635] py-3 px-[clamp(1rem,2vw,1.75rem)] rounded-xl transition-all duration-300 ease-in-out hover:bg-slate-200 hover:shadow-md active:scale-95 border border-transparent hover:border-slate-300">
                 View Demo
               </button>
             </div>

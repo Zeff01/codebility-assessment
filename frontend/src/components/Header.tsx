@@ -46,7 +46,7 @@ const Header = () => {
             })}
           </ul>
           <div className="hidden md:flex">
-            <button className="bg-[#59fdbd] py-3 px-6 rounded-xl font-semibold">
+            <button className="bg-[#59fdbd] text-[#031635] py-3 px-6 rounded-xl font-semibold transition-all duration-300 ease-in-out hover:bg-[#48e0a8] hover:shadow-[0_0_20px_rgba(89,253,189,0.4)] hover:-translate-y-0.5 active:scale-95 active:translate-y-0">
               Get Started
             </button>
           </div>
