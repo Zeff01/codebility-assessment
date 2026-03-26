@@ -10,7 +10,7 @@ const Hero = () => {
             <span className="bg-slate-300 w-fit px-3 py-1 rounded-2xl text-sm mb-6 mt-7">
               FUTURE OF FINANCE
             </span>
-            <h1 className="text-[clamp(2.1rem,10.7vw,7rem)] md:text-[clamp(1.2rem,5vw,4rem)] lg:text-[clamp(2.4rem,5.55vw,4.7rem)] xl:text-[clamp(2.1rem,10.5vw,4.5rem)] leading-none font-semibold text-[#031635]">
+            <h1 className="text-[clamp(2.1rem,10.7vw,7rem)] md:text-[clamp(1.2rem,5vw,4rem)] lg:text-[clamp(2.5rem,5.44vw,4.7rem)] xl:text-[clamp(2.1rem,10.5vw,4.5rem)] leading-none font-semibold text-[#031635]">
               The Architectural <span className="text-[#00a776]">Ledger</span>{" "}
               for Wealth.
             </h1>
