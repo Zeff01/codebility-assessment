@@ -10,7 +10,7 @@ const StartBanner = () => {
             Join over 10,000 high-net-worth individuals and firms managing their
             future with Moola.
           </p>
-          <button className="py-4 px-6 bg-[#031635] rounded-2xl text-white text-[clamp(0.875rem,5vw,1rem)]">
+          <button className="py-4 px-7 bg-[#031635] rounded-2xl text-white text-[clamp(0.875rem,3vw,1rem)]">
             Create Professional Account
           </button>
         </div>
