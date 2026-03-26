@@ -50,8 +50,8 @@ const Sophistication = () => {
             })}
           </div>
           <div className="flex order-1 lg:order-2 flex-col gap-10">
-            <div className="flex flex-col gap-3">
-              <h3 className="text-[#00a776] font-semibold">PROCESS</h3>
+            <div className="flex flex-col gap-4">
+              <h3 className="text-[#00a776] font-semibold text-sm">PROCESS</h3>
               <h1 className="text-[clamp(1.3rem,7vw,2.25rem)] leading-none font-bold max-w-[20ch]">
                 Sophistication Simplified. Crafted for the Modern Steward.
               </h1>
