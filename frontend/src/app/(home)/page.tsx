@@ -1,6 +1,7 @@
 import Hero from "./Hero";
 import Precision from "./Precision";
 import Sophistication from "./Sophistication";
+import StartBanner from "./StartBanner";
 import Testimonial from "./Testimonial";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Precision />
       <Sophistication />
       <Testimonial />
+      <StartBanner />
     </main>
   );
 }
