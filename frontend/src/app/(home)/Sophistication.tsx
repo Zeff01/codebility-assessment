@@ -56,12 +56,12 @@ const Sophistication = () => {
                 Sophistication Simplified. Crafted for the Modern Steward.
               </h1>
             </div>
-            <div className="relative w-full max-w-140 aspect-[12/9] xl:w-140 xl:h-100 overflow-hidden rounded-lg">
+            <div className="relative w-full max-w-140 aspect-[12/9] xl:w-140 xl:h-100 overflow-hidden rounded-2xl border-3 border-gray-200">
               <Image
                 src="/images/sophistication.png"
                 alt="Portfolio Image"
                 fill
-                className="object-cover"
+                className="object-cover grayscale"
               />
             </div>
           </div>
