@@ -1,14 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
-import  path from "path";
-import { fileURLToPath } from "url";
+
 import todoRoutes from "./routes/todoRoutes.js";
 
 
 dotenv.config();
 
-const  ___filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(___filename);
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -16,7 +13,6 @@ const PORT = process.env.PORT || 4000;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//app.use(express.static(path.join(__dirname, "public")));
 
 // Basic route
 app.get("/", (req, res) => {
