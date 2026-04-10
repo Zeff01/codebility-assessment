@@ -2,6 +2,7 @@
   "name": "codebility-assessment",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "workspaces": [
     "frontend",
     "backend",
@@ -11,6 +12,13 @@
     "start:frontend": "npm run dev --workspace frontend",
     "start:backend": "npm run start --workspace backend",
     "start:mobile": "npm run start --workspace mobile",
-    "install:all": "npm install --workspaces"
+    "install:all": "npm install --workspaces",
+    "nodemon:backend": "nodemon backend"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "cors": "^2.8.6"
   }
 }
