@@ -35,7 +35,7 @@ Replace `firstname-lastname` with your actual name.
 
 ### 4. Implement the Design
 
-1. Look at [Moola.com](https://www.moola.com/) for reference
+1. Look at [Moola.com](https://www.moola.com/) for reference   
 2. Create a simplified version of the landing page
 3. Focus on these key elements:
    - Hero section with heading, subheading and call-to-action
