@@ -25,7 +25,7 @@ export default function Home() {
         <span className="section-label">posts</span>
         <div className="posts-grid">
           {posts.map((post) => (
-            <Link key={post.id} href={`/posts/${post.id}`} className="post-card">
+            <Link key={post.id} href={`/posts/${post.id}`} className="post-card" suppressHydrationWarning>
               <div className="post-card-date">{post.date}</div>
               <h2>{post.title}</h2>
               <p>{post.excerpt}</p>
