@@ -1,0 +1,26 @@
+import { posts } from "@/data/posts";
+import { NextResponse } from "next/server";
+
+type Props = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export async function GET(
+  request: Request,
+  { params }: Props
+) {
+  const { id } = await params;
+
+  const post = posts.find((p) => p.id === Number(id));
+
+  if (!post) {
+    return NextResponse.json(
+      { message: "Post not found" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(post);
+}
