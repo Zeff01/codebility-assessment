@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  ADMIN
+  DEV
+  QA
+}
+
+model Group {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  members   User[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(DEV)
+  groupId   String?
+  group     Group?   @relation(fields: [groupId], references: [id])
+  createdAt DateTime @default(now())
+  todos     Todo[]
+}
+
+enum TodoStatus {
+  TO_DO
+  IN_PROGRESS
+  READY_FOR_TESTING
+  TESTED_AND_VERIFIED
+  COMPLETED
+}
+
+model Todo {
+  id                      String     @id @default(cuid())
+  title                   String
+  description             String?
+  problem                 String?
+  acceptanceCriteria      String?
+  technicalImplementation String?
+  points                  Int        @default(0)
+  status                  TodoStatus @default(TO_DO)
+  createdAt               DateTime   @default(now())
+  userId                  String
+  user                    User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
