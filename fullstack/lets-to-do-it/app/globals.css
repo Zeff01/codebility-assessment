@@ -1,0 +1,43 @@
+/* app/globals.css — full corrected file for the dark theme.
+
+   The bug: the old `body { background: var(--background); }` rule was a
+   plain, UNLAYERED rule. Tailwind's utilities (bg-[#05070D] etc.) live
+   inside `@layer utilities` via `@import "tailwindcss"` — and in CSS,
+   unlayered rules always win over layered ones, no matter the specificity.
+   That's why the light --background (#ffffff) was beating the dark
+   Tailwind class on <body>.
+
+   Fix: removed the plain `body {...}` rule entirely (layout.tsx already
+   sets bg/text via Tailwind classes on <body>), and removed the
+   prefers-color-scheme flip so the app doesn't accidentally go light in a
+   light-OS browser. --background/--foreground vars are kept in case
+   anything else references --color-background / --color-foreground, just
+   pointed at the dark palette now. */
+
+@import "tailwindcss";
+
+:root {
+  --background: #05070d;
+  --foreground: #f1f5f9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.08); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}

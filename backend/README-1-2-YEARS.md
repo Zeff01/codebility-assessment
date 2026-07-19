@@ -2,22 +2,39 @@
 
 ## Overview
 
-Welcome to the **1–2 Years** backend assessment!  
-Your goal is to create a **basic Node.js + Express** RESTful API with data validation and proper error handling. This assessment is designed to be completed in **1–2 days** to demonstrate your fundamental backend development skills.
+Welcome to the **1–2 Years** backend assessment! Your task is to create a simple REST API with a few endpoints. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. **Create a new branch**: `firstname-lastname/1-2-years-backend`
-2. Set up a modern **Node.js + Express** application with TypeScript
-3. Implement **CRUD endpoints** for a "Todo" resource
-4. Use **input validation** for all endpoints
-5. Implement **proper error handling** with status codes
-6. Store data **in-memory** (no database setup required)
-7. Write a **simple test** for at least one endpoint
+1. Create a simple API with CRUD operations for a todo list
+2. Store data in memory (no database required)
+3. Implement basic error handling
 
-### Features to Implement
+## Steps to Complete
 
-1. **Todo API with the following endpoints**:
+### 1. Fork the Repository
+
+1. Go to [https://github.com/Zeff01/codebility-assessment](https://github.com/Zeff01/codebility-assessment)
+2. Click the "Fork" button in the upper right corner
+
+### 2. Clone Your Fork
+
+```bash
+git clone https://github.com/YOUR-USERNAME/codebility-assessment.git
+cd codebility-assessment/backend
+```
+
+### 3. Create a Branch
+
+```bash
+git checkout -b firstname-lastname/1-2-years-backend
+```
+
+Replace `firstname-lastname` with your actual name.
+
+### 4. Implementation
+
+1. Create a simple API with these endpoints:
 
    - `GET /api/todos` - List all todos
    - `GET /api/todos/:id` - Get a single todo
@@ -25,112 +42,55 @@ Your goal is to create a **basic Node.js + Express** RESTful API with data valid
    - `PUT /api/todos/:id` - Update a todo
    - `DELETE /api/todos/:id` - Delete a todo
 
-2. **Data Structure**:
+2. Each todo should have:
 
-   ```typescript
-   interface Todo {
-     id: string;
-     title: string;
-     completed: boolean;
-     createdAt: Date;
-     updatedAt: Date;
-   }
+   - id
+   - title
+   - completed (boolean)
+   - createdAt
+
+3. Add basic validation and error handling
+
+### 5. Test Your Work
+
+1. Test your API using tools like Postman, Insomnia, or curl
+2. Make sure all endpoints work as expected
+
+### 6. Submit Your Work
+
+1. Commit and push your changes:
+
+   ```bash
+   git add .
+   git commit -m "Implement todo API"
+   git push origin firstname-lastname/1-2-years-backend
    ```
 
-3. **Validation Requirements**:
-   - Todo title must be between 3 and 100 characters
-   - IDs should be validated as UUIDs
-   - Return appropriate 400 errors for invalid input
+2. Create a Pull Request:
+   - Go to your fork on GitHub
+   - Click "Contribute" and "Open pull request"
+   - Make sure the base repository is set to `Zeff01/codebility-assessment`
+   - Add a title and brief description of your implementation
 
-## Steps to Complete
+## What We're Looking For
 
-### 1. Create & Switch to a New Branch
+- Clean, readable code
+- Proper API design
+- Basic error handling
+- Simple project organization
 
-git checkout -b `firstname-lastname/1-2-years-backend`
+## Technology Choices
 
-Replace `firstname-lastname` with your actual name.
+- Use Node.js
+- Feel free to use Express, Fastify, Koa, or any framework you prefer
+- Use JavaScript or TypeScript (your choice)
+- Choose any libraries you're comfortable with
 
-### 2. Implement the API
+## Time Allowance
 
-1. **Create the Todo API**:
+- **Expected coding time**: 1-2 hours
+- **Submission deadline**: 1-2 days
 
-   - Implement CRUD operations for todos
-   - Use UUIDs for todo IDs
-   - Include validation for inputs
-   - Return appropriate status codes
+This assessment is intentionally simple. We're looking for clean code and good API design principles.
 
-2. **Basic Error Handling**:
-
-   - Create middleware for handling errors
-   - Return appropriate status codes and error messages
-   - Ensure all error responses follow a consistent format
-
-3. **Example Implementation**:
-
-   ```typescript
-   // src/index.ts
-   import express from "express";
-   import cors from "cors";
-   import todoRoutes from "./routes/todos";
-   import errorHandler from "./middleware/error-handler";
-
-   const app = express();
-   const PORT = process.env.PORT || 4000;
-
-   app.use(cors());
-   app.use(express.json());
-
-   // Routes
-   app.use("/api/todos", todoRoutes);
-
-   // Health check
-   app.get("/health", (req, res) => {
-     res.status(200).json({ status: "ok" });
-   });
-
-   // Error handler
-   app.use(errorHandler);
-
-   app.listen(PORT, () => {
-     console.log(`Server running on http://localhost:${PORT}`);
-   });
-   ```
-
-### 5. Testing
-
-1. Write at least one simple test for the Todo API
-2. Test the GET and POST endpoints
-
-### 6. Commit & Push
-
-```bash
-git add .
-git commit -m "Implement Todo API with validation and error handling"
-git push origin firstname-lastname/1-2-years-backend
-```
-
-### 7. Open a Pull Request (PR)
-
-1. Go to the repository on GitHub
-2. Open a new Pull Request with your branch
-3. Give it a descriptive title
-4. In the description, include:
-   - Overview of your implementation
-   - How to run the API locally
-   - Any additional features you implemented
-
-## Evaluation Criteria
-
-Your submission will be evaluated based on:
-
-1. **Code Quality**: Clean, readable code with proper error handling
-2. **API Design**: Proper use of HTTP methods and status codes
-3. **Validation**: Proper input validation and error responses
-4. **Organization**: Logical project structure and file organization
-5. **Testing**: Basic test coverage of at least one endpoint
-
-## Time Estimate
-
-This assessment should take approximately 1–2 days to complete.
-
-**Good luck, and happy coding!**
+**Good luck!**

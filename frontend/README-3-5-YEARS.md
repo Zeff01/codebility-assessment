@@ -2,116 +2,94 @@
 
 ## Overview
 
-Welcome to the **3–5 Years** frontend assessment!  
-This task involves integrating data fetching, dynamic routing, and a bit of React state management. The scope is intended for a mid-level developer who can spend around **2–4 days** on the challenge.
+Welcome to the **3–5 Years** frontend assessment! Your task is to build a simple product listing page with data fetching. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. **Use Next.js** (current stable release).
-2. Fetch data from a public API and display it in a list page (e.g., `/articles`).
-3. Implement a **dynamic route** for item details (e.g., `/articles/[id]`).
-4. Include a **like/favorite** feature with basic React state (or local storage).
-5. Ensure **basic responsiveness** and a clean UI (no need for pixel-perfect design).
-6. Work on a **new branch** named `firstname-lastname/3-5-Years-frontend` before opening a PR.
+1. Create a page that fetches and displays products from a public API
+2. Implement a simple detail view when a product is clicked
+3. Add basic filtering or search functionality
+4. Make it responsive
 
 ## Steps to Complete
 
-### 1. Create & Switch to a New Branch
+### 1. Fork the Repository
 
-1. Clone or pull the latest version of this repository.
-2. From your local repo folder, run:
+1. Go to [https://github.com/Zeff01/codebility-assessment](https://github.com/Zeff01/codebility-assessment)
+2. Click the "Fork" button in the upper right corner
 
-- git checkout -b `firstname-lastname/3-5-Years-frontend`
-  Replace firstname-lastname with your actual name.
+### 2. Clone Your Fork
 
-3. Confirm you’re on the new branch:
+```bash
+git clone https://github.com/YOUR-USERNAME/codebility-assessment.git
+cd codebility-assessment/frontend
+```
 
-- git branch
+### 3. Create a Branch
 
-# You should see your new branch highlighted
+```bash
+git checkout -b firstname-lastname/3-5-years-frontend
+```
 
-### 2. Data Fetching & Display
+Replace `firstname-lastname` with your actual name.
 
-1. Choose a public API (e.g., JSONPlaceholder or Fake Store API).
+### 4. Implementation
 
-2. Create a new page (e.g., pages/articles/index.tsx) to:
+1. Create a product listing page that:
 
-- Fetch a list of items (e.g., articles, products, or posts).
+   - Fetches data from any public API (suggestion: [Fake Store API](https://fakestoreapi.com/))
+   - Displays products in a grid or list
+   - Shows basic product information (image, name, price)
 
-- Display them in a responsive list or grid layout.
+2. Add a simple detail view:
 
-- Handle loading and error states gracefully.
+   - When a product is clicked, show more details
+   - This can be a new page or a modal
 
-### 3. Dynamic Routing
+3. Implement basic functionality:
+   - Add simple filtering or search functionality
+   - Handle loading and error states
 
-- Implement a dynamic route (e.g., pages/articles/[id].tsx).
+### 5. Test Your Work
 
-- On this page, fetch the details for a single item based on the id.
+1. Make sure your application works on different screen sizes
+2. Check that your data fetching and interactions work properly
 
-- Display the item’s details in a clear layout.
+### 6. Submit Your Work
 
-### 4. Like/Favorite Feature
+1. Commit and push your changes:
 
-1. Allow the user to “like” or “favorite” the item on its detail page.
+   ```bash
+   git add .
+   git commit -m "Implement product listing page"
+   git push origin firstname-lastname/3-5-years-frontend
+   ```
 
-2. Store the liked state in either:
+2. Create a Pull Request:
+   - Go to your fork on GitHub
+   - Click "Contribute" and "Open pull request"
+   - Make sure the base repository is set to `Zeff01/codebility-assessment`
+   - Add a title and brief description of your implementation
 
-- React state at the page/component level, or
+## What We're Looking For
 
-- Local storage for simple persistence.
+- Clean, readable code
+- Proper data fetching approach
+- Basic state management
+- Responsive design
+- Error handling
 
-3. Indicate on the main list which items are liked/favorited (optional but nice to have).
+## Technology Choices
 
-### 5. Basic UI & Responsiveness
+- You can use Next.js or React
+- Feel free to use any styling approach (CSS, Tailwind, styled-components, etc.)
+- Choose any state management solution you're comfortable with
 
-1. Ensure the layout adapts to different screen sizes.
+## Time Allowance
 
-2. Use any styling approach you prefer (CSS modules, Tailwind, etc.).
+- **Expected coding time**: 1-2 hours
+- **Submission deadline**: 1-2 days
 
-3. Keep things clean and straightforward (no need for elaborate design).
+Focus on quality over quantity. A clean, simple implementation is better than a complex one with bugs.
 
-### 6. Commit & Push
-
-Stage and commit your changes:
-
-- git add .
-- git commit -m "Implement data fetch, dynamic routing, and favorite feature"
-  Push your branch to the remote repository:
-
-- git push origin `firstname-lastname/3-5-years-frontend`
-
-### 7. Open a Pull Request (PR)
-
-1. Go to the repository on GitHub (or your Git hosting platform).
-
-2. Look for “Compare & pull request” or click “New pull request.”
-
-3. Select your branch (`firstname-lastname/3-5-years-frontend`) as the source.
-
-4. Give the PR a clear title (e.g., "Feature: [Your Name] - 3–5 Years Frontend Challenge").
-
-5. In the description, mention:
-
-- Your approach to fetching data and routing.
-
-- Any challenges or edge cases encountered.
-
-- Any areas you might improve with more time.
-
-6. Submit the PR for review.
-
-### Time Estimate
-
-- Plan for 2–4 days. If you need extra time or skip any part, please note it in your PR.
-
-### Tips
-
-- Keep code readable and well-structured.
-
-- Demonstrate a clear grasp of React hooks and Next.js routing.
-
-- Focus on basic performance (avoid unnecessary re-renders).
-
-- Document any assumptions or simplifications you made.
-
-### Good luck, and happy coding!
+**Good luck!**

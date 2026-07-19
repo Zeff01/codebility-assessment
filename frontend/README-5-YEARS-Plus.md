@@ -2,147 +2,99 @@
 
 ## Overview
 
-Welcome to the **Senior** (5+ years) frontend assessment!  
-This challenge is designed to test your **architecture decisions**, **code quality**, and **advanced usage** of React/Next.js. You'll integrate **multiple data sources**, focus on performance, and demonstrate best practices with Next.js 15's App Router and React Server Components.
-
-**Branch Requirement**: Please work on a branch named `firstname-lastname/5-years-plus` (replacing `firstname-lastname` with your own).
+Welcome to the **Senior** frontend assessment! Your task is to create a small dashboard that demonstrates your architecture decisions and React knowledge. This assessment is designed to take **1-2 hours** of coding time, but you have **1-2 days** to complete it.
 
 ## Task Summary
 
-1. **Build a dashboard application** with multiple sections (overview, analytics, user management, etc.)
-2. **Fetch data from these specific APIs**:
-   - [OpenWeatherMap API](https://openweathermap.org/api) - For weather data visualization
-   - [Finnhub Stock API](https://finnhub.io/) - For financial market data
-   - (Free API keys are available for both services with reasonable usage limits)
-3. **Implement modern data fetching**:
-   - Server Components for initial data loads
-   - Client Components with React Query/SWR for interactive elements
-   - Proper loading and error states using Next.js 15 features
-4. **Next.js 15 Architecture**:
-   - Leverage the App Router
-   - Use React Server Components appropriately
-   - Implement parallel data fetching where beneficial
-   - Apply proper client/server component boundaries
-5. **Performance Optimization**:
-   - Implement Suspense boundaries intelligently
-   - Use dynamic imports for code splitting
-   - Create a responsive design with minimal layout shifts
-6. **Testing**: Add meaningful tests using React Testing Library and Jest or Vitest
-7. **Styling**: Create a clean, well-structured dashboard following modern design principles
-8. Allow **3–6 days** for this challenge (though the depth is up to you)
+1. Create a small dashboard with two main components:
+   - Weather widget using a weather API
+   - Financial widget showing stock or cryptocurrency data
+2. Focus on architecture and component design
+3. Implement proper data fetching and error handling
 
 ## Steps to Complete
 
-### 1. Create & Switch to a New Branch
+### 1. Fork the Repository
 
-1. Pull or clone the latest version of this repository.
-2. From your local repo, create a new branch:
+1. Go to [https://github.com/Zeff01/codebility-assessment](https://github.com/Zeff01/codebility-assessment)
+2. Click the "Fork" button in the upper right corner
 
-   git checkout -b firstname-lastname/5-years-plus
+### 2. Clone Your Fork
 
-   Replace `firstname-lastname` with your actual name.
+```bash
+git clone https://github.com/YOUR-USERNAME/codebility-assessment.git
+cd codebility-assessment/frontend
+```
 
-3. Confirm your new branch:
+### 3. Create a Branch
 
-   git branch # Your new branch should be highlighted
+```bash
+git checkout -b firstname-lastname/5-years-plus
+```
 
-### 2. Dashboard & Data Architecture
+Replace `firstname-lastname` with your actual name.
 
-1. Set up a dashboard using Next.js 15 App Router (app/ directory structure)
-2. Create multiple sections with the following recommended structure:
+### 4. Implementation
 
-   app/
-   ├── dashboard/
-   │ ├── page.tsx # Main dashboard page (Server Component)
-   │ ├── layout.tsx # Dashboard layout with navigation
-   │ ├── loading.tsx # Loading state
-   │ ├── error.tsx # Error handling
-   │ ├── weather/
-   │ │ └── page.tsx # Weather data section
-   │ └── finance/
-   │ └── page.tsx # Financial data section
-   ├── api/ # API routes if needed
-   └── components/
-   ├── server/ # Server Components
-   └── client/ # Client Components
+1. Create a dashboard with:
 
-3. API Integration:
+   - A weather widget using any weather API
+   - A financial widget using any stock/crypto API
+   - A clean, simple layout
 
-   - Weather Section: Fetch and display current weather and forecasts from OpenWeatherMap
-   - Finance Section: Show stock data and price charts from Finnhub
-   - Implement proper error handling, loading states, and data refresh strategies
+2. Focus on these technical aspects:
 
-4. Server/Client Components:
-   - Use Server Components for initial data fetching and SEO
-   - Use Client Components for interactive elements like:
-     - Weather location selector
-     - Stock symbol search
-     - Data refresh controls
-     - Interactive charts
+   - Clean component architecture
+   - Proper data fetching with loading/error states
+   - Basic caching or state management
+   - Simple responsive design
 
-### 3. Performance Considerations
+3. Data Sources (suggestions):
+   - Weather: [OpenWeatherMap](https://openweathermap.org/api) or any similar API
+   - Financial: [Finnhub](https://finnhub.io/) or any similar API
+   - Feel free to use mock data if API access is problematic
 
-1. Implement **streaming** with Suspense for progressive loading of dashboard sections
-2. Use Next.js 15's recommended caching strategies:
-   - Leverage the built-in fetch cache for Server Components
-   - Use React Query or SWR for client-side data that needs refreshing
-3. Apply dynamic imports with `next/dynamic` for code splitting
-4. Optimize and lazy-load any third-party visualization libraries
+### 5. Test Your Work
 
-### 4. Testing
+1. Make sure your application works on different screen sizes
+2. Check that your error handling works properly
 
-1. Write tests focusing on:
-   - Component rendering and interactions
-   - Data fetching logic
-   - Error state handling
-2. Recommended tools:
-   - React Testing Library
-   - Jest or Vitest
-   - MSW (Mock Service Worker) for API mocking
+### 6. Submit Your Work
 
-### 5. Commit & Push
+1. Commit and push your changes:
 
-1. Stage and commit your changes:
-
+   ```bash
    git add .
-   git commit -m "Implement advanced dashboard with weather and financial APIs"
-
-2. Push your branch to the remote repository:
-
+   git commit -m "Implement dashboard with weather and financial widgets"
    git push origin firstname-lastname/5-years-plus
+   ```
 
-### 6. Open a Pull Request (PR)
+2. Create a Pull Request:
+   - Go to your fork on GitHub
+   - Click "Contribute" and "Open pull request"
+   - Make sure the base repository is set to `Zeff01/codebility-assessment`
+   - Include a brief explanation of your architecture decisions
 
-1. Go to the repository in your Git hosting platform.
-2. Create a new pull request with your branch as the source.
-3. Use a clear title (e.g., "Feature: [Your Name] - 5+ Years Frontend Dashboard").
-4. In the description, highlight:
-   - Your architecture decisions regarding Server vs Client Components
-   - Caching and data fetching strategies
-   - Performance optimizations implemented
-   - Testing approach
-   - Any challenges or areas for future improvement
+## What We're Looking For
 
-## Evaluation Criteria
+- Clean architecture and code organization
+- Proper component design and separation of concerns
+- Effective data fetching and state management
+- Error and edge case handling
+- Clean, maintainable code
 
-Your solution will be evaluated based on:
+## Technology Choices
 
-1. **Architecture**: Proper use of Next.js 15 features and patterns
-2. **Component Design**: Clear separation of concerns and reusable components
-3. **Data Handling**: Efficient data fetching and state management
-4. **Performance**: Smart implementation of React Server Components and client optimizations
-5. **Code Quality**: Clean, readable, and well-documented code
-6. **Testing**: Meaningful tests that verify key functionality
+- Use Next.js or React
+- Choose any libraries or tools you're comfortable with
+- Feel free to use any styling approach
+- Select any state management solution that fits the task
 
-## Time Estimate
+## Time Allowance
 
-This test is designed to take 3–6 days for a minimal implementation. Feel free to detail any unimplemented features or next steps in your PR if you run out of time.
+- **Expected coding time**: 1-2 hours
+- **Submission deadline**: 1-2 days
 
-## Tips
+Focus on quality over quantity. We're more interested in seeing your architectural approach and code quality than a large number of features.
 
-- Begin with scaffolding the app structure and implementing the basic data fetching
-- Use placeholder UIs while working on the architecture
-- If API rate limits become an issue, consider implementing a simple caching layer or mock data
-- Focus on demonstrating your understanding of modern Next.js patterns rather than visual polish
-
-### We look forward to reviewing your solution!
+**Good luck!**
