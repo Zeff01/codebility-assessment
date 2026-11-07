@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f4efe9"/><stop offset="1" stop-color="#e7ddcf"/>
+  </linearGradient></defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <ellipse cx="600" cy="950" rx="300" ry="40" fill="#101214" opacity="0.08"/>
+  
+  <circle cx="458" cy="574" r="86" fill="#f7f7f5"/>
+  <circle cx="742" cy="574" r="86" fill="#f7f7f5"/>
+  <rect x="436" y="620" width="44" height="150" rx="22" transform="rotate(14 458 695)" fill="#f7f7f5"/>
+  <rect x="720" y="620" width="44" height="150" rx="22" transform="rotate(-14 742 695)" fill="#f7f7f5"/>
+  <circle cx="458" cy="560" r="30" fill="#8a8f98" opacity="0.55"/>
+  <circle cx="742" cy="560" r="30" fill="#8a8f98" opacity="0.55"/>
+  <rect x="470" y="790" width="260" height="120" rx="58" fill="#c8c2b6"/>
+  <line x1="508" y1="850" x2="692" y2="850" stroke="#c8c2b6" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+</svg>
