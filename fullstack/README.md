@@ -19,6 +19,8 @@ nothing speculative.**
 npm install
 npm run dev         # http://localhost:3000
 npm run build       # verifies: typecheck, lint, static prerender of all routes
+npm test            # 37 Vitest tests: cart rules + full route-handler contract matrix
+npm run test:e2e    # 3 Playwright E2E specs against the production build
 ```
 
 No database and no environment variables — the catalog is mock data (allowed per the brief), so
@@ -39,6 +41,8 @@ the app runs from a cold clone with just `npm install`.
 - **Performance** — every page statically prerendered at build time; `next/image` with `priority`
   on the LCP image and responsive `sizes`; one font family via `next/font`; interactive JS
   islands only (the catalog, header markup, rating rows and page bodies ship as RSC payloads).
+- **Tests** — 37 Vitest unit/integration tests on the cart rules + route handler contracts, and
+  3 Playwright E2E specs over the production build (see "Testing" below).
 
 ## Architecture decisions (the ones worth defending)
 
@@ -123,6 +127,29 @@ cookie tolerated as an empty cart and repaired on the next mutation, per-line `b
 double clicks can't corrupt state, sold-out PDP branch (button never lies), Esc/overlay close and
 scroll-lock on the drawer.
 
+## Testing
+
+Three layers, all green in this repo:
+
+- **Vitest — cart domain rules** (`tests/cart.test.ts`): every sanitize/merge/clamp behavior of
+  `lib/cart` one way and the other — over-cap quantities clamped to the binding limit (stock or
+  the 99-unit line cap), unknown SKUs dropped, garbage cookies tolerated, cents-exact totals, and
+  the add-vs-update quantity validation contracts. Cookie flags (httpOnly/SameSite/Max-Age,
+  Secure-in-prod) pinned too.
+- **Vitest — route handler contracts** (`tests/api-cart.test.ts`): the full cart API matrix —
+  200/201/400/404/409, repeat-adds merging into one line, merged adds capped at the per-line
+  limit, dirty-cookie repair, `no-store` — with `next/headers` mocked to an in-memory cookie
+  store so the handlers run as real code without a server.
+- **Playwright — E2E** (`tests/e2e/cart.spec.ts`, run against the production build via the
+  `webServer` config): add to cart → drawer opens with correct totals → **full page reload →
+  cart persists through the cookie**; sold-out product can't be added; unknown slug answers a
+  real HTTP 404.
+
+One platform subtlety worth naming: with `cacheComponents` (Partial Prerendering), a streamed
+`notFound()` keeps HTTP 200 — the shell is already on the wire — so unknown product slugs are
+answered by `proxy.ts` (edge middleware), which validates the slug against the catalog before
+the page streams and returns a genuine 404. Verified by the E2E suite.
+
 ## Assumptions
 
 - **USD only.** One currency constant; a real store adds FX + locale-formatted prices.
@@ -136,9 +163,6 @@ scroll-lock on the drawer.
 
 ## With more time I would reach for
 
-- **Tests** (Vitest unit tests for `lib/cart` sanitize/clamp rules + Playwright E2E for the
-  add→open→reload-persist flow) — the mutation rules ARE the interesting logic and deserve
-  regression coverage, not just manual curls.
 - A real data layer (Postgres + a typed query layer) with `revalidateTag`-based cache
   invalidation so product pages stay static until an actual catalog change.
 - Cart "intent" merge for logged-in users, and `Sec-Fetch`/bot-friendly API responses.

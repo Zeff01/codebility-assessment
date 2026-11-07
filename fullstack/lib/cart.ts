@@ -101,10 +101,15 @@ export function sanitizeRawCart(raw: unknown, productsById: ReadonlyMap<string, 
     const product = productsById.get(productId);
     if (!product) continue; // dead/unknown SKU — drop the line entirely
 
-    const qty = toSafeQuantity(quantity);
-    if (!qty) continue;
+    if (typeof quantity !== "number" || !Number.isInteger(quantity) || quantity < 1) continue;
 
-    byId.set(productId, Math.min((byId.get(productId) ?? 0) + qty, Math.min(product.stock, MAX_QTY_PER_LINE)));
+    // Over-cap quantities from a dirty cookie are clamped to the binding
+    // limit (stock or per-line cap) rather than dropped, mirroring how
+    // over-stock adds are treated on the API surface.
+    byId.set(
+      productId,
+      Math.min((byId.get(productId) ?? 0) + quantity, product.stock, MAX_QTY_PER_LINE),
+    );
   }
 
   return [...byId.entries()].map(([productId, quantity]) => ({ productId, quantity }));
