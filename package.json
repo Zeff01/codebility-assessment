@@ -1,16 +1,30 @@
 {
-  "name": "codebility-assessment",
-  "version": "1.0.0",
+  "name": "restoflow",
+  "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend",
-    "mobile"
-  ],
   "scripts": {
-    "start:frontend": "npm run dev --workspace frontend",
-    "start:backend": "npm run start --workspace backend",
-    "start:mobile": "npm run start --workspace mobile",
-    "install:all": "npm install --workspaces"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "framer-motion": "^14.10.1",
+    "lucide-react": "^1.70.0",
+    "next": "16.4.5",
+    "postcss": "^8.5.32",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5"
   }
 }
