@@ -11,7 +11,10 @@ export default async function PostPage ({ params }) {
   }
   return(
     <main className="post-page"> 
-      <Link href="/" className="back-link">← Back to home</Link>
+      <Link href="/" className="back-link">
+      <span className="back-link-icon" aria-hidden="true">←</span>
+      <span className="back-link-label">Back to home</span>
+      </Link>
       <article className="post-article">
         <h1>{post.title}</h1>
         <time dateTime={post.date}>{post.date}</time>

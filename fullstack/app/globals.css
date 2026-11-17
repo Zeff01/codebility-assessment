@@ -121,6 +121,13 @@ a {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
+.post-card:hover, .post-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .post-card h3 {
   font-size: 1.25rem;
   font-weight: 650;
@@ -147,4 +154,131 @@ a {
   .posts-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.post-article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 48px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.post-article h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.post-article time {
+  display: block;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.post-article p {
+  color: var(--foreground);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-top: 8px;
+}
+
+.post-page {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  width: 44px;
+  height: 44px;
+  padding: 0 12px;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  margin: 24px 0 48px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  transition:
+    width 0.3s ease,
+    box-shadow 0.25s ease;
+}
+
+.back-link-icon {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.back-link-label {
+  max-width: 0;
+  opacity: 0;
+  transition:
+    max-width 0.3s ease,
+    opacity 0.2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  width: 154px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+}
+
+.back-link:hover .back-link-label,
+.back-link:focus-visible .back-link-label {
+  max-width: 110px;
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .home, .post-page {
+    padding: 16px;
+  }
+
+
+.hero {
+  padding: 56px 0 44px;
+}
+
+.post-article {
+  padding: 28px 22px;
+}
+
+.back-link{
+  margin-bottom: 32px;
+  }
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
 }

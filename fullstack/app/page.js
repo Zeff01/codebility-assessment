@@ -32,7 +32,11 @@ export default function Home() {
           );
         })}
     </div>
-  </section>
+    </section>
+    <footer className="site-footer">
+      <p>© 2026 DevLog. All rights reserved.</p>
+      <p>Built with Next.js</p>
+    </footer>
   </main>
  );
 }
