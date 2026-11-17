@@ -1,4 +1,4 @@
-
+import Link from "next/link"
 import { posts } from "../data/posts"
 
 export default function Home() {
@@ -9,12 +9,15 @@ export default function Home() {
     </h1>
     <div>
       {posts.map((post) => {
-        return( 
-        <div key={post.id}>
-          <h2 className="title">{post.title}</h2>
-          <p className="excerpt">{post.excerpt}</p>
-        </div> );
-      })}
+      return (
+        <Link href={`/posts/${post.id}`} key={post.id}>
+          <div>
+            <h2>{post.title}</h2>
+            <p>{post.excerpt}</p>
+          </div>
+        </Link>
+        );
+    })}
     </div>
   </div>
  );

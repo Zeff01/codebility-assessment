@@ -1,326 +1,237 @@
-<!-- BEGIN:nextjs-agent-rules -->
-
-## This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
-
-# CodeBility Assessment — Full-Stack Blog Application
+# AGENTS.md
 
 ## 1. Project Goal
-Build a simple, functional blog application using Next.js as part of the CodeBility Full-Stack Developer Assessment (1–2 Years Experience).
+Build a functional, clean, and responsive blog application using **Next.js App Router** for the CodeBility Fullstack Developer 1–2 Years Assessment.
 
 The application must allow users to:
 
-- View a list of blog posts on the homepage.
-- Read an individual blog post.
-- Navigate between the homepage and individual posts.
-- Retrieve all blog posts through an API endpoint.
-- Retrieve a specific blog post through an API endpoint.
+- View all blog posts on the homepage.
+- Navigate to individual blog posts.
+- Read the full content of a selected post.
+- Retrieve all posts through an API endpoint.
+- Retrieve an individual post through an API endpoint.
+- Receive appropriate responses for nonexistent posts.
+The priority is to demonstrate working knowledge of Next.js, routing, reusable data, API route handlers, component structure, and responsive UI development.
 
-### Primary Objectives
+**The original assessment README is the source of truth.** Do not introduce features outside its requirements without a clear reason.
 
-1. Demonstrate familiarity with Next.js and its App Router.
-2. Implement file-based and dynamic routing.
-3. Use reusable, organized data structures.
-4. Implement Next.js API route handlers.
-5. Build a clean and usable interface.
-6. Maintain readable, organized, and functional code.
+## 2. Technology Stack
 
-### Scope and Priorities
-This is a time-constrained assessment project.
+- Next.js 16 (App Router)
+- React
+- JavaScript
+- JSX
+- CSS / CSS Modules where appropriate
+- Next.js Route Handlers
+- Node.js and npm
+No database is currently required. Blog data is stored in a reusable JavaScript module.
 
-Prioritize:
+## 3. Project Structure
+The Next.js application is located inside `fullstack/`.
 
-1. Required functionality.
-2. Correct routing and data handling.
-3. Clean code organization.
-4. Basic responsive styling.
-5. Testing and submission readiness.
-Avoid unnecessary complexity. A database, authentication system, admin dashboard, and other features outside the assessment requirements are not part of the initial scope.
-
----
-
-## 2. Development Checklist
-
-### Phase 1 — Project Initialization
-
-- Fork and clone the assessment repository.
-- Create the required Git branch.
-- Initialize Next.js inside the `fullstack/` directory.
-- Configure JavaScript and App Router.
-- Install dependencies.
-- Verify the development server runs.
-
-### Phase 2 — Blog Data and Homepage
-
-- Create `data/posts.js`.
-- Define a reusable blog post data structure.
-- Add at least three blog posts.
-- Import blog data into `app/page.js`.
-- Render blog posts dynamically using `.map()`.
-- Use unique React keys when rendering lists.
-- Verify the homepage renders correctly.
-
-### Phase 3 — Individual Blog Pages
-
-- Create the dynamic route `app/posts/[id]/page.js`.
-- Retrieve the post ID from the route parameters.
-- Find the matching post from the local data array.
-- Display the post title, date, and full content.
-- Handle invalid or nonexistent post IDs.
-- Add navigation back to the homepage.
-- Add links to individual posts from the homepage.
-- Test navigation between posts.
-
-### Phase 4 — API Routes
-
-- Create `app/api/posts/route.js`.
-- Implement GET `/api/posts` to return all posts.
-- Create `app/api/posts/[id]/route.js`.
-- Implement GET `/api/posts/:id` to return one post.
-- Return appropriate HTTP status codes.
-- Handle nonexistent post IDs.
-- Test both endpoints.
-
-### Phase 5 — Styling and UI
-
-- Establish consistent global styling.
-- Style the homepage and post list.
-- Style individual post pages.
-- Make navigation clear and intuitive.
-- Ensure basic responsiveness.
-- Remove unused starter styles and imports.
-
-### Phase 6 — Testing and Quality Assurance
-
-- Verify the homepage.
-- Verify every individual post page.
-- Verify invalid post IDs.
-- Test the all-posts API endpoint.
-- Test the individual-post API endpoint.
-- Check browser console and terminal errors.
-- Verify the application builds successfully.
-- Capture screenshots of the completed application.
-
-### Phase 7 — Submission
-
-- Review project structure and code quality.
-- Check Git status for unintended files.
-- Commit completed features.
-- Push the assessment branch to the fork.
-- Create a pull request to the original assessment repository.
-- Verify the pull request and submission.
-
----
-
-## 3. Project Architecture
-The project uses Next.js App Router with JavaScript.
-
-Current intended structure:
+Current relevant structure:
 
 ```
 fullstack/
+├── AGENTS.md
 ├── app/
 │   ├── api/
 │   │   └── posts/
 │   │       ├── route.js
 │   │       └── [id]/
 │   │           └── route.js
-│   │
 │   ├── posts/
 │   │   └── [id]/
 │   │       └── page.js
-│   │
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.js
-│   ├── page.js
-│   └── page.module.css
-│
+│   └── page.js
 ├── data/
 │   └── posts.js
-│
-├── public/
-│
-├── .gitignore
-├── AGENTS.md
-├── eslint.config.mjs
-├── jsconfig.json
-├── next.config.mjs
 ├── package.json
 └── package-lock.json
 ```
 
-### Responsibilities
-`app/page.js`
+## 4. Application Architecture
 
-- Serves as the homepage (`/`).
-- Imports the blog post data.
-- Displays a list of posts.
-- Provides links to individual post pages.
-`app/posts/[id]/page.js`
-
-- Handles dynamic blog post routes.
-- Uses the URL parameter to identify a post.
-- Displays the selected post's full content.
-`app/api/posts/route.js`
-
-- Handles requests to `/api/posts`.
-- Returns the complete blog post collection.
-`app/api/posts/[id]/route.js`
-
-- Handles requests to `/api/posts/:id`.
-- Returns one matching blog post.
+### Data Layer
 `data/posts.js`
 
-- Acts as the local source of truth for blog post data.
-- Exports the posts array for use by pages and API handlers.
-`app/layout.js`
-
-- Defines the shared application layout.
-- Contains the root HTML structure and shared metadata.
-`app/globals.css`
-
-- Contains application-wide styles.
-`app/page.module.css`
-
-- Contains styles scoped to the homepage.
-
----
-
-## 4. Blog Data Structure
-All blog posts should follow the same structure:
+- Contains the reusable blog post data.
+- Exports a named `posts` array.
+- Each post follows a consistent structure:
 
 ```
 {
-  id: 1,
-  title: "Example Blog Post",
-  excerpt: "A short description of the article.",
-  content: "The complete article content.",
-  date: "2025-04-15"
+  id,
+  title,
+  excerpt,
+  content,
+  date
 }
 ```
 
-### Data Rules
+- Currently contains four sample blog posts.
+- Pages and API routes import this shared data source.
 
-- Every post must have a unique ID.
-- Every post must contain all five required fields.
-- `title`, `excerpt`, and `content` must be strings.
-- `date` should use the `YYYY-MM-DD` format.
-- Keep the data structure consistent across all posts.
-The initial implementation uses a local JavaScript array rather than a database.
+### Homepage
+`app/page.js`
 
----
+- Imports the reusable posts array.
+- Displays all posts using `.map()`.
+- Uses stable keys (`post.id`).
+- Uses Next.js `Link` to navigate to individual posts.
 
-## 5. Coding Conventions
+### Individual Blog Page
+`app/posts/[id]/page.js`
 
-### General
+- Uses dynamic file-based routing.
+- Retrieves the route parameter.
+- Finds the matching post using its ID.
+- Displays the title, publication date, and full content.
+- Uses `notFound()` for nonexistent post IDs.
+- Provides navigation back to the homepage.
 
-- Use JavaScript and JSX.
-- Follow the existing Next.js App Router conventions.
-- Use descriptive variable and function names.
-- Keep components focused on their responsibilities.
+### API Routes
+`app/api/posts/route.js`
+
+- Implements `GET /api/posts`.
+- Returns all blog posts as JSON.
+`app/api/posts/[id]/route.js`
+
+- Implements `GET /api/posts/[id]`.
+- Retrieves a specific post by ID.
+- Returns the post as JSON.
+- Returns HTTP 404 when the post does not exist.
+
+### Root Layout and Styling
+`app/layout.js`
+
+- Provides the root HTML layout.
+- Imports global styles.
+- Defines application metadata.
+`app/globals.css`
+
+- Contains global styles.
+- Will hold shared design tokens, typography, resets, and responsive foundations.
+
+## 5. Implementation Checklist
+
+### Phase 1 — Core Functionality
+
+- Initialize Next.js application.
+- Create reusable blog data.
+- Display all posts on the homepage.
+- Implement dynamic individual post pages.
+- Implement homepage-to-post navigation.
+- Handle nonexistent post pages.
+
+### Phase 2 — API Development
+
+- Implement GET `/api/posts`.
+- Implement GET `/api/posts/[id]`.
+- Return the correct post by ID.
+- Handle nonexistent post IDs with HTTP 404.
+- Manually verify API responses.
+
+### Phase 3 — Verification
+
+- Verify homepage rendering.
+- Verify individual post navigation.
+- Verify invalid post page handling.
+- Verify API endpoints.
+- Run `npm run build` successfully.
+- Review code organization and remove unused starter code.
+- Add a small automated test suite if time permits.
+
+### Phase 4 — UI/UX Development
+
+- Establish a consistent visual design system.
+- Define global colors, typography, and spacing.
+- Create a modern homepage layout.
+- Style reusable blog post cards.
+- Improve individual article page presentation.
+- Add hover and focus states.
+- Implement responsive mobile layouts.
+- Verify tablet and desktop layouts.
+
+### Phase 5 — Final Review and Submission
+
+- Perform final functionality checks.
+- Verify responsive behavior.
+- Run production build again.
+- Review Git changes.
+- Commit and push completed work.
+- Verify the assessment branch.
+- Prepare the required pull request.
+- Capture screenshots if required.
+
+## 6. Development Guidelines
+
+### Keep the Implementation Simple
+
+- Prioritize assessment requirements.
 - Avoid unnecessary dependencies.
-- Remove unused imports and variables.
+- Do not introduce a database unless required.
+- Do not implement authentication, admin dashboards, or CRUD features outside the assessment scope.
+- Prefer readable, maintainable code over unnecessary abstractions.
 
-### React and JSX
-
-- Use functional React components.
-- Use `.map()` when rendering collections.
-- Provide stable, unique keys when rendering lists.
-- Use semantic HTML elements (`main`, `article`, `h1`, `h2`, etc.).
-- Keep JSX readable and consistently formatted.
-
-### Next.js
+### Next.js Conventions
 
 - Use the App Router.
-- Use the `Link` component from `next/link` for internal navigation.
-- Use dynamic route segments for individual blog posts.
-- Use `route.js` for API route handlers.
-- Remember that App Router components are Server Components by default.
-- Only introduce Client Components when browser-side interactivity is required.
+- Follow file-based routing conventions.
+- Use `Link` from `next/link` for internal navigation.
+- Use Route Handlers for API endpoints.
+- Use `notFound()` for missing page resources.
+- Keep reusable data outside page components.
+- Use Server Components by default.
+- Only introduce Client Components when browser-side interactivity requires them.
 
-### Styling
+### CSS and Responsive Design
 
-- Prefer CSS Modules for component-specific styling.
-- Use global CSS for application-wide styles.
-- Avoid introducing a styling framework unless necessary.
+- Use global CSS for shared foundations and design tokens.
+- Keep component-specific styles organized.
+- Prefer responsive layouts using flexible sizing, CSS Grid, Flexbox, and media queries.
+- Avoid fixed-width layouts that break on smaller screens.
+- Maintain accessible color contrast and visible focus states.
 
-### API Design
+### Code Quality
 
-- Use appropriate HTTP methods and status codes.
-- Return JSON responses.
-- Handle missing resources explicitly.
-- Keep API response structures consistent.
+- Use descriptive variable and function names.
+- Keep components focused on their responsibilities.
+- Remove unused imports and unnecessary code.
+- Handle missing data appropriately.
+- Avoid duplicating data or business logic.
+- Preserve existing working functionality when making changes.
 
----
+## 7. Collaboration and AI Coding Instructions
+The developer is learning Next.js while completing this assessment.
 
-## 6. Development Workflow
-Follow this workflow when implementing features:
+When assisting with development:
 
-1. **Define:** Understand the feature and expected behavior.
-2. **Plan:** Identify the files and components involved.
-3. **Implement:** Build one feature at a time.
-4. **Test:** Verify the feature works before moving on.
-5. **Understand:** Be able to explain how the implementation works.
-6. **Refactor:** Improve readability and organization without changing behavior.
-7. **Trace:** Understand how data flows through the application.
-8. **Commit:** Save completed, working features to Git.
+1. Explain the purpose of a feature before implementing it.
+2. Break tasks into small, manageable steps.
+3. Prefer guided implementation over dumping complete solutions.
+4. Explain unfamiliar Next.js, React, JavaScript, and CSS concepts.
+5. Let the developer implement changes and review their work.
+6. Test changes after implementation.
+7. Explain errors and their causes instead of simply replacing code.
+8. Keep the project aligned with the assessment requirements.
+9. Update this document when the architecture, implementation status, or project decisions materially change.
+The preferred development workflow is:
 
-### Git Practices
+**Understand → Plan → Implement → Test → Review → Refactor**
 
-- Work on the assessment branch:
-`AlexAndre-Mago/fullstack-1-2`
-- Commit after completing meaningful, tested features.
-- Use descriptive commit messages.
-- Do not commit `node_modules/`, `.next/`, environment files, or other generated files.
-- Keep the working tree clean before submission.
+The goal is not merely to produce working code, but to ensure the developer understands and can explain the implementation.
 
----
+## 8. Current Project Status
+The core blog functionality, dynamic routing, API endpoints, and production build are working.
 
-## 7. Current Implementation Status
-As of November 17, 2026:
+The next priority is:
 
-### Completed
-
-- Next.js project initialized.
-- App Router configured.
-- Local blog data created.
-- Four blog posts added.
-- Homepage imports the named `posts` export.
-- Homepage dynamically renders post titles and excerpts using `.map()`.
-- React list keys implemented.
-- Homepage verified in the browser.
-- Initial Git commit created.
-
-### Latest Commit
-`7179b1f`
-
-Message: `Building the blog hompage with postdata...`
-
-### Current Branch
-`AlexAndre-Mago/fullstack-1-2`
-
-### Immediate Next Objective
-Implement dynamic individual blog post pages and connect the homepage to those pages using Next.js navigation.
-
----
-
-## 8. Instructions for AI Coding Assistants
-When assisting with this project:
-
-- Respect the assessment requirements and existing architecture.
-- Inspect relevant files before proposing changes.
-- Do not unnecessarily rewrite working code.
-- Prefer small, focused changes over large refactors.
-- Explain the reasoning behind important implementation decisions.
-- Do not introduce unrequested features or dependencies.
-- Do not assume a database or authentication system is needed.
-- Keep the implementation understandable for a developer learning Next.js.
-- Verify behavior before declaring a feature complete.
-- Update this document's checklist and implementation status as meaningful milestones are completed.
-The goal is not simply to produce code that works. The goal is to deliver a clean, functional assessment while demonstrating an understanding of the technologies and decisions behind the implementation.
+1. Review and clean up the current project structure.
+2. Begin the modern editorial-style UI.
+3. Implement responsive styling.
+4. Complete final verification and submission.
+Do not unnecessarily rebuild working features.
