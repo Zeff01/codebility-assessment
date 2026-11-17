@@ -10,9 +10,9 @@ export default async function PostPage ({ params }) {
     notFound();
   }
   return(
-    <main>
-      <Link href="/">← Back to home</Link>
-      <article>
+    <main className="post-page"> 
+      <Link href="/" className="back-link">← Back to home</Link>
+      <article className="post-article">
         <h1>{post.title}</h1>
         <time dateTime={post.date}>{post.date}</time>
         <p>{post.content}</p>
