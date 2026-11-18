@@ -1,0 +1,254 @@
+[
+  {
+    "id": "prd_001",
+    "slug": "aurora-wireless-headphones",
+    "name": "Aurora Wireless Headphones",
+    "brand": "Northwave",
+    "category": "audio",
+    "shortDescription": "Over-ear headphones with adaptive noise cancelling.",
+    "description": "Aurora pairs a lightweight aluminum frame with memory foam cushions for all-day comfort. Adaptive noise cancelling tunes itself to your surroundings, and the 40mm drivers deliver a warm, detailed sound that stays clear at any volume.",
+    "price": 249,
+    "compareAtPrice": 299,
+    "stock": 14,
+    "rating": 4.7,
+    "reviewCount": 382,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/aurora-1/1200/1200",
+        "alt": "Aurora headphones front view"
+      },
+      {
+        "src": "https://picsum.photos/seed/aurora-2/1200/1200",
+        "alt": "Aurora headphones folded"
+      },
+      {
+        "src": "https://picsum.photos/seed/aurora-3/1200/1200",
+        "alt": "Aurora headphones ear cushion detail"
+      },
+      {
+        "src": "https://picsum.photos/seed/aurora-4/1200/1200",
+        "alt": "Aurora headphones in carrying case"
+      }
+    ],
+    "features": [
+      "Adaptive active noise cancelling",
+      "Up to 38 hours of battery life",
+      "Multipoint Bluetooth 5.3",
+      "USB-C fast charging"
+    ]
+  },
+  {
+    "id": "prd_002",
+    "slug": "pulse-earbuds",
+    "name": "Pulse Earbuds",
+    "brand": "Northwave",
+    "category": "audio",
+    "shortDescription": "Compact true wireless earbuds with a pocket-sized case.",
+    "description": "Pulse earbuds are built for commutes and workouts. IPX5 sweat resistance, a secure fit with three tip sizes, and a charging case that adds three full charges.",
+    "price": 129,
+    "stock": 32,
+    "rating": 4.4,
+    "reviewCount": 217,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/pulse-1/1200/1200",
+        "alt": "Pulse earbuds in charging case"
+      },
+      {
+        "src": "https://picsum.photos/seed/pulse-2/1200/1200",
+        "alt": "Pulse earbuds close up"
+      },
+      {
+        "src": "https://picsum.photos/seed/pulse-3/1200/1200",
+        "alt": "Pulse earbuds being worn"
+      }
+    ],
+    "features": [
+      "IPX5 water resistance",
+      "24 hours with case",
+      "Wireless charging case"
+    ]
+  },
+  {
+    "id": "prd_003",
+    "slug": "orbit-smartwatch",
+    "name": "Orbit Smartwatch",
+    "brand": "Kinetic",
+    "category": "wearables",
+    "shortDescription": "Fitness tracking and notifications in a slim case.",
+    "description": "Orbit tracks heart rate, sleep and over 40 workout types. The always-on AMOLED display is easy to read outdoors, and a single charge lasts up to a week.",
+    "price": 199,
+    "stock": 8,
+    "rating": 4.5,
+    "reviewCount": 156,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/orbit-1/1200/1200",
+        "alt": "Orbit smartwatch on wrist"
+      },
+      {
+        "src": "https://picsum.photos/seed/orbit-2/1200/1200",
+        "alt": "Orbit smartwatch display"
+      },
+      {
+        "src": "https://picsum.photos/seed/orbit-3/1200/1200",
+        "alt": "Orbit smartwatch strap detail"
+      }
+    ],
+    "features": [
+      "Always-on AMOLED display",
+      "7-day battery",
+      "Built-in GPS",
+      "5 ATM water resistance"
+    ]
+  },
+  {
+    "id": "prd_004",
+    "slug": "stride-fitness-band",
+    "name": "Stride Fitness Band",
+    "brand": "Kinetic",
+    "category": "wearables",
+    "shortDescription": "A lightweight band for steps, sleep and heart rate.",
+    "description": "Stride is a no-fuss tracker that you forget you are wearing. Automatic activity detection, sleep stages and a battery that lasts two weeks.",
+    "price": 79,
+    "compareAtPrice": 99,
+    "stock": 0,
+    "rating": 4.1,
+    "reviewCount": 98,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/stride-1/1200/1200",
+        "alt": "Stride fitness band"
+      },
+      {
+        "src": "https://picsum.photos/seed/stride-2/1200/1200",
+        "alt": "Stride fitness band on wrist"
+      }
+    ],
+    "features": [
+      "14-day battery",
+      "Sleep tracking",
+      "Swim-proof"
+    ]
+  },
+  {
+    "id": "prd_005",
+    "slug": "canvas-laptop-sleeve",
+    "name": "Canvas Laptop Sleeve",
+    "brand": "Fieldworks",
+    "category": "accessories",
+    "shortDescription": "Waxed canvas sleeve for 13–14 inch laptops.",
+    "description": "Made from water-resistant waxed canvas with a soft felt lining. A front pocket fits a charger and cables, and the material develops character over time.",
+    "price": 59,
+    "stock": 21,
+    "rating": 4.8,
+    "reviewCount": 64,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/sleeve-1/1200/1200",
+        "alt": "Canvas laptop sleeve"
+      },
+      {
+        "src": "https://picsum.photos/seed/sleeve-2/1200/1200",
+        "alt": "Canvas laptop sleeve front pocket"
+      },
+      {
+        "src": "https://picsum.photos/seed/sleeve-3/1200/1200",
+        "alt": "Canvas laptop sleeve with laptop"
+      }
+    ],
+    "features": [
+      "Water-resistant waxed canvas",
+      "Felt lining",
+      "Front accessory pocket"
+    ]
+  },
+  {
+    "id": "prd_006",
+    "slug": "dock-charging-stand",
+    "name": "Dock Charging Stand",
+    "brand": "Fieldworks",
+    "category": "accessories",
+    "shortDescription": "3-in-1 wireless charger for phone, watch and earbuds.",
+    "description": "Dock keeps your desk tidy by charging three devices from a single cable. Weighted base, soft-touch finish and a 15W fast charging pad for your phone.",
+    "price": 89,
+    "stock": 17,
+    "rating": 4.3,
+    "reviewCount": 112,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/dock-1/1200/1200",
+        "alt": "Dock charging stand"
+      },
+      {
+        "src": "https://picsum.photos/seed/dock-2/1200/1200",
+        "alt": "Dock charging stand with devices"
+      }
+    ],
+    "features": [
+      "15W fast wireless charging",
+      "Charges 3 devices",
+      "Weighted non-slip base"
+    ]
+  },
+  {
+    "id": "prd_007",
+    "slug": "halo-smart-speaker",
+    "name": "Halo Smart Speaker",
+    "brand": "Northwave",
+    "category": "home",
+    "shortDescription": "Room-filling sound with a 360° speaker design.",
+    "description": "Halo fills any room with balanced 360° sound. Stream over Wi-Fi or Bluetooth, group multiple speakers together, and control everything from the app.",
+    "price": 179,
+    "stock": 5,
+    "rating": 4.6,
+    "reviewCount": 203,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/halo-1/1200/1200",
+        "alt": "Halo smart speaker"
+      },
+      {
+        "src": "https://picsum.photos/seed/halo-2/1200/1200",
+        "alt": "Halo smart speaker top controls"
+      },
+      {
+        "src": "https://picsum.photos/seed/halo-3/1200/1200",
+        "alt": "Halo smart speaker in living room"
+      }
+    ],
+    "features": [
+      "360° sound",
+      "Wi-Fi and Bluetooth",
+      "Multi-room grouping"
+    ]
+  },
+  {
+    "id": "prd_008",
+    "slug": "lumen-desk-lamp",
+    "name": "Lumen Desk Lamp",
+    "brand": "Fieldworks",
+    "category": "home",
+    "shortDescription": "Dimmable LED desk lamp with adjustable color temperature.",
+    "description": "Lumen has a slim aluminum arm that rotates and tilts to put light where you need it. Adjust brightness and warmth with the touch dial on the base.",
+    "price": 119,
+    "stock": 11,
+    "rating": 4.5,
+    "reviewCount": 77,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/lumen-1/1200/1200",
+        "alt": "Lumen desk lamp"
+      },
+      {
+        "src": "https://picsum.photos/seed/lumen-2/1200/1200",
+        "alt": "Lumen desk lamp touch dial"
+      }
+    ],
+    "features": [
+      "Stepless dimming",
+      "2700K–6500K color temperature",
+      "USB-C charging port in base"
+    ]
+  }
+]
